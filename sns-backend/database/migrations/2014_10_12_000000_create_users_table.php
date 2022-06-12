@@ -25,6 +25,7 @@ return new class extends Migration
             $table->tinyInteger('gender');
             $table->date('dob');
             $table->rememberToken();
+            $table->foreign('role_id')->references('id')->on('user_role');
         });
     }
 
