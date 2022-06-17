@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,5 +20,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::post('/like/{blog}', [LikeController::class, 'store']);
+Route::post('/like/{post}', [LikeController::class, 'store']);
 
+Route::post('/comment/{post}', [CommentController::class, 'store']);
