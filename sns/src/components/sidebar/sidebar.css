@@ -41,12 +41,11 @@
     list-style: none;
 }
 
-
-/* .channelItem:hover { 
+.channelItem:hover {
     background: linear-gradient(90deg, #4CD1C8 20%, #FEF6E4 0%);
     font-weight: bold;
     border-radius: 20px;
-}*/
+}
 
 .channelItem {
     display: flex;
