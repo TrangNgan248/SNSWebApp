@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use Illuminate\Http\Request;
@@ -26,4 +25,5 @@ Route::post('/like/{post}', [LikeController::class, 'store']);
 Route::post('/comment/{post}', [CommentController::class, 'store']);
 
 Route::post('/AddPost/{post}', [PostController::class, 'AddPost']);
+
 
