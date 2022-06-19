@@ -1,0 +1,149 @@
+.post{
+    width: 85%;
+    border-radius: 10px;
+    -webkit-bos-shadow: 0px 0px 20px -8px rgba(0, 0, 0, 0.68);
+    box-shadow: 0px 0px 20px -8px rgba(0, 0, 0, 0.68) ;
+    margin: 30px 0;
+    background-color: #ffffff;
+}
+.postWrapper{
+    padding: 10px;
+}
+.postTop{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.postTopLeft{
+    margin-left: 25px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+.postTopLeftList{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.postTopRight{
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+.postTopRightIcon{
+    margin-right: 30px;
+    height: 30px;
+    width: 30px;
+}
+.postProfileImg{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.postUsername{
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0 10px;
+}
+
+.postDate{
+    font-size: 12px;
+
+}
+
+.postCenter{
+    margin: 20px 0;
+    width: 100%;
+}
+.postText{
+    margin-left: 25px;
+}
+.postImg{
+    margin-top: 20px;
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+}
+.postBottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top:1px solid  #330000;   
+    padding-top: 10px;
+}
+.postBottomLeft{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.postLikeIcon{
+    margin-left: 30px;
+    height: 20px;
+    width: 20px;
+}
+.postLikeIcon:hover{
+    align-items: flex-start;
+    background: linear-gradient(90deg, #4CD1C8 100%, #FEF6E4 50%);
+    font-weight: bold;
+}
+.postLikeHide {
+    display: none;
+  }
+  
+.postLikeIconHover:hover + .postLikeHide {
+    display: block;
+    color: blue;
+  }
+.postUnlikeIcon{
+    margin-left: 10px;
+    height: 20px;
+    width: 20px;
+}
+.postUnlikeIcon:hover{
+    align-items: flex-start;
+    background: linear-gradient(90deg, #4CD1C8 100%, #FEF6E4 0%);
+    font-weight: bold;
+}
+.postUnlikeHide {
+    display: none;
+  }
+  
+.postUnlikeIconHover:hover + .postUnlikeHide {
+    display: block;
+    color: red;
+  }
+.postCommentIcon{
+    margin-left: 10px;
+    height: 20px;
+    width: 20px;
+}
+.postCommentIcon:hover{
+    align-items: flex-start;
+    background: linear-gradient(90deg, #4CD1C8 100%, #FEF6E4 0%);
+    font-weight: bold;
+}
+.postCommentHide {
+    display: none;
+  }
+  
+.postCommentIconHover:hover + .postCommentHide {
+    display: block;
+    color: blue;
+  }
+.postBottomRight{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 30px;
+}
+.postBookmarkIcon{
+    height: 20px;
+    width: 20px;
+}
+.postBookmarkIcon:hover{
+    align-items: flex-start;
+    background: linear-gradient(90deg, #4CD1C8 100%, #FEF6E4 0%);
+    font-weight: bold;
+}
