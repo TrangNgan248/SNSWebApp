@@ -42,7 +42,7 @@
 }
 
 .channelItem:hover {
-    background: linear-gradient(90deg, #4CD1C8 20%, #FEF6E4 0%);
+    background: linear-gradient(90deg, #4CD1C8 40%, #FEF6E4 60%);
     font-weight: bold;
     border-radius: 20px;
 }
