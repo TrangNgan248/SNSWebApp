@@ -1,0 +1,76 @@
+.topbarContainer {
+    height: 50px;
+    width: 100%;
+    position: sticky;
+    display: flex;
+    align-items: center;
+    top: 0;
+    background-color: #ffffff;
+}
+
+.topbarLeft {
+    flex: 5;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.Logo {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+}
+
+.topbarCenter {
+    flex: 4;
+}
+
+.Search {
+    border: 1px solid;
+    box-shadow: 1px 1px;
+    display: flex;
+    height: 80%;
+    border-radius: 30px;
+    background-color: #ffffff;
+    align-items: center;
+}
+
+.searchicon {
+    font-size: 10px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.searchInput {
+    border: none;
+    width: 90%;
+}
+
+.searchInput:focus {
+    outline: none;
+}
+
+.topbarRight {
+    font-size: 20px;
+    flex: 5;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.iconTopbars {
+    display: flex;
+}
+
+.iconTopbar {
+    margin-right: 15px;
+    position: relative;
+}
+
+.Logoimg {
+    width: 40px;
+    height: 40px;
+    float: left;
+}

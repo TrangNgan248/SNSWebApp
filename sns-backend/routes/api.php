@@ -23,3 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/like/{post}', [LikeController::class, 'store']);
 
 Route::post('/comment/{post}', [CommentController::class, 'store']);
+
+Route::post('/AddPost/{post}', [PostController::class, 'AddPost']);
+
+
