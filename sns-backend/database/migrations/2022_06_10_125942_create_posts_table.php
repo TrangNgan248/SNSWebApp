@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('channel_id');
             $table->string('title');
             $table->string('content');
+            $table->text('image');
             $table->string('display', 50);
             $table->integer('num_view');
             $table->unsignedBigInteger('author_id');
