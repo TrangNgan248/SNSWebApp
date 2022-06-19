@@ -1,0 +1,5 @@
+Cần add những thư viện sau để chạy được front-end:
+npm install react-router-dom@6
+npm i --save @fortawesome/fontawesome-svg-core
+npm i --save @fortawesome/free-solid-svg-icons
+npm i --save @fortawesome/free-regular-svg-icons
