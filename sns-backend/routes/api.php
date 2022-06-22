@@ -20,9 +20,10 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-
+//Route::get('/like', [LikeController::class, 'index']);
 Route::post('/like/{post}', [LikeController::class, 'store']);
 
+// Route::get('/comment', [CommentController::class, 'index']);
 Route::post('/comment/{post}', [CommentController::class, 'store']);
 
 Route::post('/post/create', [PostController::class, 'store']);

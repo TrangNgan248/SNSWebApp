@@ -8,17 +8,24 @@ use App\Models\Like;
 
 class LikeController extends Controller
 {
+    public function index(){
+        return Like::all();
+    }
     public function store(Post $post){
-        $like = Like::where('post_id', $post->id)->where('user_id', $this->user->id)->first();
-        if(!empty($like)){
-            $like->delete();
-        }
-        else{
+        // $like = Like::where('post_id', $post->id)->where('user_id', $this->user->id)->first();
+        // if(!empty($like)){
+        //     $like->delete();
+        // }
+        // else{
+        //     $like = new Like;
+        //     $like->user_id = 1;
+        //     $like->post_id = $post->id;
+        //     $like->save();
+        // }
             $like = new Like;
-            $like->user_id = $this->user->id;
+            $like->user_id = 1;
             $like->post_id = $post->id;
             $like->save();
-        }
         return $this->repondSuccess(['count' => count($post->like)]);
     }
 }

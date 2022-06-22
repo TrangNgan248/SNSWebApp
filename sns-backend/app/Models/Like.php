@@ -9,8 +9,8 @@ class Like extends Model
 {
     use HasFactory;
 
-    protected $tables = 'likes';
-    protected $timestamp = false;
+    protected $table = 'like';
+    public $timestamps = false;
 
     public function user(){
         return $this->belongsTo(User::class);

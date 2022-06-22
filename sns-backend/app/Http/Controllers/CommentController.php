@@ -8,10 +8,14 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    public function index(){
+       // dd(Comment::all());
+        return Comment::all();
+    }
     public function store(Request $request, Post $post){
         $comment = new Comment;
         $comment->post_id = $post->id;
-        $comment->user_id = $this->user->id;
+        $comment->user_id = 1;
         $comment->content = $request->content;
         $comment->save();
         return $this->respondSuccess([
