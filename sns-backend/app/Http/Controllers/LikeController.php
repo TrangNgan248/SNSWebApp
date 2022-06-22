@@ -22,10 +22,10 @@ class LikeController extends Controller
         //     $like->post_id = $post->id;
         //     $like->save();
         // }
-            $like = new Like;
+            $like = new Like();
             $like->user_id = 1;
             $like->post_id = $post->id;
             $like->save();
-        return $this->repondSuccess(['count' => count($post->like)]);
+            return response()->json(['message'=>'success', 'count'=>count($post->likes)]);
     }
 }
