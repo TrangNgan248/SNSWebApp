@@ -4,19 +4,18 @@ import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis, faThumbsUp, faThumbsDown, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
 export default function Post() {
-    const [posts, setPosts] = useState([]);
-    useEffect(() => {
-        async function getAllPost(){
-            const posts = await axios.get("http://127.0.0.1:8000/api/post")
-            console.log(posts.data)
-            setPosts(posts.data)
-        }
-        getAllPost()
-    },[])
+    // const [posts, setPosts] = useState([]);
+    // useEffect(() => {
+    //     async function getAllPost(){
+    //         const posts = await axios.get("http://127.0.0.1:8000/api/post")
+    //         console.log(posts.data)
+    //         setPosts(posts.data)
+    //     }
+    //     getAllPost()
+    // },[])
     return (
         <div className="post">
-            {
-                posts.map((post)=>
+            
                 <div className="postwrapper">
                 <div className="postTop">
                     <div className="postTopLeft">
@@ -30,7 +29,7 @@ export default function Post() {
                             </li>
                             <li className="postTopLeftItem2">
 
-                                <span className="postUsername">{post.title} </span>
+                                <span className="postUsername">ABC </span>
                             </li>
                             <li className="postTopLeftItem3">
                                 <FontAwesomeIcon icon={faGlobe} className="postDateIcon" />
@@ -46,7 +45,7 @@ export default function Post() {
                     </div>
                 </div>
                 <div className="postCenter">
-                    <span className="postText">{post.content}</span>
+                    <span className="postText">ajdshfj</span>
                     <img className="postImg" src="assets/testimg/Ayame2.jpg" alt="" />
                 </div>
                 <div className="postBottom">
@@ -76,7 +75,7 @@ export default function Post() {
                     </div>
                 </div>
             </div>
-            )}
+            
         </div>
     );
 }
