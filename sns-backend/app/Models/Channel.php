@@ -9,7 +9,7 @@ class Channel extends Model
 {
     use HasFactory;
 
-    protected $table = 'channels';
+    protected $table = 'channel';
     protected $timestamp = false;
 
     public function posts(){

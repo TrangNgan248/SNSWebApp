@@ -9,8 +9,8 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $tables = 'comments';
-    protected $timestamp = false;
+    protected $table = 'comments';
+    public $timestamps = false;
 
     public function user(){
         return $this->belongsTo(User::class);

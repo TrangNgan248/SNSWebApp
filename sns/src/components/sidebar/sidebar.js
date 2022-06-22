@@ -42,7 +42,7 @@ export default function Sidebar(){
                 <a href="/#" className="showmore">Show more</a>
                 </div>
                 <hr className="sidebarHr"></hr>
-                <button class="btn"><i class="fa-solid fa-circle-plus"> Join new channels</i></button>
+                <button className="btn"><i className="fa-solid fa-circle-plus"> Join new channels</i></button>
             </div>
         </div>
     )

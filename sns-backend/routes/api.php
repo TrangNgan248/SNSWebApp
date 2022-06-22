@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,11 +20,18 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-
+//Route::get('/like', [LikeController::class, 'index']);
 Route::post('/like/{post}', [LikeController::class, 'store']);
 
+// Route::get('/comment', [CommentController::class, 'index']);
 Route::post('/comment/{post}', [CommentController::class, 'store']);
 
-Route::post('/AddPost/{post}', [PostController::class, 'AddPost']);
+Route::post('/post/create', [PostController::class, 'store']);
+
+Route::get('/post', [PostController::class, 'index']);
+
+Route::get('/post/{post}', [PostController::class, 'show']);
+
+
 
 
