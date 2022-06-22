@@ -9,7 +9,7 @@ use App\Models\Like;
 class LikeController extends Controller
 {
     public function store(Post $post){
-        $like = Like::where('blog_id', $post->id)->where('user_id', $this->user->id)->first();
+        $like = Like::where('post_id', $post->id)->where('user_id', $this->user->id)->first();
         if(!empty($like)){
             $like->delete();
         }

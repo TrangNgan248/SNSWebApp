@@ -68,7 +68,7 @@ export default function Rightbar(){
                 </li>
             </ul>
             <div className="rightbarFollowButton">
-                <button class="btn2"><i class="fa-solid fa-user-plus"></i> Add Followers</button>
+                <button className="btn2"><i className="fa-solid fa-user-plus"></i> Add Followers</button>
             </div>
             
         </div>
