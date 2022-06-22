@@ -18,8 +18,6 @@ class CommentController extends Controller
         $comment->user_id = 1;
         $comment->content = $request->content;
         $comment->save();
-        return $this->respondSuccess([
-            'comment' => $comment
-        ]);
+        return response()->json(['message'=>'success', 'count'=>count($post->comments)]);
     }
 }
