@@ -15,7 +15,8 @@ export default function Post() {
     },[])
     return (
         <div className="post">
-            
+        {
+            posts.map((post)=>
                 <div className="postwrapper">
                 <div className="postTop">
                     <div className="postTopLeft">
@@ -29,7 +30,7 @@ export default function Post() {
                             </li>
                             <li className="postTopLeftItem2">
 
-                                <span className="postUsername">ABC </span>
+                                <span className="postUsername">{post.title} </span>
                             </li>
                             <li className="postTopLeftItem3">
                                 <FontAwesomeIcon icon={faGlobe} className="postDateIcon" />
@@ -75,7 +76,7 @@ export default function Post() {
                     </div>
                 </div>
             </div>
-            
+            )}
         </div>
     );
 }
