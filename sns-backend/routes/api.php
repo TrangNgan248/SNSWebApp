@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
+use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +25,10 @@ use Illuminate\Support\Facades\Route;
 // });
 //Route::get('/like', [LikeController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'register']);
+
+Route::group(['middleware' => ['auth:sanctum']], function(){
+    Route::post('/logout', [LogoutController::class, 'logout']);
+});
 
 Route::post('/like/{post}', [LikeController::class, 'store']);
 
