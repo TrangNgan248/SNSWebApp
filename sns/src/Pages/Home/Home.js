@@ -10,7 +10,7 @@ export default function Home(){
         <>
         <Topbar/>
         <div className="login-Testplace">
-        <Link to ="/login" className="btn btn-primary btn-sm float-end">Login</Link>
+        <Link to ="/login" className="btn btn-primary btn-sm float-end">Logout</Link>
         </div>
         
         <div className="homeContainer">
