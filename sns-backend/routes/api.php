@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 //Route::get('/like', [LikeController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'register']);
+
 Route::post('/like/{post}', [LikeController::class, 'store']);
 
 Route::get('/comment', [CommentController::class, 'index']);
