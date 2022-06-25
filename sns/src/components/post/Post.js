@@ -33,8 +33,8 @@ export default function Post() {
   
     return (
         <div className="post">
-            {
-                posts.map((post)=>
+        {
+            posts.map((post)=>
                 <div className="postwrapper">
                 <div className="postTop">
                     <div className="postTopLeft">
@@ -64,7 +64,7 @@ export default function Post() {
                     </div>
                 </div>
                 <div className="postCenter">
-                    <span className="postText">{post.content}</span>
+                    <span className="postText">ajdshfj</span>
                     <img className="postImg" src="assets/testimg/Ayame2.jpg" alt="" />
                 </div>
                 <div className="postBottom">
