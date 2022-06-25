@@ -1,12 +1,18 @@
-import { Link } from "react-router-dom";
-import React, {useState} from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import React, {useState, useEffect} from 'react';
 import "./register.css";
 
 export default function Register() {
+  useEffect(() => {
+    if (localStorage.getItem("user-info")) {
+      navigate("/");
+    }
+  }, []);
   const [email, setEmail] = useState("")
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [password_confirmation, setPasswordConfirmation] = useState("")
+  const navigate = useNavigate()
   async function register(){
     let item={username, email, password, password_confirmation}
     console.warn(item)
@@ -19,7 +25,8 @@ export default function Register() {
       }
     })
     result = await result.json()
-    console.warn("result", result)
+    localStorage.setItem("user-info", JSON.stringify(result));
+    navigate("/");
   }
   return (
     <div className="login">
