@@ -23,7 +23,7 @@ export default function Login() {
     });
     result = await result.json();
     localStorage.setItem("user-info",JSON.stringify(result))
-    navigate("/")
+    navigate("/");
   }
   
   return (
