@@ -1,6 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+import React, {useState, useEffect} from 'react';
 import "./login.css"
 export default function Login() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const navigate = useNavigate()
+  useEffect(()=>{
+    if(localStorage.getItem('user-info')) {
+      navigate("/")
+    }
+  }, [])
+  async function login(){
+    console.warn(email, password)
+    let item = {email, password};
+    let result = await fetch("http://127.0.0.1:8000/api/login",{
+      method:"POST",
+      body:JSON.stringify(item),
+      headers:{
+        "Content-Type":'application/json',
+        "Accept":'application/json'
+      }
+    });
+    result = await result.json();
+    localStorage.setItem("user-info",JSON.stringify(result))
+    navigate("/")
+  }
+  
   return (
     <div className="login">
       <div className="loginWrapper">
@@ -15,9 +40,9 @@ export default function Login() {
         </div>
         <div className="loginRight">
           <div className="loginBox">
-            <input placeholder="Email" className="loginInput" />
-            <input placeholder="Password" className="loginInput" />
-            <button className="loginButton">Log In</button>
+            <input type="text"placeholder="Email" onChange={(e)=>setEmail(e.target.value)} className="loginInput" name="email" />
+            <input type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} className="loginInput" name="password" />
+            <button type="submit" onClick={login} className="loginButton">Log In</button>
             <span className="loginForgot">Forgot Password?</span>
             <div className="createAcc"> 
             <div className="createAccUser">

@@ -1,7 +1,26 @@
 import { Link } from "react-router-dom";
+import React, {useState} from 'react';
 import "./register.css";
 
 export default function Register() {
+  const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [password_confirmation, setPasswordConfirmation] = useState("")
+  async function register(){
+    let item={username, email, password, password_confirmation}
+    console.warn(item)
+    let result = await fetch("http://127.0.0.1:8000/api/register",{
+      method:"POST",
+      body:JSON.stringify(item),
+      headers:{
+        "Content-Type":'application/json',
+        "Accept":'application/json'
+      }
+    })
+    result = await result.json()
+    console.warn("result", result)
+  }
   return (
     <div className="login">
       <div className="loginWrapper">
@@ -17,11 +36,11 @@ export default function Register() {
         <div className="loginRight">
           <div className="signupBox">
           <h6 className="signupText">Sign up for User</h6>
-            <input placeholder="Username" className="loginInput" />
-            <input placeholder="Email" className="loginInput" />
-            <input placeholder="Password" className="loginInput" />
-            <input placeholder="Password Again" className="loginInput" />
-            <button className="loginButton">Sign Up</button>
+            <input type="text" placeholder="Username" value={username} onChange={(e)=>setUsername(e.target.value)} className="loginInput" name="username"/>
+            <input type="text" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} className="loginInput"name="email"/>
+            <input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} className="loginInput" name="password" />
+            <input type="password" placeholder="Password Again" value={password_confirmation} onChange={(e)=>setPasswordConfirmation(e.target.value)} className="loginInput" name="password_confirmation" />
+            <button type="submit" onClick={register} className="loginButton">Sign Up</button>
             <div className="createAcc">
             <Link to ="/login"><button className="loginRegisterButton">Already got account?
             </button></Link>
