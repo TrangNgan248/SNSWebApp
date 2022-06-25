@@ -7,4 +7,5 @@ npm i --save @fortawesome/fontawesome-svg-core
 npm i --save @fortawesome/free-solid-svg-icons
 npm i --save @fortawesome/free-regular-svg-icons
 npm i axios
-npm install --save antd
+
+npm install --save antd (Nếu chưa tải thì vẫn cứ chạy. Nếu front-end chạy bình thường thì không vần tải nữa nhé)
