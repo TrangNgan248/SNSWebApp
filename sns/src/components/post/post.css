@@ -96,24 +96,6 @@
     display: block;
     color: blue;
   }
-.postUnlikeIcon{
-    margin-left: 10px;
-    height: 20px;
-    width: 20px;
-}
-.postUnlikeIcon:hover{
-    align-items: flex-start;
-    background: linear-gradient(90deg, #4CD1C8 100%, #FEF6E4 0%);
-    font-weight: bold;
-}
-.postUnlikeHide {
-    display: none;
-  }
-  
-.postUnlikeIconHover:hover + .postUnlikeHide {
-    display: block;
-    color: red;
-  }
 .postCommentIcon{
     margin-left: 10px;
     height: 20px;
