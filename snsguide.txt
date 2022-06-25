@@ -1,7 +1,10 @@
 Cần add những thư viện sau để chạy được front-end:
+Chú ý : cd vào sns rồi mới cài những cái dưới .
+Ví dụ lỗi : install antd ở thư mục ngoài là lúc start sẽ bị web trắng
 npm install react-router-dom@6
 npm i bootstrap@5.2.0-beta1
 npm i --save @fortawesome/fontawesome-svg-core
 npm i --save @fortawesome/free-solid-svg-icons
 npm i --save @fortawesome/free-regular-svg-icons
 npm i axios
+npm install --save antd
