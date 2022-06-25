@@ -1,5 +1,5 @@
-import "./post.css"
-import 'antd/dist/antd.css';
+import "./post.css";
+import 'antd/dist/antd.min.css';
 import { Button, Modal} from 'antd';
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -78,10 +78,15 @@ export default function Post() {
                         <div className="postCommentIconHover">
                             <FontAwesomeIcon icon={faComment} className="postCommentIcon" />
                         </div>
+                       
                         <Button type="link" onClick={showModal}>
                              Comment
                         </Button>
                         <Modal title="Comment" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                            <div className="commentInput">
+                                 <img className="commentProfileImg" src="assets/testimg/Ayame2.jpg" alt="" />
+                                  <input placeholder="Enter your comment?" className="shareInput" />
+                            </div>
                                 <Comment/>
                                 <Comment/>
                         </Modal>

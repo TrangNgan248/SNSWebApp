@@ -1,7 +1,7 @@
 import "./share.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faImage, faSortAlphaDownAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons'
-import axios from "axios";
+import { faImage, faUserPlus } from '@fortawesome/free-solid-svg-icons'
+
 
 export default function Share() {
 

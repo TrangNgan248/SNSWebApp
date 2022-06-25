@@ -5,6 +5,7 @@ export default function Comment() {
 
   return (
     <div className="comment">
+          
             <div className="commentLeft">
                         <img
                             className="commentProfileImg"
