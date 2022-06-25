@@ -9,18 +9,18 @@ class RegisterController extends Controller
 {
     public function register(Request $request){
         $fields = $request->validate([
-            'name' => 'required|string',
+            // 'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'username' => 'required|string|max:255|unique:users,username',
-            'gender' => 'required',
+            // 'gender' => 'required',
             'password' => 'required|string|min:6|confirmed'
         ]);
-
+        
         $user = new User();
-        $user->name = $fields['name'];
+        $user->name = 'Ngan';
         $user->email = $fields['email'];
         $user->username = $fields['username'];
-        $user->gender = $fields['gender'];
+        $user->gender = 1;
         $user->dob = null;
         $user->img = 'afdsfs';
         $user->role_id = 1;
