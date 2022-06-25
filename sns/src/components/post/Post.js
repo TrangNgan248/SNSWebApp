@@ -6,6 +6,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis, faThumbsUp, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import Comment from "../../components/comment/comment"
+import CommentForm from "../../components/comment/commentForm"
 
 export default function Post() {
     const [posts, setPosts] = useState([]);
@@ -83,10 +84,7 @@ export default function Post() {
                              Comment
                         </Button>
                         <Modal title="Comment" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-                            <div className="commentInput">
-                                 <img className="commentProfileImg" src="assets/testimg/Ayame2.jpg" alt="" />
-                                  <input placeholder="Enter your comment?" className="shareInput" />
-                            </div>
+                                <CommentForm/>
                                 <Comment/>
                                 <Comment/>
                         </Modal>
