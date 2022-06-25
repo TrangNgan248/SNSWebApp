@@ -1,12 +1,12 @@
 import "./post.css";
 import 'antd/dist/antd.min.css';
-import { Button, Modal} from 'antd';
+import { Button, Modal, Menu, Space, Dropdown} from 'antd';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis, faThumbsUp, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import Comment from "../../components/comment/comment"
-
+import { Link } from "react-router-dom"
 export default function Post() {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
@@ -30,7 +30,31 @@ export default function Post() {
     const handleCancel = () => {
       setIsModalVisible(false);
     };
-  
+    const menu = (
+        <Menu
+          items={[
+            {
+              key: '1',
+              label: (
+                <div className="detail-Testplace">
+                <Link to ="/detail" className="btn btn-primary btn-sm float-end">Detail</Link>
+                </div>
+        
+              ),
+            },
+            {
+              key: '2',
+              label: (
+                <div className="edit-Testplace">
+                <Link to ="/edit" className="btn btn-primary btn-sm float-end">Edit</Link>
+                </div>
+        
+              ),
+            },
+            
+          ]}
+        />
+      );
     return (
         <div className="post">
         {
@@ -60,7 +84,15 @@ export default function Post() {
 
 
                     <div className="postTopRight">
-                        <FontAwesomeIcon icon={faEllipsis} className="postTopRightIcon" />
+                        <Space direction="vertical">
+                         <Space wrap>
+                            <Dropdown overlay={menu} placement="bottom">
+                             <Button><FontAwesomeIcon icon={faEllipsis} className="postTopRightIcon" /></Button>
+                            </Dropdown>
+                     
+                          </Space>
+                        </Space>
+                    
                     </div>
                 </div>
                 <div className="postCenter">
