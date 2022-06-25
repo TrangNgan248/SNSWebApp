@@ -27,7 +27,7 @@ class PostController extends Controller
         $post->content = $request->input('content');
         $post->author_id = 1;
         $post->channel_id = 1;
-        $post->display = 'abc';
+        $post->display = 'abc'; //TODO: nghien cuu phan dang anh
         $post->num_view = 3;
         $post->save();
         Log::info("Post ID {$post->id} created successfully.");

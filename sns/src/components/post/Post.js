@@ -1,21 +1,40 @@
-import "./post.css"
+import "./post.css";
+import 'antd/dist/antd.min.css';
+import { Button, Modal} from 'antd';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsis, faThumbsUp, faThumbsDown, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsis, faThumbsUp, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
+import Comment from "../../components/comment/comment"
+
 export default function Post() {
-    // const [posts, setPosts] = useState([]);
-    // useEffect(() => {
-    //     async function getAllPost(){
-    //         const posts = await axios.get("http://127.0.0.1:8000/api/post")
-    //         console.log(posts.data)
-    //         setPosts(posts.data)
-    //     }
-    //     getAllPost()
-    // },[])
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        async function getAllPost(){
+            const posts = await axios.get("http://127.0.0.1:8000/api/post")
+            console.log(posts.data)
+            setPosts(posts.data)
+        }
+        getAllPost()
+    },[])
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const showModal = () => {
+      setIsModalVisible(true);
+    };
+  
+    const handleOk = () => {
+      setIsModalVisible(false);
+    };
+  
+    const handleCancel = () => {
+      setIsModalVisible(false);
+    };
+  
     return (
         <div className="post">
-            
+        {
+            posts.map((post)=>
                 <div className="postwrapper">
                 <div className="postTop">
                     <div className="postTopLeft">
@@ -29,13 +48,13 @@ export default function Post() {
                             </li>
                             <li className="postTopLeftItem2">
 
-                                <span className="postUsername">ABC </span>
+                                <span className="postUsername">{post.title} </span>
                             </li>
                             <li className="postTopLeftItem3">
                                 <FontAwesomeIcon icon={faGlobe} className="postDateIcon" />
                                 <span className="postDate"> 5 mins ago </span>
                             </li>
-
+                            
                         </ul>
                     </div>
 
@@ -56,26 +75,28 @@ export default function Post() {
                         <div className="postLikeHide">
                             <span className="postCounterLike"> 10 like</span>
                         </div>
-                        <div className="postUnlikeIconHover">
-                            <FontAwesomeIcon icon={faThumbsDown} className="postUnlikeIcon" />
-                        </div>
-                        <div className="postUnlikeHide">
-                            <span className="postCounterUnlike"> 10 Unlike</span>
-                        </div>
                         <div className="postCommentIconHover">
                             <FontAwesomeIcon icon={faComment} className="postCommentIcon" />
                         </div>
-                        <div className="postCommentHide">
-                            <span className="postCounterComment"> 10 Comment</span>
-                        </div>
-
+                       
+                        <Button type="link" onClick={showModal}>
+                             Comment
+                        </Button>
+                        <Modal title="Comment" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                            <div className="commentInput">
+                                 <img className="commentProfileImg" src="assets/testimg/Ayame2.jpg" alt="" />
+                                  <input placeholder="Enter your comment?" className="shareInput" />
+                            </div>
+                                <Comment/>
+                                <Comment/>
+                        </Modal>
                     </div>
                     <div className="postBottomRight">
                         <FontAwesomeIcon icon={faBookmark} className="postBookmarkIcon" />
                     </div>
                 </div>
             </div>
-            
+            )}
         </div>
     );
 }
