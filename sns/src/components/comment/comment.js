@@ -36,7 +36,6 @@ const [isLike, setIsLike] = useState(false);
             </div>
 
           </div>
-        </div>
 
   )
 }
