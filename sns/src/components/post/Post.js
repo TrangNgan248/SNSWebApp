@@ -7,6 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis, faThumbsUp, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import Comment from "../../components/comment/comment"
 import { Link } from "react-router-dom"
+
+
+
 export default function Post() {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
