@@ -8,16 +8,21 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function index(){
-       // dd(Comment::all());
-        return Comment::all();
+    public function index()
+    {
+        $data = Comment::join('users', 'users.id', '=', 'comments.user_id')
+                        ->where('comments.post_id', '=', $this->post->id)
+                        ->get(['users.name', 'comments.*']);
+
+        return $data;
+                        
     }
-    public function store(Request $request, Post $post){
+    public function store(Request $request){
         $comment = new Comment;
-        $comment->post_id = $post->id;
+        $comment->post_id = 1;
         $comment->user_id = 1;
         $comment->content = $request->content;
         $comment->save();
-        return response()->json(['message'=>'success', 'count'=>count($post->comments)]);
+        return response()->json(['message'=>'success', 'count'=>count($comment->post->comments)]);
     }
 }

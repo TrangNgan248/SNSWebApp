@@ -11,18 +11,14 @@ class RegisterController extends Controller
         $fields = $request->validate([
             // 'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
-            'username' => 'required|string|max:255|unique:users,username',
+            'name' => 'required|string|max:255|unique:users,name',
             // 'gender' => 'required',
             'password' => 'required|string|min:6|confirmed'
         ]);
         
         $user = new User();
-        $user->name = 'Ngan';
+        $user->name = $fields['name'];
         $user->email = $fields['email'];
-        $user->username = $fields['username'];
-        $user->gender = 1;
-        $user->dob = null;
-        $user->img = 'afdsfs';
         $user->role_id = 1;
         $user->password = bcrypt($fields['password']);
         $user->save();

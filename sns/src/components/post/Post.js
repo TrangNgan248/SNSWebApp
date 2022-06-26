@@ -6,6 +6,10 @@ import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis, faThumbsUp, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import Comment from "../../components/comment/comment"
+
+import CommentForm from "../../components/comment/commentForm"
+import CommentTest from "../comment/commentTest";
+
 import { Link } from "react-router-dom"
 
 
@@ -103,6 +107,7 @@ export default function Post() {
                             <span className="postText">ajdshfj</span>
                             <img className="postImg" src="assets/testimg/Ayame2.jpg" alt="" />
                         </div>
+
                         <div className="postBottom">
                             <div className="postBottomLeft">
                                 <div className="postLikeIconHover">
@@ -122,10 +127,7 @@ export default function Post() {
                                     Comment
                                 </Button>
                                 <Modal title="Comment" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-                                    <div className="commentInput">
-                                        <img className="commentProfileImg" src="assets/testimg/Ayame2.jpg" alt="" />
-                                        <input placeholder="Enter your comment?" className="shareInput" />
-                                    </div>
+                                    <CommentTest/>
                                     <Comment />
                                     <Comment />
                                 </Modal>
@@ -134,6 +136,7 @@ export default function Post() {
                                 <FontAwesomeIcon icon={faBookmark} className="postBookmarkIcon" />
                             </div>
                         </div>
+
                     </div>
                 )}
         </div>

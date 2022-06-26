@@ -3,18 +3,12 @@ import React, {useState, useEffect} from 'react';
 import "./register.css";
 
 export default function Register() {
-  useEffect(() => {
-    if (localStorage.getItem("user-info")) {
-      navigate("/");
-    }
-  }, []);
   const [email, setEmail] = useState("")
-  const [username, setUsername] = useState("")
+  const [name, setName] = useState("")
   const [password, setPassword] = useState("")
   const [password_confirmation, setPasswordConfirmation] = useState("")
-  const navigate = useNavigate()
   async function register(){
-    let item={username, email, password, password_confirmation}
+    let item={name, email, password, password_confirmation}
     console.warn(item)
     let result = await fetch("http://127.0.0.1:8000/api/register",{
       method:"POST",
@@ -25,8 +19,7 @@ export default function Register() {
       }
     })
     result = await result.json()
-    localStorage.setItem("user-info", JSON.stringify(result));
-    navigate("/");
+    console.warn("result", result)
   }
   return (
     <div className="login">
@@ -43,7 +36,7 @@ export default function Register() {
         <div className="loginRight">
           <div className="signupBox">
           <h6 className="signupText">Sign up for User</h6>
-            <input type="text" placeholder="Username" value={username} onChange={(e)=>setUsername(e.target.value)} className="loginInput" name="username"/>
+            <input type="text" placeholder="Name" value={name} onChange={(e)=>setName(e.target.value)} className="loginInput" name="name"/>
             <input type="text" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} className="loginInput"name="email"/>
             <input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} className="loginInput" name="password" />
             <input type="password" placeholder="Password Again" value={password_confirmation} onChange={(e)=>setPasswordConfirmation(e.target.value)} className="loginInput" name="password_confirmation" />
