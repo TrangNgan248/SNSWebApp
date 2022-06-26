@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis, faThumbsUp, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import Comment from "../../components/comment/comment"
 import CommentForm from "../../components/comment/commentForm"
+import CommentTest from "../comment/commentTest";
 
 export default function Post() {
     const [posts, setPosts] = useState([]);
@@ -84,7 +85,7 @@ export default function Post() {
                              Comment
                         </Button>
                         <Modal title="Comment" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-                                <CommentForm/>
+                                <CommentTest/>
                                 <Comment/>
                                 <Comment/>
                         </Modal>
