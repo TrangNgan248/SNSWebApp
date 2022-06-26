@@ -8,8 +8,9 @@ use App\Models\Like;
 
 class LikeController extends Controller
 {
-    public function index(){
-        return Like::all();
+    public function index(Post $post){
+        $like = Like::where('post_id', $post->id)->get();
+        return $like;
     }
     public function store(Post $post){
         // $like = Like::where('post_id', $post->id)->where('user_id', $this->user->id)->first();

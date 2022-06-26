@@ -33,13 +33,15 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
 });
 
 Route::post('/like/{post}', [LikeController::class, 'store']);
-
+Route::get('/like/{post}', [LikeController::class, 'index']);
 Route::get('/comment/{post}', [CommentController::class, 'index']);
 Route::post('/comment', [CommentController::class, 'store']);
 
 Route::post('/post/create', [PostController::class, 'store']);
 
 Route::get('/post', [PostController::class, 'index']);
+
+Route::post('/post/edit/{post}', [PostController::class, 'edit']);
 
 Route::get('/post/{post}', [PostController::class, 'show']);
 

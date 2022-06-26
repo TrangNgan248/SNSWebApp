@@ -8,14 +8,10 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function index()
+    public function index(Post $post)
     {
-        $data = Comment::join('users', 'users.id', '=', 'comments.user_id')
-                        ->where('comments.post_id', '=', $this->post->id)
-                        ->get(['users.name', 'comments.*']);
-
-        return $data;
-                        
+        $comment = Comment::where('post_id', $post->id)->get();
+        return $comment;
     }
     public function store(Request $request){
         $comment = new Comment;

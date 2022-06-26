@@ -54,5 +54,14 @@ class PostController extends Controller
         
         return Post::where('title','LIKE',"%$key%")->get();
     }
+    public function edit(Request $request, Post $post){
+        $request->validate([
+            'content' => 'required',
+        ]);
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->save();
+        return $post;
+    }
 }
 
