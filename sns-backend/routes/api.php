@@ -6,6 +6,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ChannelController;
+use App\Http\Controllers\UserController;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -41,7 +43,13 @@ Route::post('/post/create', [PostController::class, 'store']);
 
 Route::get('/post', [PostController::class, 'index']);
 
+Route::get('/channel', [ChannelController::class, 'index']);
+
+Route::get('/user', [UserController::class, 'index']);
+
 Route::post('/post/edit/{post}', [PostController::class, 'edit']);
+
+Route::delete('/post/delete/{post}', [PostController::class, 'delete']);
 
 Route::get('/post/{post}', [PostController::class, 'show']);
 

@@ -6,15 +6,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { useLocation } from "react-router-dom";
 export default function Edit(){
-    const location = useLocation();
-    let postid = location.state;
-    console.log(location.state);
-    const [id, setID]= useState(postid);
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        async function getAllPost() {
+            const posts = await axios.get("http://127.0.0.1:8000/api/post")
+            console.log(posts.data)
+            setPosts(posts.data)
+        }
+        getAllPost()
+    }, []);
+    const [id, setID]= useState(1);
     const [title, setTitle]= useState("");
     const [display, setDisplay] = useState("");
     const [content, setContent] = useState("");
       async function editPost(){ 
-  
       let item = {id, title,content,display}
       console.warn(item)
       const formData = new FormData();
@@ -29,13 +34,17 @@ export default function Edit(){
     }
     return(
         <div>
+            {posts.map((post) => {
+                if (post.id === id) 
+                return (
          <div className="feed"> 
              <div className="feedWrapper">
                 <div className="share">
                      <div className="shareWrapper">
                           <div className="shareTop">
-                                 <input type="text" placeholder="Title" className="shareInput" onChange={(title) =>setTitle(title.target.value)} />
-                                 <input type="text" placeholder="What's in your mind ?" className="shareInput1" onChange={(content) =>setContent(content.target.value)} />
+                                 <input type="text" placeholder="Title" className="shareInput" name="title" defaultValue={post.title} onChange={(e) =>setTitle(e.target.value)} />
+                                 <input type="text" placeholder="What's in your mind ?" className="shareInput1" name="content" defaultValue={post.content} onChange={(e) =>setContent(e.target.value)} />
+                                 <input type="file" placeholder="Picture" className="shareInput2" onChange={(e) =>setDisplay(e.target.files[0])}/>
                                  <button onClick={editPost} className="btn btn-primary">post </button>
                              </div>
                       <hr className="shareHr" />
@@ -55,7 +64,8 @@ export default function Edit(){
                  </div>
             </div>
         </div>
-           
+        )})}
     </div>
+    
     )
 };
