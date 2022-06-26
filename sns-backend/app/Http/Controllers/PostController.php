@@ -18,27 +18,41 @@ class PostController extends Controller
         return $posts;
     }
 
-    public function store(Request $request){
-        $request->validate([
-           'content' => 'required',
-        ]);
+    public function store(Request $req){
+       
+
         $post = new Post();
-        $post->title = 'abc';
-        $post->content = $request->input('content');
-        $post->author_id = 1;
-        $post->channel_id = 1;
-        $post->display = 'abc'; //TODO: nghien cuu phan dang anh
+        $post->title = $req->input('title');
+        $post->content = $req->input('content');
+        $post->author_id = 6;
+        $post->channel_id = 6;
+        $post-> display = $req->file('display')->store('img');
         $post->num_view = 3;
         $post->save();
-        Log::info("Post ID {$post->id} created successfully.");
-        return response()->json($post);
-        // $post = new Post();
-        // $post->title = 'abc';
-        // $post->content = $request->input('content');
-        // $post-> display = $request->file('display')->store('img_posts');
-        // $post->save();
-
-        // return $post;
+        return $post;
+        // Log::info("Post ID {$post->id} created successfully.");
+        // return response()->json($post);
+      
+       
+         //      $request->validate([
+        //     'content' => 'required',
+        //  ]);
+        //  $post = new Post();
+        //  $post->title = 'abc';
+        //  $post->content = $request->input('content');
+        //  $post->author_id = 1;
+        //  $post->channel_id = 1;
+        //  $post->display = 'abc'; //TODO: nghien cuu phan dang anh
+        //  $post->num_view = 3;
+        //  $post->save();
+        //  Log::info("Post ID {$post->id} created successfully.");
+        //  return response()->json($post);
+        
+        
+    }
+    public function search($key){
+        
+        return Post::where('title','LIKE',"%$key%")->get();
     }
 }
 
