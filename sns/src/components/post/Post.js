@@ -23,7 +23,18 @@ export default function Post() {
             setPosts(posts.data)
         }
         getAllPost()
-    }, [])
+    }, []);
+    let post_id = 1;
+    const [likes, setLikes] = useState([]);
+    useEffect(() => {
+        async function getLike() {
+            const likes = await axios.get(`http://127.0.0.1:8000/api/like/${post_id}`)
+            console.log(likes.data)
+            setLikes(likes.data)
+        }
+        getLike()
+    }, []);
+    const count = likes.length;
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [isLike, setIsLike] = useState(false);
 
@@ -117,7 +128,7 @@ export default function Post() {
                                     
                                 </div>
                                 <div className="postLikeHide">
-                                    <span className="postCounterLike"> 10 like</span>
+                                    <span className="postCounterLike"> {count} </span>
                                 </div>
                                 <div className="postCommentIconHover">
                                     <FontAwesomeIcon icon={faComment} className="postCommentIcon" />
@@ -129,14 +140,12 @@ export default function Post() {
                                 <Modal title="Comment" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                                     <CommentTest/>
                                     <Comment />
-                                    <Comment />
                                 </Modal>
                             </div>
                             <div className="postBottomRight">
                                 <FontAwesomeIcon icon={faBookmark} className="postBookmarkIcon" />
                             </div>
                         </div>
-
                     </div>
                 )}
         </div>
