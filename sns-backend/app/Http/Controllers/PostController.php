@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Exception;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -26,7 +27,11 @@ class PostController extends Controller
         $post->content = $req->input('content');
         $post->author_id = 1;
         $post->channel_id = 1;
+<<<<<<< HEAD
         $post-> display = $req->file('display')->store('img');
+=======
+        $post->display = $req->file('display')->store('img', 'public');
+>>>>>>> 22cc9b7c059e305386f5a761a935e4f45320ff97
         $post->num_view = 3;
         $post->save();
         return $post;
@@ -60,8 +65,20 @@ class PostController extends Controller
         ]);
         $post->title = $request->input('title');
         $post->content = $request->input('content');
+        $post->display = $request->file('display')->store('img', 'public');
         $post->save();
         return $post;
+    }
+    public function delete(Post $post)
+    {
+        if ($post->author_id === Auth::id() && $post->delete()) {
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }
+        return response()->json([
+            'status' => 'fail'
+        ]);
     }
 }
 

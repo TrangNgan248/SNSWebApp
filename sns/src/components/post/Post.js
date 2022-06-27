@@ -24,7 +24,27 @@ export default function Post() {
         }
         getAllPost()
     }, []);
-    let post_id = 1;
+    const [channels, setChannels] = useState([]);
+    useEffect(() => {
+        async function getChannel() {
+            const channels = await axios.get("http://127.0.0.1:8000/api/channel")
+            console.log(channels.data)
+            setChannels(channels.data)
+        }
+        getChannel()
+    }, []);
+
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        async function getUser() {
+            const users = await axios.get("http://127.0.0.1:8000/api/user")
+            console.log(users.data)
+            setUsers(users.data)
+        }
+        getUser()
+    }, []);
+
+    let post_id = 3;
     const [likes, setLikes] = useState([]);
     useEffect(() => {
         async function getLike() {
@@ -87,11 +107,22 @@ export default function Post() {
                                     alt="" />
                                 <ul className="postTopLeftList">
                                     <li className="postTopLeftItem1">
-                                        <span className="postFromChannel">[From IT Channel] </span>
+                                        {channels.map((channel)=>{
+                                            if(channel.id === post.channel_id)
+                                            return (
+                                        <span className="postFromChannel"> {channel.name} </span>
+                                            )
+                                        }
+                                        )}
                                     </li>
                                     <li className="postTopLeftItem2">
-
-                                        <span className="postUsername">{post.title} </span>
+                                        {users.map((user)=>{
+                                            if(user.id === post.author_id)
+                                            return (
+                                            <span className="postUsername">{user.name} </span>
+                                            )
+                                            }
+                                        )}
                                     </li>
                                     <li className="postTopLeftItem3">
                                         <FontAwesomeIcon icon={faGlobe} className="postDateIcon" />
@@ -115,8 +146,8 @@ export default function Post() {
                             </div>
                         </div>
                         <div className="postCenter">
-                            <span className="postText">ajdshfj</span>
-                            <img className="postImg" src="assets/testimg/Ayame2.jpg" alt="" />
+                            <span className="postText">{post.title}</span>
+                            <img className="postImg" src={`http://localhost:8000/storage/${post.display}`} alt="Khong hien thi" />
                         </div>
 
                         <div className="postBottom">
