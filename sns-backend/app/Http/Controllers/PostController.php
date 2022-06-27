@@ -24,8 +24,8 @@ class PostController extends Controller
         $post = new Post();
         $post->title = $req->input('title');
         $post->content = $req->input('content');
-        $post->author_id = 6;
-        $post->channel_id = 6;
+        $post->author_id = 1;
+        $post->channel_id = 1;
         $post-> display = $req->file('display')->store('img');
         $post->num_view = 3;
         $post->save();

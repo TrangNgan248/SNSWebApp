@@ -35,7 +35,7 @@ export default function Register() {
         </div>
         <div className="loginRight">
           <div className="signupBox">
-          <h6 className="signupText">Sign up for User</h6>
+          <h6 className="signupText">Sign up </h6>
             <input type="text" placeholder="Name" value={name} onChange={(e)=>setName(e.target.value)} className="loginInput" name="name"/>
             <input type="text" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} className="loginInput"name="email"/>
             <input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} className="loginInput" name="password" />

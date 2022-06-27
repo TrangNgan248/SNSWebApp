@@ -49,9 +49,7 @@ export default function Login() {
               <Link to = "/register"> <button className="btnlogin" >Sign up for User</button></Link>
             </div>
             <div className="createAccBus">
-              <button className="btnlogin">
-              Sign up for Business
-              </button>
+            <Link to = "/register"> <button className="btnlogin" >Sign up for Business</button></Link>
             </div>
             
             </div>
