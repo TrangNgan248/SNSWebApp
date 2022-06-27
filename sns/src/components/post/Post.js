@@ -146,7 +146,8 @@ export default function Post() {
                             </div>
                         </div>
                         <div className="postCenter">
-                            <span className="postText">{post.title}</span>
+                            <div className="postText">{post.title}</div>
+                            <div className="postText">{post.content}</div>
                             <img className="postImg" src={`http://localhost:8000/storage/${post.display}`} alt="Khong hien thi" />
                         </div>
 

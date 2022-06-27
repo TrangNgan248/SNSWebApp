@@ -27,11 +27,7 @@ class PostController extends Controller
         $post->content = $req->input('content');
         $post->author_id = 1;
         $post->channel_id = 1;
-<<<<<<< HEAD
-        $post-> display = $req->file('display')->store('img');
-=======
         $post->display = $req->file('display')->store('img', 'public');
->>>>>>> 22cc9b7c059e305386f5a761a935e4f45320ff97
         $post->num_view = 3;
         $post->save();
         return $post;
