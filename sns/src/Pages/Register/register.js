@@ -7,10 +7,12 @@ export default function Register() {
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
   const [password_confirmation, setPasswordConfirmation] = useState("")
+  const navigate = useNavigate
   async function register(){
     let item={name, email, password, password_confirmation}
     console.warn(item)
-    let result = await fetch("http://127.0.0.1:8000/api/register",{
+    let result = await fetch("http://127.0.0.1:8000/api/auth/register",{
+      
       method:"POST",
       body:JSON.stringify(item),
       headers:{
@@ -20,6 +22,7 @@ export default function Register() {
     })
     result = await result.json()
     console.warn("result", result)
+ 
   }
   return (
     <div className="login">
