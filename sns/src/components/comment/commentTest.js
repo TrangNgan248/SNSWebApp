@@ -4,17 +4,18 @@ import React, { useState, useEffect } from 'react';
 import "../post/post.css";
 import 'antd/dist/antd.min.css';
 
-export default function CommentTest() {
+export default function CommentTest(props) {
     const [content, setContent] = useState("");
     const [message, setMessage] = useState("");
 
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch("http://127.0.0.1:8000/api/comment", {
+      let res = await fetch("http://127.0.0.1:8000/api/auth/comment", {
         method: "POST",
         body: JSON.stringify({
-          content
+          content: content,
+          post_id: props.id
         }),
         headers:{
           "Content-Type":'application/json',

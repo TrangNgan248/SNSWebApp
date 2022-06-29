@@ -15,7 +15,9 @@ import { Link } from "react-router-dom"
 
 
 export default function Post() {
+    // console.log(post)
     const [posts, setPosts] = useState([]);
+    const [commentID, setCommentID] = useState(null);
     useEffect(() => {
         async function getAllPost() {
             const posts = await axios.get("http://127.0.0.1:8000/api/post")
@@ -58,8 +60,9 @@ export default function Post() {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [isLike, setIsLike] = useState(false);
 
-    const showModal = () => {
+    const showModal = (id) => {
         setIsModalVisible(true);
+        setCommentID(id);
     };
 
     const handleOk = () => {
@@ -94,11 +97,13 @@ export default function Post() {
             ]}
         />
     );
+
+
     return (
         <div className="post">
             {
                 posts.map((post) =>
-                    <div className="postwrapper">
+                    <div className={`postwrapper ${post.id}`}>
                         <div className="postTop">
                             <div className="postTopLeft">
                                 <img
@@ -151,7 +156,7 @@ export default function Post() {
                             <img className="postImg" src={`http://localhost:8000/storage/${post.display}`} alt="Khong hien thi" />
                         </div>
 
-                        <div className="postBottom">
+                        <div className={`postBottom ${post.id}`}>
                             <div className="postBottomLeft">
                                 <div className="postLikeIconHover">
                                    
@@ -166,11 +171,11 @@ export default function Post() {
                                     <FontAwesomeIcon icon={faComment} className="postCommentIcon" />
                                 </div>
 
-                                <Button type="link" onClick={showModal}>
+                                <Button type="link" onClick={() => showModal(post.id)}>
                                     Comment
                                 </Button>
                                 <Modal title="Comment" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-                                    <CommentTest/>
+                                    <CommentTest id={commentID}/>
                                     <Comment />
                                 </Modal>
                             </div>

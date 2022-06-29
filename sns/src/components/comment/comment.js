@@ -5,6 +5,7 @@ import { faThumbsUp, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
 import { Button, Menu, Space, Dropdown} from 'antd';
 export default function Comment() {
+
 const [isLike, setIsLike] = useState(false);
 const [comments, setComments] = useState([]);
 let id = 1
@@ -35,6 +36,7 @@ const menu = (
                         <Button> Edit </Button>
                     </div>
 
+
                 ),
             },
 
@@ -42,6 +44,7 @@ const menu = (
     />
 );
   return (
+
         <div className="comment">
             {
                 comments.map((comment) =>          
@@ -83,5 +86,6 @@ const menu = (
             </div>
            )}
         </div>
+
   )
 }

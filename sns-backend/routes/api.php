@@ -1,11 +1,9 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\UserController;
 use GuzzleHttp\Middleware;
@@ -28,16 +26,33 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 //Route::get('/like', [LikeController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'register']);
-Route::post('/login', [LoginController::class, 'login']);
-Route::group(['middleware' => ['auth:sanctum']], function(){
-    Route::post('/logout', [LogoutController::class, 'logout']);
+// Route::post('/register', [RegisterController::class, 'register']);
+// Route::post('/login', [LoginController::class, 'login']);
+// Route::group(['middleware' => ['auth:sanctum']], function(){
+//     Route::post('/logout', [LogoutController::class, 'logout']);
+// });
+
+Route::prefix('auth')->group(function () {
+    Route::post('/login', [AuthController::class, 'login']);
+    // Route::post('/login', ['as' => 'login', 'uses' => 'AuthController@login']);
+    Route::post('/register', [AuthController::class, 'register']);
+
+    Route::middleware(['auth:api'])->group(function () {
+        Route::post('/logout', [AuthController::class, 'logout']);
+        Route::post('/refresh', [AuthController::class, 'refresh']);
+        Route::get('/user', [AuthController::class, 'userProfile']);
+        Route::post('/change-pass', [AuthController::class, 'changePassWord']);
+       
+    });   
 });
 
 Route::post('/like/{post}', [LikeController::class, 'store']);
+
 Route::get('/like/{post}', [LikeController::class, 'index']);
 Route::get('/comment/{post}', [CommentController::class, 'index']);
 Route::post('/comment', [CommentController::class, 'store']);
+
+
 
 Route::post('/post/create', [PostController::class, 'store']);
 

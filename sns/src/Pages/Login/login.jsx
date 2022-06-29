@@ -13,17 +13,20 @@ export default function Login() {
   async function login(){
     console.warn(email, password)
     let item = {email, password};
-    let result = await fetch("http://127.0.0.1:8000/api/login",{
+    let result = await fetch("http://127.0.0.1:8000/api/auth/login",{
       method:"POST",
       body:JSON.stringify(item),
       headers:{
         "Content-Type":'application/json',
-        "Accept":'application/json'
+        "Accept":'application/json',
+        // 'Authorization' : 'Bearer '.$token,
       }
     });
     result = await result.json();
     localStorage.setItem("user-info",JSON.stringify(result))
-    navigate("/");
+    console.log(result)
+    navigate("/")
+    
   }
   
   return (
