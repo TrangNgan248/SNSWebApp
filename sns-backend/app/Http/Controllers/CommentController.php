@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
+
     protected $user;
 
     /**
@@ -20,14 +21,12 @@ class CommentController extends Controller
         $this->middleware('auth:api');
     }
 
-    public function index(Request $request)
-    {
-        $data = Comment::join('users', 'users.id', '=', 'comments.user_id')
-                        ->where('comments.post_id', '=', $request->post_id)
-                        ->get(['users.name', 'comments.*']);
 
-        return $data;
-                        
+    public function index(Post $post)
+    {
+        $comment = Comment::where('post_id', $post->id)->get();
+        return $comment;
+
     }
     public function store(Request $request){
         $comment = new Comment;

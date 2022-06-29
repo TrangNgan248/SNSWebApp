@@ -1,8 +1,8 @@
 import "./post.css";
 import 'antd/dist/antd.min.css';
-import { Button, Modal, Menu, Space, Dropdown } from 'antd';
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Button, Modal, Menu, Space, Dropdown } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis, faThumbsUp, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import Comment from "../../components/comment/comment"
@@ -25,7 +25,38 @@ export default function Post() {
             setPosts(posts.data)
         }
         getAllPost()
-    }, [])
+    }, []);
+    const [channels, setChannels] = useState([]);
+    useEffect(() => {
+        async function getChannel() {
+            const channels = await axios.get("http://127.0.0.1:8000/api/channel")
+            console.log(channels.data)
+            setChannels(channels.data)
+        }
+        getChannel()
+    }, []);
+
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        async function getUser() {
+            const users = await axios.get("http://127.0.0.1:8000/api/user")
+            console.log(users.data)
+            setUsers(users.data)
+        }
+        getUser()
+    }, []);
+
+    let post_id = 3;
+    const [likes, setLikes] = useState([]);
+    useEffect(() => {
+        async function getLike() {
+            const likes = await axios.get(`http://127.0.0.1:8000/api/like/${post_id}`)
+            console.log(likes.data)
+            setLikes(likes.data)
+        }
+        getLike()
+    }, []);
+    const count = likes.length;
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [isLike, setIsLike] = useState(false);
 
@@ -81,11 +112,22 @@ export default function Post() {
                                     alt="" />
                                 <ul className="postTopLeftList">
                                     <li className="postTopLeftItem1">
-                                        <span className="postFromChannel">[From IT Channel] </span>
+                                        {channels.map((channel)=>{
+                                            if(channel.id === post.channel_id)
+                                            return (
+                                        <span className="postFromChannel"> {channel.name} </span>
+                                            )
+                                        }
+                                        )}
                                     </li>
                                     <li className="postTopLeftItem2">
-
-                                        <span className="postUsername">{post.title} </span>
+                                        {users.map((user)=>{
+                                            if(user.id === post.author_id)
+                                            return (
+                                            <span className="postUsername">{user.name} </span>
+                                            )
+                                            }
+                                        )}
                                     </li>
                                     <li className="postTopLeftItem3">
                                         <FontAwesomeIcon icon={faGlobe} className="postDateIcon" />
@@ -109,8 +151,9 @@ export default function Post() {
                             </div>
                         </div>
                         <div className="postCenter">
-                            <span className="postText">ajdshfj</span>
-                            <img className="postImg" src="assets/testimg/Ayame2.jpg" alt="" />
+                            <div className="postText">{post.title}</div>
+                            <div className="postText">{post.content}</div>
+                            <img className="postImg" src={`http://localhost:8000/storage/${post.display}`} alt="Khong hien thi" />
                         </div>
 
                         <div className={`postBottom ${post.id}`}>
@@ -122,7 +165,7 @@ export default function Post() {
                                     
                                 </div>
                                 <div className="postLikeHide">
-                                    <span className="postCounterLike"> 10 like</span>
+                                    <span className="postCounterLike"> {count} </span>
                                 </div>
                                 <div className="postCommentIconHover">
                                     <FontAwesomeIcon icon={faComment} className="postCommentIcon" />
@@ -134,14 +177,12 @@ export default function Post() {
                                 <Modal title="Comment" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                                     <CommentTest id={commentID}/>
                                     <Comment />
-                                    <Comment />
                                 </Modal>
                             </div>
                             <div className="postBottomRight">
                                 <FontAwesomeIcon icon={faBookmark} className="postBookmarkIcon" />
                             </div>
                         </div>
-
                     </div>
                 )}
         </div>

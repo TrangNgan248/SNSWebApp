@@ -33,17 +33,14 @@ function AddPost(){
             <input type="text" placeholder="Title" className="shareInput" onChange={(e) =>setTitle(e.target.value)}  />
             <input type="text" placeholder="What's in your mind ?" className="shareInput1" onChange={(e) =>setContent(e.target.value)} />
             <input type="file" placeholder="Picture" className="shareInput2" onChange={(e) =>setDisplay(e.target.files[0])}/>
-  
-            <button onClick={addPost} className="btn btn-primary">post </button>
           </div>
-
         </div>
         <hr className="shareHr" />
         <div className="shareBottom">
           <div className="shareOptions">
             <div className="shareOption">
               <FontAwesomeIcon icon={faImage} className="shareIcon" />
-              <button className="shareOptionText">Photo or Video</button>
+              <button className="shareOptionText">Media</button>
             </div>
             <div className="shareOption">
               <FontAwesomeIcon icon={faUserPlus} className="shareIcon" />
@@ -51,7 +48,7 @@ function AddPost(){
             </div>
           </div>
           
-          <button className="shareButton">Share</button>
+          <button onClick={addPost} className="shareButton">Share</button>
         </div>
        
       </div>

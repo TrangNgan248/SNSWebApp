@@ -43,9 +43,9 @@
 .shareInput2 {
     margin-left: 5px;
     margin-bottom: 7px;
-    border: none;
-    width: 50%;
-    height: 120px;
+    border: 1px;
+    width: 90%;
+    height: 50px;
 }
 
 .shareInput:focus {
