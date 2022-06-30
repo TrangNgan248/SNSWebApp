@@ -31,7 +31,8 @@ class CommentController extends Controller
     public function store(Request $request){
         $comment = new Comment;
         $comment->post_id = $request->post_id;
-        $comment->user_id = 1;      
+        $comment->user_id = auth()->user()->id;  
+        // $comment->user_id = 1;    
         $comment->content = $request->content;
         $comment->save();
         return response()->json(['message'=>'success', 'count'=>count($comment->post->comments)]);

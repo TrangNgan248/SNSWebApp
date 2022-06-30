@@ -20,7 +20,11 @@ export default function Register() {
         "Accept":'application/json'
       }
     })
+ 
+    // console.log(result.message)
+   
     result = await result.json()
+    // console.log(result)
     console.warn("result", result)
  
   }

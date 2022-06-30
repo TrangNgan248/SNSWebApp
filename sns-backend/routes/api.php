@@ -42,6 +42,7 @@ Route::prefix('auth')->group(function () {
         Route::post('/refresh', [AuthController::class, 'refresh']);
         Route::get('/user', [AuthController::class, 'userProfile']);
         Route::post('/change-pass', [AuthController::class, 'changePassWord']);
+        Route::post('/comment', [CommentController::class, 'store']);
        
     });   
 });
@@ -50,7 +51,7 @@ Route::post('/like/{post}', [LikeController::class, 'store']);
 
 Route::get('/like/{post}', [LikeController::class, 'index']);
 Route::get('/comment/{post}', [CommentController::class, 'index']);
-Route::post('/comment', [CommentController::class, 'store']);
+
 
 
 
