@@ -1,9 +1,11 @@
 import "./comment.css";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
+import { Button, Menu, Space, Dropdown} from 'antd';
 export default function Comment() {
+
 const [isLike, setIsLike] = useState(false);
 const [comments, setComments] = useState([]);
 let id = 1
@@ -15,7 +17,34 @@ useEffect(() => {
     }
     getComment()
 }, [])
+const menu = (
+    <Menu
+        items={[
+            {
+                key: '1',
+                label: (
+                    <div className="delete-Testplace">
+                        <Button> Delete </Button>
+                    </div>
+
+                ),
+            },
+            {
+                key: '2',
+                label: (
+                    <div className="edit-Testplace">
+                        <Button> Edit </Button>
+                    </div>
+
+
+                ),
+            },
+
+        ]}
+    />
+);
   return (
+
         <div className="comment">
             {
                 comments.map((comment) =>          
@@ -42,10 +71,21 @@ useEffect(() => {
                         </ul>
                
             </div>                  
-                       
+            <div className="commentTopRight">
+                                <Space direction="vertical">
+                                    <Space wrap>
+                                        <Dropdown overlay={menu} placement="bottom">
+                                            <Button><FontAwesomeIcon icon={faEllipsis} className="commentTopRightIcon" /></Button>
+                                        </Dropdown>
+
+                                    </Space>
+                                </Space>
+
+                            </div>     
 
             </div>
            )}
         </div>
+
   )
 }

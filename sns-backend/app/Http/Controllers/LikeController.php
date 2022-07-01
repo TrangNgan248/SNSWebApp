@@ -8,25 +8,28 @@ use App\Models\Like;
 
 class LikeController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth:api', ['except' => ['index']]);
+    }
     public function index(Post $post){
         $like = Like::where('post_id', $post->id)->get();
         return $like;
     }
-    public function store(Post $post){
-        // $like = Like::where('post_id', $post->id)->where('user_id', $this->user->id)->first();
-        // if(!empty($like)){
-        //     $like->delete();
-        // }
-        // else{
-        //     $like = new Like;
-        //     $like->user_id = 1;
-        //     $like->post_id = $post->id;
-        //     $like->save();
-        // }
-            $like = new Like();
-            $like->user_id = 1;
-            $like->post_id = $post->id;
+    public function store(Request $request){;
+        $like = Like::where('post_id', $request->post_id)->where('user_id', auth()->user()->id)->first();
+        if(!empty($like)){
+            $like->delete();
+        }
+        else{
+            $like = new Like;
+            $like->user_id = auth()->user()->id;
+            $like->post_id = $request->post_id;
             $like->save();
-            return response()->json(['message'=>'success', 'count'=>count($post->likes)]);
+        }
+            // $like = new Like();
+            // $like->user_id = auth()->user()->id;
+            // $like->post_id = 1;
+            // $like->save();
+            // return response()->json(['message'=>'success', 'count'=>count($like->post->likes)]);
     }
 }

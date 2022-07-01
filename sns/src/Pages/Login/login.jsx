@@ -1,29 +1,39 @@
 import { Link, useNavigate} from "react-router-dom";
 import React, {useState, useEffect} from 'react';
 import "./login.css"
+import axios from "axios";
 export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
+
   useEffect(()=>{
-    if(localStorage.getItem('user-info')) {
+    if(localStorage.getItem('access_token')) {
       navigate("/")
     }
   }, [])
+   
   async function login(){
     console.warn(email, password)
     let item = {email, password};
-    let result = await fetch("http://127.0.0.1:8000/api/login",{
+    let result = await fetch("http://127.0.0.1:8000/api/auth/login",{
       method:"POST",
       body:JSON.stringify(item),
       headers:{
         "Content-Type":'application/json',
-        "Accept":'application/json'
+        "Accept":'application/json',
       }
     });
+  
     result = await result.json();
-    localStorage.setItem("user-info",JSON.stringify(result))
-    navigate("/");
+    if (result.access_token) {
+    localStorage.setItem('access_token', result.access_token);
+    localStorage.setItem('user', JSON.stringify(result.user));
+    navigate("/")
+    } else {
+      alert("Sai ten dang nhap hoac mat khau");
+    }
+    
   }
   
   return (
