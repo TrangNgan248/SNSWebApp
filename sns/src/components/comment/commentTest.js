@@ -19,7 +19,8 @@ export default function CommentTest(props) {
         }),
         headers:{
           "Content-Type":'application/json',
-          "Accept":'application/json'
+          "Accept":'application/json',
+          "Authorization": 'Bearer ' + localStorage.getItem("access_token"),
         }
       });
       let resJson = await res.json();
