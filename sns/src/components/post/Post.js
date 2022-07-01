@@ -13,7 +13,6 @@ import CommentTest from "../comment/commentTest";
 import { Link } from "react-router-dom"
 
 
-
 export default function Post() {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
@@ -76,7 +75,7 @@ export default function Post() {
                     key: '1',
                     label: (
                         <div className="detail-Testplace">
-                            <Link to="/detail" className="btn btn-primary btn-sm float-end">Detail</Link>
+                            <Link to="/detail" className="btn btn-primary btn-sm float-end">Delete</Link>
                         </div>
 
                     ),
