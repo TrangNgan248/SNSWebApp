@@ -6,11 +6,10 @@ import { Button, Modal, Menu, Space, Dropdown } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis, faThumbsUp, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import Comment from "../../components/comment/comment"
-
-import CommentForm from "../../components/comment/commentForm"
 import CommentTest from "../comment/commentTest";
 
 import { Link } from "react-router-dom"
+import Like from "../like/like";
 
 
 
@@ -26,6 +25,9 @@ export default function Post() {
         }
         getAllPost()
     }, []);
+
+
+
     const [channels, setChannels] = useState([]);
     useEffect(() => {
         async function getChannel() {
@@ -46,19 +48,8 @@ export default function Post() {
         getUser()
     }, []);
 
-    let post_id = 3;
-    const [likes, setLikes] = useState([]);
-    useEffect(() => {
-        async function getLike() {
-            const likes = await axios.get(`http://127.0.0.1:8000/api/like/${post_id}`)
-            console.log(likes.data)
-            setLikes(likes.data)
-        }
-        getLike()
-    }, []);
-    const count = likes.length;
+
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [isLike, setIsLike] = useState(false);
 
     const showModal = (id) => {
         setIsModalVisible(true);
@@ -112,21 +103,21 @@ export default function Post() {
                                     alt="" />
                                 <ul className="postTopLeftList">
                                     <li className="postTopLeftItem1">
-                                        {channels.map((channel)=>{
-                                            if(channel.id === post.channel_id)
-                                            return (
-                                        <span className="postFromChannel"> {channel.name} </span>
-                                            )
+                                        {channels.map((channel) => {
+                                            if (channel.id === post.channel_id)
+                                                return (
+                                                    <span className="postFromChannel"> {channel.name} </span>
+                                                )
                                         }
                                         )}
                                     </li>
                                     <li className="postTopLeftItem2">
-                                        {users.map((user)=>{
-                                            if(user.id === post.author_id)
-                                            return (
-                                            <span className="postUsername">{user.name} </span>
-                                            )
-                                            }
+                                        {users.map((user) => {
+                                            if (user.id === post.author_id)
+                                                return (
+                                                    <span className="postUsername">{user.name} </span>
+                                                )
+                                        }
                                         )}
                                     </li>
                                     <li className="postTopLeftItem3">
@@ -158,15 +149,7 @@ export default function Post() {
 
                         <div className={`postBottom ${post.id}`}>
                             <div className="postBottomLeft">
-                                <div className="postLikeIconHover">
-                                   
-                                        <FontAwesomeIcon icon={faThumbsUp} className="postLikeIcon" onClick={()=>{
-                                        setIsLike(!isLike) }} style={{color : isLike? "blue" : "black"}} />
-                                    
-                                </div>
-                                <div className="postLikeHide">
-                                    <span className="postCounterLike"> {count} </span>
-                                </div>
+                                <Like id={post.id}/>
                                 <div className="postCommentIconHover">
                                     <FontAwesomeIcon icon={faComment} className="postCommentIcon" />
                                 </div>
@@ -175,7 +158,7 @@ export default function Post() {
                                     Comment
                                 </Button>
                                 <Modal title="Comment" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-                                    <CommentTest id={commentID}/>
+                                    <CommentTest id={commentID} />
                                     <Comment />
                                 </Modal>
                             </div>
