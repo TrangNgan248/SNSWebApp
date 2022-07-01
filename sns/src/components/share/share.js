@@ -33,6 +33,7 @@ function AddPost(){
             <input type="text" placeholder="Title" className="shareInput" onChange={(e) =>setTitle(e.target.value)}  />
             <input type="text" placeholder="What's in your mind ?" className="shareInput1" onChange={(e) =>setContent(e.target.value)} />
             <input type="file" placeholder="Picture" className="shareInput2" onChange={(e) =>setDisplay(e.target.files[0])}/>
+            <button onClick={addPost} className="shareButton">Share</button>
           </div>
         </div>
         <hr className="shareHr" />

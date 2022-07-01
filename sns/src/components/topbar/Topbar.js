@@ -2,7 +2,15 @@
 import "./Topbar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass,faUser,faGear,faBell,faAngleDown } from '@fortawesome/free-solid-svg-icons'
-export default function Topbar(){
+import { useState } from "react"
+function Topbar(){
+    const [data,setData] = useState([])
+    async function search(key) {
+        console.warn(key)
+        let result = await fetch("http://localhost:8000/api/search/"+key);
+        result= await result.json();
+        setData(result)
+    }
     return(
         <div className="topbarContainer">
             <div className="topbarLeft">
@@ -12,7 +20,8 @@ export default function Topbar(){
             <div className="topbarCenter">
                 <div className="Search">
                     <FontAwesomeIcon icon={faMagnifyingGlass} className="searchicon" />
-                    <input placeholder="Seacrh for something" className="searchInput"/>
+                    <input type="text" onChange = {(e)=>search(e.target.value)} placeholder="Seacrh for something" className="searchInput"/>
+                    
                 </div>
             </div>
             <div className="topbarRight">
@@ -36,3 +45,4 @@ export default function Topbar(){
          </div>
     )
 }
+export default Topbar

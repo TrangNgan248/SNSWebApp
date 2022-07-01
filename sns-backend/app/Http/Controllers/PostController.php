@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::all();
+        $posts = Post::whereid(1)->latest()->get();;
         return $posts;
     }
 
@@ -29,7 +29,9 @@ class PostController extends Controller
         $post->channel_id = 1;
         $post->display = $req->file('display')->store('img', 'public');
         $post->num_view = 3;
+        $post = Post::latest()->get();
         $post->save();
+        
         return $post;
         // Log::info("Post ID {$post->id} created successfully.");
         // return response()->json($post);

@@ -67,6 +67,6 @@ Route::delete('/post/delete/{post}', [PostController::class, 'delete']);
 
 Route::get('/post/{post}', [PostController::class, 'show']);
 
-Route::get('search/{key}', [PostController::class, 'search']);
+Route::get('/search/{key}', [PostController::class, 'search']);
 
 
