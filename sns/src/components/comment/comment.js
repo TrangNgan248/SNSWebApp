@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
 import { Button, Menu, Space, Dropdown} from 'antd';
-export default function Comment() {
+export default function Comment(props) {
 
 const [isLike, setIsLike] = useState(false);
 const [comments, setComments] = useState([]);
-let id = 1
+let id = props.id;
+console.log(id);
 useEffect(() => {
     async function getComment() {
         const comments = await axios.get(`http://127.0.0.1:8000/api/comment/${id}`)

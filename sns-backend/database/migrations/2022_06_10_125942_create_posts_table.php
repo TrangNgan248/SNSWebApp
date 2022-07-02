@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('display', 50);
             $table->integer('num_view');
             $table->unsignedBigInteger('author_id');
-            $table->foreign('author_id')->references('id')->on('users');
-            $table->foreign('channel_id')->references('id')->on('channel');
+            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('channel_id')->references('id')->on('channel')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

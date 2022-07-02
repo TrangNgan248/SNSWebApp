@@ -8,8 +8,9 @@ import { faEllipsis, faThumbsUp, faComment, faBookmark, faGlobe } from '@fortawe
 import Comment from "../../components/comment/comment"
 import CommentTest from "../comment/commentTest";
 
-import { Link } from "react-router-dom"
+import { Link, browserHistory } from "react-router-dom"
 import Like from "../like/like";
+import Edit from "../Edit/edit";
 
 
 
@@ -63,6 +64,14 @@ export default function Post() {
     const handleCancel = () => {
         setIsModalVisible(false);
     };
+    const handleDelete = (id) => {
+        axios.delete(`http://127.0.0.1:8000/api/post/${id}`)
+    .then((response)=>{
+      console.log(response.data);
+      alert("Data has been deleted");
+   })
+    .catch((err) => console.error(err.response.data.errors));
+    };
     const menu = (
         <Menu
             items={[
@@ -89,7 +98,10 @@ export default function Post() {
         />
     );
 
-
+    const myData = {
+        name: 'Some thing',
+        price: 123
+      }
     return (
         <div className="post">
             {
@@ -159,12 +171,14 @@ export default function Post() {
                                 </Button>
                                 <Modal title="Comment" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                                     <CommentTest id={commentID} />
-                                    <Comment />
+                                    <Comment id={post.id}/>
                                 </Modal>
                             </div>
                             <div className="postBottomRight">
                                 <FontAwesomeIcon icon={faBookmark} className="postBookmarkIcon" />
                             </div>
+                            <Link to="/edit" state={post} className="btn btn-primary btn-sm float-end">Edit</Link>
+                            <button type="submit" className="btn btn-primary btn-sm" onClick={() => handleDelete(post.id)}>DELETE</button>
                         </div>
                     </div>
                 )}

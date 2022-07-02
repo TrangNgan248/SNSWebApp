@@ -43,15 +43,14 @@ Route::prefix('auth')->group(function () {
         Route::post('/change-pass', [AuthController::class, 'changePassWord']);
         Route::post('/comment', [CommentController::class, 'store']);
         Route::post('/like', [LikeController::class, 'store']);
-       
     });   
 });
 
 Route::get('/like/{post}', [LikeController::class, 'index']);
 Route::get('/comment/{post}', [CommentController::class, 'index']);
 
-
-
+Route::delete('/post/{post}', [PostController::class, 'delete']);
+Route::post('/post/edit/{post}', [PostController::class, 'edit']);
 
 Route::post('/post/create', [PostController::class, 'store']);
 
@@ -60,10 +59,6 @@ Route::get('/post', [PostController::class, 'index']);
 Route::get('/channel', [ChannelController::class, 'index']);
 
 Route::get('/user', [UserController::class, 'index']);
-
-Route::post('/post/edit/{post}', [PostController::class, 'edit']);
-
-Route::delete('/post/delete/{post}', [PostController::class, 'delete']);
 
 Route::get('/post/{post}', [PostController::class, 'show']);
 

@@ -67,14 +67,11 @@ class PostController extends Controller
     }
     public function delete(Post $post)
     {
-        if ($post->author_id === Auth::id() && $post->delete()) {
-            return response()->json([
-                'status' => 'success'
-            ]);
-        }
-        return response()->json([
-            'status' => 'fail'
-        ]);
+        $post = Post::find($post->id);
+
+        $post->delete();
+
+        return response()->json('Successfully Deleted');
     }
 }
 
