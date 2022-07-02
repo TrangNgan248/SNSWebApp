@@ -5,7 +5,8 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { useLocation } from "react-router-dom";
-export default function Edit(){
+import { Link } from "react-router-dom"
+export default function Edit(props){
     const [posts, setPosts] = useState([]);
     useEffect(() => {
         async function getAllPost() {
@@ -15,7 +16,11 @@ export default function Edit(){
         }
         getAllPost()
     }, []);
-    const [id, setID]= useState(1);
+    const location = useLocation();
+    const state = location.state;
+    let post_id = state.id;
+    console.log(state.id);
+    const [id, setID]= useState(post_id);
     const [title, setTitle]= useState("");
     const [display, setDisplay] = useState("");
     const [content, setContent] = useState("");
