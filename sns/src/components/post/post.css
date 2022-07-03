@@ -82,6 +82,7 @@
     margin-left: 30px;
     height: 20px;
     width: 20px;
+    cursor: pointer;
 }
 .postLikeIcon:hover{
     align-items: flex-start;
@@ -90,8 +91,8 @@
 }
 .postLikeHide {
     display: none;
-  }
-  
+}
+
 .postLikeIconHover:hover + .postLikeHide {
     display: block;
     color: blue;

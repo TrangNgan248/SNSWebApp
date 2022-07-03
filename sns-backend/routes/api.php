@@ -36,14 +36,12 @@ Route::prefix('auth')->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
 
-    Route::middleware(['auth:api'])->group(function () {
-        Route::post('/logout', [AuthController::class, 'logout']);
-        Route::post('/refresh', [AuthController::class, 'refresh']);
-        Route::get('/user', [AuthController::class, 'userProfile']);
-        Route::post('/change-pass', [AuthController::class, 'changePassWord']);
-        Route::post('/comment', [CommentController::class, 'store']);
-        Route::post('/like', [LikeController::class, 'store']);
-    });   
+    Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api');
+    Route::post('/refresh', [AuthController::class, 'refresh'])->middleware('auth:api');
+    Route::get('/user', [AuthController::class, 'userProfile'])->middleware('auth:api');
+    Route::post('/change-pass', [AuthController::class, 'changePassWord'])->middleware('auth:api');
+    Route::post('/comment', [CommentController::class, 'store'])->middleware('auth:api');
+    Route::post('/like', [LikeController::class, 'store'])->middleware('auth:api');
 });
 
 Route::get('/like/{post}', [LikeController::class, 'index']);

@@ -17,10 +17,6 @@ class CommentController extends Controller
      *
      * @return void
      */
-    public function __construct() {
-        $this->middleware('auth:api');
-    }
-
 
     public function index(Post $post)
     {

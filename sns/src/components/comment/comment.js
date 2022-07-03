@@ -48,7 +48,7 @@ const menu = (
 
         <div className="comment">
             {
-                comments.map((comment) =>          
+                comments.map((comment) =>
           <div className="commentLeft">
             <img
               className="commentProfileImg"
@@ -71,7 +71,7 @@ const menu = (
                             
                         </ul>
                
-            </div>                  
+            </div>
             <div className="commentTopRight">
                                 <Space direction="vertical">
                                     <Space wrap>
@@ -82,11 +82,10 @@ const menu = (
                                     </Space>
                                 </Space>
 
-                            </div>     
+                            </div>
 
             </div>
            )}
         </div>
-
   )
 }

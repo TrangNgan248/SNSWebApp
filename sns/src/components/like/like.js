@@ -39,14 +39,16 @@ export default function Like(props) {
         getLike()
     }, []);
     const count = likes.length;
+    console.log(count);
     return (
-        <div className="postLikeIconHover">
-            <FontAwesomeIcon icon={faThumbsUp} className="postLikeIcon" onClick={like} style={{ color: isLike ? "blue" : "black" }}  />
-            <div className="postLikeHide">
-                <span className="postCounterLike"> {count} </span>
+        <div>
+            <div class="postLikeIconHover">
+                <FontAwesomeIcon icon={faThumbsUp} className="postLikeIcon" onClick={like} style={{ color: isLike ? "blue" : "black" }}  />
+            </div>
+                <div class="postLikeHide">
+                    <span class="postCounterLike"> {count} like </span>
             </div>
         </div>
-
     )
 
 }

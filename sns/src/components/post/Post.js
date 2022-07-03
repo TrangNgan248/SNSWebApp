@@ -10,7 +10,6 @@ import CommentTest from "../comment/commentTest";
 
 import { Link, browserHistory } from "react-router-dom"
 import Like from "../like/like";
-import Edit from "../Edit/edit";
 
 
 
@@ -97,11 +96,6 @@ export default function Post() {
             ]}
         />
     );
-
-    const myData = {
-        name: 'Some thing',
-        price: 123
-      }
     return (
         <div className="post">
             {
