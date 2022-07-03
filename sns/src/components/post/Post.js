@@ -71,31 +71,28 @@ export default function Post() {
    })
     .catch((err) => console.error(err.response.data.errors));
     };
-    const menu = (
-        <Menu
-            items={[
-                {
-                    key: '1',
-                    label: (
-                        <div className="detail-Testplace">
-                            <Link to="/detail" className="btn btn-primary btn-sm float-end">Detail</Link>
-                        </div>
+    // const menu = (
+    //     <Menu
+    //         items={[
+    //             {
+    //                 key: '1',
+    //                 label: (
+    //                     <div className="detail-Testplace">
+    //                         <Link to="/detail" className="btn btn-primary btn-sm float-end">Detail</Link>
+    //                     </div>
 
-                    ),
-                },
-                {
-                    key: '2',
-                    label: (
-                        <div className="edit-Testplace">
-                            <Link to="/edit" className="btn btn-primary btn-sm float-end">Edit</Link>
-                        </div>
+    //                 ),
+    //             },
+    //             {
+    //                 key: '2',
+    //                 label: (
+    //                     <div className="edit-Testplace">
+    //                         <Link to="/edit" className="btn btn-primary btn-sm float-end">Edit</Link>
+    //                     </div>
 
-                    ),
-                },
+    //                 ),
+    //             },
 
-            ]}
-        />
-    );
     return (
         <div className="post">
             {
@@ -138,7 +135,29 @@ export default function Post() {
                             <div className="postTopRight">
                                 <Space direction="vertical">
                                     <Space wrap>
-                                        <Dropdown overlay={menu} placement="bottom">
+                                        <Dropdown overlay={<Menu
+                                                    items={[
+                                                        {
+                                                            key: '1',
+                                                            label: (
+                                                                <div className="edit-Testplace">
+                                                                    <Link to="/edit" state={post} className="btn btn-primary btn-sm float-end">Edit</Link>
+                                                                </div>
+
+                                                            ),
+                                                        },
+                                                        {
+                                                            key: '2',
+                                                            label: (
+                                                                <div className="delete-Testplace">
+                                                                    <button type="submit" className="btn btn-primary btn-sm" onClick={() => handleDelete(post.id)}>DELETE</button>
+                                                                </div>
+
+                                                            ),
+                                                        },
+
+                                                    ]}
+                                                />} placement="bottom">
                                             <Button><FontAwesomeIcon icon={faEllipsis} className="postTopRightIcon" /></Button>
                                         </Dropdown>
 
@@ -160,19 +179,19 @@ export default function Post() {
                                     <FontAwesomeIcon icon={faComment} className="postCommentIcon" />
                                 </div>
 
-                                <Button type="link" onClick={() => showModal(post.id)}>
+                                <Button type="link" onClick={() => showModal(post.id)} data-target={`#${post.id}`}>
                                     Comment
                                 </Button>
-                                <Modal title="Comment" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                                <Modal title="Comment" id={post.id} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                                     <CommentTest id={commentID} />
-                                    <Comment id={post.id}/>
+                                    <Comment id={post.id}/> 
                                 </Modal>
                             </div>
                             <div className="postBottomRight">
                                 <FontAwesomeIcon icon={faBookmark} className="postBookmarkIcon" />
                             </div>
-                            <Link to="/edit" state={post} className="btn btn-primary btn-sm float-end">Edit</Link>
-                            <button type="submit" className="btn btn-primary btn-sm" onClick={() => handleDelete(post.id)}>DELETE</button>
+                          
+                            
                         </div>
                     </div>
                 )}

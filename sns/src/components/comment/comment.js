@@ -48,7 +48,7 @@ const menu = (
 
         <div className="comment">
             {
-                comments.map((comment) =>
+            comments.map((comment) =>
           <div className="commentLeft">
             <img
               className="commentProfileImg"
@@ -85,7 +85,7 @@ const menu = (
                             </div>
 
             </div>
-           )}
+            )}
         </div>
   )
 }
