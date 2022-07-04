@@ -28,74 +28,7 @@ function Topbar(){
         setData(result)
         
     }
-    const [channels, setChannels] = useState([]);
-    useEffect(() => {
-        async function getChannel() {
-            const channels = await axios.get("http://127.0.0.1:8000/api/channel")
-            console.log(channels.data)
-            setChannels(channels.data)
-        }
-        getChannel()
-    }, []);
-
-    const [users, setUsers] = useState([]);
-    useEffect(() => {
-        async function getUser() {
-            const users = await axios.get("http://127.0.0.1:8000/api/user")
-            console.log(users.data)
-            setUsers(users.data)
-        }
-        getUser()
-    }, []);
-
-
-    const [isModalVisible, setIsModalVisible] = useState(false);
-
-    const showModal = (id) => {
-        setIsModalVisible(true);
-        setCommentID(id);
-    };
-
-    const handleOk = () => {
-        setIsModalVisible(false);
-    };
-
-    const handleCancel = () => {
-        setIsModalVisible(false);
-    };
-    const handleDelete = (id) => {
-        axios.delete(`http://127.0.0.1:8000/api/post/${id}`)
-    .then((response)=>{
-      console.log(response.data);
-      alert("Data has been deleted");
-   })
-    .catch((err) => console.error(err.response.data.errors));
-    };
-    const menu = (
-        <Menu
-            items={[
-                {
-                    key: '1',
-                    label: (
-                        <div className="detail-Testplace">
-                            <Link to="/detail" className="btn btn-primary btn-sm float-end">Detail</Link>
-                        </div>
-
-                    ),
-                },
-                {
-                    key: '2',
-                    label: (
-                        <div className="edit-Testplace">
-                            <Link to="/edit" className="btn btn-primary btn-sm float-end">Edit</Link>
-                        </div>
-
-                    ),
-                },
-
-            ]}
-        />
-    );
+    
           
     return(
      <div>   
