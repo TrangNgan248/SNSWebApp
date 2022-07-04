@@ -1,0 +1,98 @@
+.channelContentAll {
+    flex: 8;
+}
+
+.avatarWrap {
+    margin-bottom: 320px;
+}
+
+.bgDiv {
+    position: absolute;
+}
+
+.avaDiv {
+    display: block;
+    top: 270px;
+    position: absolute;
+    z-index: 10;
+}
+
+.avaImg {
+    border-radius: 50px;
+    height: 130px;
+    width: 130px;
+    object-fit: contain;
+}
+
+.bgImg {
+    height: 300px;
+    width: 1200px;
+    object-fit: cover;
+    display: block;
+    overflow: hidden;
+}
+
+.navChannel {
+    margin-left: 185px;
+    display: flex;
+    align-items: center;
+}
+
+.channelText {
+    font-size: 35px;
+    margin-right: 20px;
+}
+
+.btnjoin {
+    text-align: center;
+    width: 90px;
+    height: 60%;
+    border: none;
+    background-color: #4CD1C8;
+    padding: 12px 16px;
+    font-size: 17px;
+    cursor: pointer;
+    white-space: normal;
+    font-weight: 700;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.btnjoin:hover {
+    background-color: #00A99D;
+}
+
+.notiIcon {
+    height: 30px;
+    width: 30px;
+}
+
+.channelContent {
+    display: flex;
+}
+
+.channelIntroWrap {
+    background-color: #4CD1C8;
+    margin-right: 20px;
+    padding: 12px 16px;
+    border-radius: 20px;
+}
+
+.channelIntro {
+    flex: 2.5;
+}
+
+.channelIntroOp {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.channelDesc {
+    font-size: 15px;
+}
+
+.channelJoinNum {
+    font-size: 17px;
+    text-align: center;
+    font-weight: 600;
+}
