@@ -8,7 +8,10 @@
     background-color: #ffffff;
     z-index: 10;
 }
-
+.homeContainer {
+    display: flex;
+    background-color: #FEF6E4;
+}
 .topbarLeft {
     flex: 5;
     margin-left: 20px;

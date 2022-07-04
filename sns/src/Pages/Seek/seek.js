@@ -9,10 +9,7 @@ export default function Seek() {
     return (
         <>
             <Seektopbar />
-            <div className="homeContainer">
-            <Seeksidebar />
-            <Feed />
-            </div>
+            
         </>
     )
 };

@@ -14,7 +14,13 @@ return [
     | any other location as required by the application or its packages.
     |
     */
-
+    'providers' => [
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+    ],
+    'aliases' => [
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+    ],
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
