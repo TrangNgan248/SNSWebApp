@@ -60,6 +60,6 @@ Route::get('/user', [UserController::class, 'index']);
 
 Route::get('/post/{post}', [PostController::class, 'show']);
 
-Route::get('search/{key}', [PostController::class, 'search']);
+Route::get('/search/{key}', [PostController::class, 'search']);
 
 

@@ -12,7 +12,6 @@ import { Link, browserHistory } from "react-router-dom"
 import Like from "../like/like";
 
 
-
 export default function Post() {
     // console.log(post)
     const [posts, setPosts] = useState([]);
