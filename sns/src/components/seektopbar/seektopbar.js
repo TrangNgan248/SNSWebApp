@@ -27,8 +27,7 @@ function Topbar(){
         result= await result.json();
         setData(result)
         
-    }
-    
+    }   
           
     return(
      <div>   
