@@ -1,0 +1,94 @@
+.profileContentAll {
+    flex: 8;
+}
+
+.navProfile {
+    border: 1px solid;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.avatarProfileWrap {
+    display: inline-block;
+    margin-bottom: 360px;
+}
+
+.avaProfileDiv {
+    top: 235px;
+    left: 54.5%;
+    position: absolute;
+    z-index: 10;
+}
+
+.avaProfileImg {
+    border: 1px solid;
+    background-color: White;
+    border-radius: 85px;
+    height: 170px;
+    width: 170px;
+    object-fit: contain;
+}
+
+.UserIntro1 {
+    padding: 10px;
+}
+
+.nameUser,
+.shortIntroUser {
+    text-align: center;
+    line-height: 10px;
+}
+
+.nameUser {
+    font-weight: 700;
+    font-size: 35px;
+}
+
+.shortIntroUser {
+    font-size: 20px;
+}
+
+.userFollowNav {
+    display: flex;
+    margin-left: 15px;
+}
+
+.userFollow {
+    margin-right: 30px;
+    font-size: 20px;
+}
+
+.userFollow:hover {
+    color: #8BD3DD;
+}
+
+.userProfileStt {
+    display: flex;
+}
+
+.profileIntro {
+    flex-basis: 400px;
+    margin: 30px;
+}
+
+.introUserList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.introUserItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.introUserItemtext {
+    font-size: 17px;
+}
+
+.introUserIcon {
+    height: 20px;
+    width: 20px;
+    margin-right: 15px;
+}
