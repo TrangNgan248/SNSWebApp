@@ -11,7 +11,7 @@ export default function Seek() {
             <Seektopbar />
             <div className="homeContainer">
             <Seeksidebar />
-            <Feed />
+            <Feed /> 
             </div>
         </>
     )
