@@ -4,7 +4,7 @@ import Post from '../../components/post/Post'
 import Topbar from '../../components/topbar/Topbar'
 import "./profile.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faHome,faCircleUser,faGraduationCap,faHeart} from '@fortawesome/free-solid-svg-icons'
+import {faHome,faLocationDot,faGraduationCap,faHeart} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 export default function profile() {
   return (
@@ -38,15 +38,19 @@ export default function profile() {
         <div className="profileIntro">
                 <div className="channelIntroWrap">
                     <span className='channelIntroOp'>Profile</span>
-                    <br></br>
+                    <br></br><br/>
                     <ul className="introUserList">
+                    <li className="introUserItem">
+                        <FontAwesomeIcon icon={faLocationDot} className="introUserIcon" />
+                        <span className="introUserItemtext">Bilgewater</span>
+                    </li>
                     <li className="introUserItem">
                         <FontAwesomeIcon icon={faHome} className="introUserIcon" />
                         <span className="introUserItemtext">No where in Ionia</span>
                     </li>
                     <li className="introUserItem">
                         <FontAwesomeIcon icon={faGraduationCap} className="introUserIcon"/>
-                        <span className="introUserItemtext">Expelled from Ionia academy</span>
+                        <span className="introUserItemtext">Got Expelled from Ionia academy</span>
                     </li>
                     <li className="introUserItem">
                         <FontAwesomeIcon icon={faHeart}  className="introUserIcon" />
