@@ -6,6 +6,8 @@ import Register from "./Pages/Register/register";
 import Detail from "./components/Detail/detail";
 import Seek from "./Pages/Seek/seek";
 import Edit from "./components/Edit/edit";
+import Channel from "./Pages/Channel/channel";
+import Profile from "./Pages/Profile/profile";
 // import { useNavigate } from "react-router-dom";
 function App() {
   // const navigate = useNavigate();
@@ -22,6 +24,8 @@ function App() {
           <Route path="/register" element={<Register/>}/>
           <Route path="/edit" element={<Edit/>}/>
           <Route path="/seek" element={<Seek/>}/>
+          <Route path="/channel" element={<Channel/>}/>
+          <Route path="/profile" element={<Profile/>}/>
         </Routes> 
       </Router>
     );
