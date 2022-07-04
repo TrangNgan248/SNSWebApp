@@ -10,7 +10,6 @@ import CommentTest from "../comment/commentTest";
 
 import { Link, browserHistory } from "react-router-dom"
 import Like from "../like/like";
-import Edit from "../Edit/edit";
 
 
 export default function Post() {
@@ -93,14 +92,6 @@ export default function Post() {
     //                 ),
     //             },
 
-    //         ]}
-    //     />
-    // );
-
-    const myData = {
-        name: 'Some thing',
-        price: 123
-      }
     return (
         <div className="post">
             {
@@ -144,28 +135,28 @@ export default function Post() {
                                 <Space direction="vertical">
                                     <Space wrap>
                                         <Dropdown overlay={<Menu
-            items={[
-                {
-                    key: '1',
-                    label: (
-                        <div className="edit-Testplace">
-                              <Link to="/edit" state={post} className="btn btn-primary btn-sm float-end">Edit</Link>
-                        </div>
+                                                    items={[
+                                                        {
+                                                            key: '1',
+                                                            label: (
+                                                                <div className="edit-Testplace">
+                                                                    <Link to="/edit" state={post} className="btn btn-primary btn-sm float-end">Edit</Link>
+                                                                </div>
 
-                    ),
-                },
-                {
-                    key: '2',
-                    label: (
-                        <div className="delete-Testplace">
-                            <button type="submit" className="btn btn-primary btn-sm" onClick={() => handleDelete(post.id)}>DELETE</button>
-                        </div>
+                                                            ),
+                                                        },
+                                                        {
+                                                            key: '2',
+                                                            label: (
+                                                                <div className="delete-Testplace">
+                                                                    <button type="submit" className="btn btn-primary btn-sm" onClick={() => handleDelete(post.id)}>DELETE</button>
+                                                                </div>
 
-                    ),
-                },
+                                                            ),
+                                                        },
 
-            ]}
-        />} placement="bottom">
+                                                    ]}
+                                                />} placement="bottom">
                                             <Button><FontAwesomeIcon icon={faEllipsis} className="postTopRightIcon" /></Button>
                                         </Dropdown>
 
@@ -187,12 +178,12 @@ export default function Post() {
                                     <FontAwesomeIcon icon={faComment} className="postCommentIcon" />
                                 </div>
 
-                                <Button type="link" onClick={() => showModal(post.id)}>
+                                <Button type="link" onClick={() => showModal(post.id)} data-target={`#${post.id}`}>
                                     Comment
                                 </Button>
-                                <Modal title="Comment" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                                <Modal title="Comment" id={post.id} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                                     <CommentTest id={commentID} />
-                                    <Comment id={post.id}/>
+                                    <Comment id={post.id}/> 
                                 </Modal>
                             </div>
                             <div className="postBottomRight">
