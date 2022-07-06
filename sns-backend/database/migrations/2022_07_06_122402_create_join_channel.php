@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('channel_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('channel_id')->references('id')->on('channel')->onDelete('cascade')->onUpdate('cascade');
+            
         });
     }
 
