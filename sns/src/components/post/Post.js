@@ -172,7 +172,7 @@ export default function Post() {
                             
                         </div>
                     </div>
-                )}
+                ).reverse()}
         </div>
     );
 }
