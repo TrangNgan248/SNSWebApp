@@ -1,8 +1,25 @@
 import "./sidebar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faHome,faCircleUser,faBookBookmark,faUserGroup,faAngleDown} from '@fortawesome/free-solid-svg-icons'
+import {faHome,faCircleUser,faBookBookmark,faUserGroup,faAngleDown,faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
+import { Button, Modal, Checkbox } from 'antd';
+import { useState} from "react";
+
 export default function Sidebar(){
+        const [isModalVisible, setIsModalVisible] = useState(false);
+        const showModal = (id) => {
+            setIsModalVisible(true);
+        };
+        const handleOk = () => {
+            setIsModalVisible(false);
+        };
+
+        const handleCancel = () => {
+            setIsModalVisible(false);
+        };
+        const onChange = (e) => {
+            console.log(`checked = ${e.target.checked}`);
+          };
     return(
         <div className="sidebar">
             <div className="sidebarWrapper">
@@ -46,7 +63,44 @@ export default function Sidebar(){
                 <a href="/#" className="showmore">Show more</a>
                 </div>
                 <hr className="sidebarHr"></hr>
-                <button className="btn"><i className="fa-solid fa-circle-plus"> Join new channels</i></button>
+                <Button type="link" onClick={showModal}>
+                    <button className="btn"><i className="fa-solid fa-circle-plus"> Join new channels</i></button>
+                </Button>
+                <Modal title="Join New Channel" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                    
+                    <ul className="channelList">
+                        <li className="Search">
+                            <div className="topbarCenter">                       
+                                <FontAwesomeIcon icon={faMagnifyingGlass} className="searchicon" />
+                                <input placeholder="Seacrh channel" className="searchInput"/>                        
+                            </div>
+                        </li>
+                        <li className="channelSeekItem">
+                            <Checkbox onChange={onChange} className="checkBox" ></Checkbox>  
+                            <img src="assets/testimg/it.png" alt=""className="channelImg"></img>
+                            <span className="channelName">IT</span>
+                        </li>
+                        <li className="channelSeekItem">
+                            <Checkbox onChange={onChange} className="checkBox"></Checkbox> 
+                            
+                             <img src="assets/testimg/sunlogo.jpg" alt="" className="channelImg"></img>
+                            <span className="channelName">Jobfair</span>
+                        </li>
+                        <li className="channelSeekItem">
+                           <Checkbox onChange={onChange} className="checkBox"></Checkbox> 
+                            
+                            <img src="assets/testimg/nihon.png" alt="" className="channelImg"></img>
+                            <span className="channelName">Nihongo</span>
+                        </li>                                   
+                           
+                    </ul>
+                    <div className="sidebarShowmore">
+                    <FontAwesomeIcon icon={faAngleDown} />
+                    <a href="/#" className="showmore">Show more</a>
+                    </div>
+                    <button className="btn"> Join</button>
+                </Modal>
+                
             </div>
         </div>
     )

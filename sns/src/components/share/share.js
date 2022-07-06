@@ -1,7 +1,6 @@
 import "./share.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage, faUserPlus } from '@fortawesome/free-solid-svg-icons'
-import { Button } from "antd";
 import {useState} from 'react'
 function AddPost(){
   const [title, setTitle]= useState("");
