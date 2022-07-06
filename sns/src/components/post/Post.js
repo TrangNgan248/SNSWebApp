@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Modal, Menu, Space, Dropdown } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsis, faThumbsUp, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsis, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import Comment from "../../components/comment/comment"
 import CommentTest from "../comment/commentTest";
 
-import { Link, browserHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Like from "../like/like";
 
 
@@ -70,28 +70,7 @@ export default function Post() {
    })
     .catch((err) => console.error(err.response.data.errors));
     };
-    // const menu = (
-    //     <Menu
-    //         items={[
-    //             {
-    //                 key: '1',
-    //                 label: (
-    //                     <div className="detail-Testplace">
-    //                         <Link to="/detail" className="btn btn-primary btn-sm float-end">Detail</Link>
-    //                     </div>
-
-    //                 ),
-    //             },
-    //             {
-    //                 key: '2',
-    //                 label: (
-    //                     <div className="edit-Testplace">
-    //                         <Link to="/edit" className="btn btn-primary btn-sm float-end">Edit</Link>
-    //                     </div>
-
-    //                 ),
-    //             },
-
+    
     return (
         <div className="post">
             {

@@ -7,16 +7,16 @@ import Seeksidebar from "../../components/seeksidebar/seeksidebar"
 import "../post/post.css"
 
 // thư viện post 
- import 'antd/dist/antd.min.css';
+//import 'antd/dist/antd.min.css';
 //  import { useState, useEffect } from "react";
-  import axios from "axios";
- import { Button, Modal, Menu, Space, Dropdown } from 'antd';
- import { faEllipsis, faThumbsUp, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
- import Comment from "../../components/comment/comment"
- import CommentTest from "../comment/commentTest";
- import { Link, browserHistory } from "react-router-dom"
- import Like from "../like/like";
- import Edit from "../Edit/edit";
+//   import axios from "axios";
+//  import { Button, Modal, Menu, Space, Dropdown } from 'antd';
+//  import { faEllipsis, faThumbsUp, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
+//  import Comment from "../../components/comment/comment"
+//  import CommentTest from "../comment/commentTest";
+//  import { Link, browserHistory } from "react-router-dom"
+//  import Like from "../like/like";
+//  import Edit from "../Edit/edit";
 
 function Topbar(){
     const [posts, setData] = useState([])
