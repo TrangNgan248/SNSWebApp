@@ -34,23 +34,23 @@ export default function Like(props) {
     useEffect(() => {
         async function getLike() {
             const likeDatabase = await axios.get(`http://127.0.0.1:8000/api/like/${post_id}`)
-            console.log("likeDatabase", likeDatabase.data)
+            // console.log("likeDatabase", likeDatabase.data)
 
             setLikes(likeDatabase.data)
             let likeByUser = {}
-            console.log("userLogin",userLogin);
+            // console.log("userLogin",userLogin);
             for (let index = 0; index < likes?.length; index++) {
-                console.log("item",likes[index]);
+                // console.log("item",likes[index]);
                 if (likes[index].user_id !== userLogin.id) {
                     // likeByUser = likes[index].user_id;
-                    console.log("abc");
+                    // console.log("abc");
                     break;
 
                 }
 
             }
             // const likeByUser = likes?.find(item => item.user_id === userLogin.id)
-            console.log("likeByUser", likeByUser);
+            // console.log("likeByUser", likeByUser);
         }
         getLike()
 
@@ -61,13 +61,14 @@ export default function Like(props) {
 
     const count = likes.length;
     return (
-        <div className="postLikeIconHover">
-            <FontAwesomeIcon icon={faThumbsUp} className="postLikeIcon" onClick={like} style={{ color: isLike ? "blue" : "black" }} />
-            <div className="postLikeHide">
-                <span className="postCounterLike"> {count} </span>
+        <div>
+            <div class="postLikeIconHover">
+                <FontAwesomeIcon icon={faThumbsUp} className="postLikeIcon" onClick={like} style={{ color: isLike ? "blue" : "black" }}  />
+            </div>
+            <div class="postLikeHide">
+                <span class="postCounterLike"> {count} like </span>
             </div>
         </div>
-
     )
 
 }

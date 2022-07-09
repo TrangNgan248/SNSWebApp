@@ -6,12 +6,31 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell } from '@fortawesome/free-solid-svg-icons'
 import Topbar from '../../components/topbar/Topbar';
 import {  useState } from 'react';
-export default function Channel() {
+import { useParams } from 'react-router-dom'
+export default function Channel(props) {
     const [isActive,setIsActive] = useState(false);
     const [buttonText,setButtonText]=useState(false)
     const HandleClick=()=>{
         setIsActive(current=> !current);
     }
+    const {id} = useParams();
+    let channel_id = id;
+    let join = async (e) => {
+        e.preventDefault();
+        try {
+            let res = await fetch("http://127.0.0.1:8000/api/auth/joinChannel", {
+                method: "POST",
+                body: JSON.stringify({ channel_id }),
+                headers: {
+                    "Content-Type": 'application/json',
+                    "Accept": 'application/json',
+                    "Authorization": 'Bearer ' + localStorage.getItem("access_token"),
+                }
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
   return (
     <>
@@ -29,7 +48,7 @@ export default function Channel() {
             </div>
             <div className="navChannel">
                 <span className='channelText'> 「日本語チャンネル」</span>             
-                <button className="btnjoin"> Join</button>
+                <button className="btnjoin" onClick={join}> Join</button>
                 <FontAwesomeIcon icon={faBell} className="notiIcon" onClick={HandleClick} style={{ color: isActive ? "blue" : "black" }}/>            
             </div>
             <div className="channelContent">

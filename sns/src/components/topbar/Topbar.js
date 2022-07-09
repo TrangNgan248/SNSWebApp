@@ -7,10 +7,12 @@ export default function Topbar(){
     return(
         <div className="topbarContainer">
             <div className="topbarLeft">
+
             <Link to="/">
                 <img src="/assets/testimg/logo.png" alt="" className="Logoimg"></img>
                 <span className="Logo">Fuurin</span>
                 </Link>
+
             </div>
             <div className="topbarCenter">
                 <div className="Search">
@@ -32,11 +34,11 @@ export default function Topbar(){
             <div className="topbarRight">
                 <div className="iconTopbars">
                     <div className="iconTopbar">
-                        <FontAwesomeIcon icon={faUser} />
+                        <Link to ="/profile"><FontAwesomeIcon icon={faUser} /></Link>
                     </div>
                     
                     <div className="iconTopbar">
-                        <FontAwesomeIcon icon={faGear} />
+                        <Link to="/setting"><FontAwesomeIcon icon={faGear} /></Link>
                     </div>
                     <div className="iconTopbar">
                         <FontAwesomeIcon icon={faBell} />

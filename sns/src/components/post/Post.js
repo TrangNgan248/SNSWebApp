@@ -4,13 +4,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Modal, Menu, Space, Dropdown } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsis, faThumbsUp, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsis, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import Comment from "../../components/comment/comment"
 import CommentTest from "../comment/commentTest";
 
-import { Link, browserHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Like from "../like/like";
-import Edit from "../Edit/edit";
 
 
 export default function Post() {
@@ -71,36 +70,7 @@ export default function Post() {
    })
     .catch((err) => console.error(err.response.data.errors));
     };
-    // const menu = (
-    //     <Menu
-    //         items={[
-    //             {
-    //                 key: '1',
-    //                 label: (
-    //                     <div className="detail-Testplace">
-    //                         <Link to="/detail" className="btn btn-primary btn-sm float-end">Detail</Link>
-    //                     </div>
-
-    //                 ),
-    //             },
-    //             {
-    //                 key: '2',
-    //                 label: (
-    //                     <div className="edit-Testplace">
-    //                         <Link to="/edit" className="btn btn-primary btn-sm float-end">Edit</Link>
-    //                     </div>
-
-    //                 ),
-    //             },
-
-    //         ]}
-    //     />
-    // );
-
-    const myData = {
-        name: 'Some thing',
-        price: 123
-      }
+    
     return (
         <div className="post">
             {
@@ -144,28 +114,28 @@ export default function Post() {
                                 <Space direction="vertical">
                                     <Space wrap>
                                         <Dropdown overlay={<Menu
-            items={[
-                {
-                    key: '1',
-                    label: (
-                        <div className="edit-Testplace">
-                              <Link to="/edit" state={post} className="btn btn-primary btn-sm float-end">Edit</Link>
-                        </div>
+                                                    items={[
+                                                        {
+                                                            key: '1',
+                                                            label: (
+                                                                <div className="edit-Testplace">
+                                                                    <Link to="/edit" state={post} className="btn btn-primary btn-sm float-end">Edit</Link>
+                                                                </div>
 
-                    ),
-                },
-                {
-                    key: '2',
-                    label: (
-                        <div className="delete-Testplace">
-                            <button type="submit" className="btn btn-primary btn-sm" onClick={() => handleDelete(post.id)}>DELETE</button>
-                        </div>
+                                                            ),
+                                                        },
+                                                        {
+                                                            key: '2',
+                                                            label: (
+                                                                <div className="delete-Testplace">
+                                                                    <button type="submit" className="btn btn-primary btn-sm" onClick={() => handleDelete(post.id)}>DELETE</button>
+                                                                </div>
 
-                    ),
-                },
+                                                            ),
+                                                        },
 
-            ]}
-        />} placement="bottom">
+                                                    ]}
+                                                />} placement="bottom">
                                             <Button><FontAwesomeIcon icon={faEllipsis} className="postTopRightIcon" /></Button>
                                         </Dropdown>
 
@@ -187,12 +157,12 @@ export default function Post() {
                                     <FontAwesomeIcon icon={faComment} className="postCommentIcon" />
                                 </div>
 
-                                <Button type="link" onClick={() => showModal(post.id)}>
+                                <Button type="link" onClick={() => showModal(post.id)} data-target={`#${post.id}`}>
                                     Comment
                                 </Button>
-                                <Modal title="Comment" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                                <Modal title="Comment" id={post.id} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                                     <CommentTest id={commentID} />
-                                    <Comment id={post.id}/>
+                                    <Comment id={post.id}/> 
                                 </Modal>
                             </div>
                             <div className="postBottomRight">
@@ -202,7 +172,7 @@ export default function Post() {
                             
                         </div>
                     </div>
-                )}
+                ).reverse()}
         </div>
     );
 }

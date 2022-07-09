@@ -10,9 +10,13 @@ class Like_comment extends Model
     use HasFactory;
 
     protected $tables = 'likeComments';
-    protected $timestamp = false;
+    public $timestamps = false;
 
     public function comment(){
         return $this->belongsTo(Comment::class, 'cmt_id');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
