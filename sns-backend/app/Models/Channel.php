@@ -15,4 +15,8 @@ class Channel extends Model
     public function posts(){
         return $this->hasMany(Post::class);
     }
+
+    public function users(){
+        return $this->belongsToMany(User::class, 'join_channel', 'channel_id', 'user_id');
+    }
 }
