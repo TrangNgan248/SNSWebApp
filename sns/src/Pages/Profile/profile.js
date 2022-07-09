@@ -1,4 +1,4 @@
-import React from 'react'
+import {useState} from 'react'
 import Sidebar from '../../components/sidebar/sidebar'
 import Post from '../../components/post/Post'
 import Topbar from '../../components/topbar/Topbar'
@@ -6,7 +6,21 @@ import "./profile.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faHome,faLocationDot,faGraduationCap,faHeart} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
-export default function profile() {
+import { Button, Modal } from 'antd';
+
+
+export default function Profile() {
+    let [isModalVisible, setIsModalVisible] = useState(false);
+    const showModal = (id) => {
+        setIsModalVisible(true);
+    };
+    const handleOk = () => {
+        setIsModalVisible(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
   return (
     <>
       <Topbar/>
@@ -27,9 +41,37 @@ export default function profile() {
             <p className='shortIntroUser'>Death is like the wind, alaways by my side</p>
             <hr/>
         <div class="userFollowNav">
-            <Link to="/profile"><div className='userFollow'>Post</div></Link>
-            <div className='userFollow'>Follower</div>
-            <div className='userFollow'>Following</div>
+            <Link to="/Profile"><div className='userFollow'>Post</div></Link>
+            <Button type="link" onClick={showModal}>
+                    <button className="btn">Follower</button>
+                </Button>
+                <Modal title="Follower" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                    
+                    <ul className="channelList">
+                        <li className="channelSeekItem">  
+                            <img src="assets/testimg/ayame1.png" alt=""className="channelImg"></img>
+                            <span className="channelName">Ayame1</span>
+                            <div className='followButton'><button className="btn1">Unfollow</button></div>
+                            
+                        </li>
+                        <li className="channelSeekItem">        
+                             <img src="assets/testimg/ayame2.jpg" alt="" className="channelImg"></img>
+                            <span className="channelName">Ayame2</span>
+                            <div className='followButton'><button className="btn">Follow</button></div>
+                        </li>
+                        <li className="channelSeekItem">
+                          
+                            <img src="assets/testimg/sunlogo.jpg" alt="" className="channelImg"></img>
+                            <span className="channelName">Sun*</span>
+                            <div className='followButton'><button className="btn1">Unfollow</button></div>
+                        </li>                                   
+                           
+                    </ul>
+                </Modal>
+                <Button type="link" onClick={showModal}>
+                    <button className="btn">Following</button>
+                </Button>
+           
         </div>
         </div>
         </div>
