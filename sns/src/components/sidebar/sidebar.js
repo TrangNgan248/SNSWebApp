@@ -36,8 +36,8 @@ export default function Sidebar() {
                 <ul className="sidebarList">
                     <li className="sidebarItem">
                         <Link to="/">
-                            <FontAwesomeIcon icon={faHome} className="sidebarIcon" />
-                            <span className="sidebarItemtext">Menu</span></Link>
+                        <FontAwesomeIcon icon={faHome} className="sidebarIcon" />   
+                        <span className="sidebarItemtext">Menu</span></Link>
                     </li>
                     <li className="sidebarItem">
                         <Link to="/profile">
