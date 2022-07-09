@@ -25,7 +25,7 @@ class PostController extends Controller
         $post = new Post();
         $post->title = $req->input('title');
         $post->content = $req->input('content');
-        $post->author_id = 1;
+        $post->author_id = 2;
         $post->channel_id = 1;
         $post->display = $req->file('display')->store('img', 'public');
         $post->num_view = 3;
@@ -51,10 +51,13 @@ class PostController extends Controller
         
         
     }
+
     public function search($key){
-        
+       
         return Post::where('title','LIKE',"%$key%")->get();
     }
+
+
     public function edit(Request $request, Post $post){
         $request->validate([
             'content' => 'required',

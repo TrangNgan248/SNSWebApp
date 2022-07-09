@@ -6,6 +6,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SearchChannel;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -63,5 +64,7 @@ Route::get('/user', [UserController::class, 'index']);
 Route::get('/post/{post}', [PostController::class, 'show']);
 
 Route::get('/search/{key}', [PostController::class, 'search']);
+
+Route::get('/SearchChannel/{key}', [SearchChannel::class, 'searchchannel']);
 
 
