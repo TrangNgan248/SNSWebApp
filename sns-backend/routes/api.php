@@ -13,9 +13,10 @@ use App\Http\Controllers\SearchChannel;
 use App\Models\Channel;
 
 use GuzzleHttp\Middleware;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SearchUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,4 +69,4 @@ Route::get('/search/{key}', [PostController::class, 'search']);
 
 Route::get('/SearchChannel/{key}', [SearchChannel::class, 'searchchannel']);
 
-
+Route::get('/SearchUser/{key}', [SearchUser::class, 'searchUser']);

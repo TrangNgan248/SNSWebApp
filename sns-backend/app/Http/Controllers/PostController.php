@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::latest()->get();
+        $posts = Post::all();
         return $posts;
     }
 
