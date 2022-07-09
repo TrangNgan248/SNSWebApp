@@ -5,7 +5,9 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ChannelController;
+use App\Http\Controllers\Like_CommentController;
 use App\Http\Controllers\UserController;
+use App\Models\Channel;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,12 +27,6 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-//Route::get('/like', [LikeController::class, 'index']);
-// Route::post('/register', [RegisterController::class, 'register']);
-// Route::post('/login', [LoginController::class, 'login']);
-// Route::group(['middleware' => ['auth:sanctum']], function(){
-//     Route::post('/logout', [LogoutController::class, 'logout']);
-// });
 
 Route::prefix('auth')->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
@@ -42,7 +38,11 @@ Route::prefix('auth')->group(function () {
     Route::post('/change-pass', [AuthController::class, 'changePassWord'])->middleware('auth:api');
     Route::post('/comment', [CommentController::class, 'store'])->middleware('auth:api');
     Route::post('/like', [LikeController::class, 'store'])->middleware('auth:api');
+    Route::post('/joinChannel', [ChannelController::class, 'join'])->middleware('auth:api');
+    Route::post('/likeComment', [Like_CommentController::class, 'store'])->middleware('auth:api');
 });
+
+Route::get('/channel/{channel}', [ChannelController::class, 'show']);
 
 Route::get('/like/{post}', [LikeController::class, 'index']);
 Route::get('/comment/{post}', [CommentController::class, 'index']);

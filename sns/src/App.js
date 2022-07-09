@@ -10,12 +10,6 @@ import Profile from "./Pages/Profile/profile";
 import Setting from "./Pages/SettingProfile/setting";
 // import { useNavigate } from "react-router-dom";
 function App() {
-  // const navigate = useNavigate();
-  // const token = localStorage.getItem('access_token');
-  
-  // if(!token) {
-    
-  // }
     return (
       <Router>
         <Routes>
@@ -24,7 +18,7 @@ function App() {
           <Route path="/register" element={<Register/>}/>
           <Route path="/edit" element={<Edit/>}/>
           <Route path="/seek" element={<Seek/>}/>
-          <Route path="/channel" element={<Channel/>}/>
+          <Route path="/channel/:id" element={<Channel/>}/>
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/setting" element={<Setting/>}/>
         </Routes> 

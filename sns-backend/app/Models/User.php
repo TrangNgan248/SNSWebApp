@@ -60,12 +60,20 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function channels(){
+        return $this->belongsToMany(Channel::class, 'join_channel', 'user_id', 'channel_id');
+    }
+
     public function posts(){
         return $this->hasMany(Post::class, 'author_id');
     }
 
     public function comments(){
         return $this->hasMany(Comment::class);
+    }
+
+    public function likeComments(){
+        return $this->hasMany(Like_comment::class, 'user_id');
     }
 
     public function likes(){
