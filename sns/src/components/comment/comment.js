@@ -16,71 +16,95 @@ export default function Comment(props) {
         }
         getComment()
     }, [])
+let id = props.id;
+console.log(id);
+useEffect(() => {
+    async function getComment() {
+        const comments = await axios.get(`http://127.0.0.1:8000/api/comment/${id}`)
+        console.log(comments.data)
+        setComments(comments.data)
+    }
+    getComment()
+}, []);
+const [content, setContent]= useState("");
+async function editComment(cmid) {
+    let item = {content}
+    console.warn(item)
+    const formData = new FormData();
+    formData.append('content', content);
+    await fetch(`http://127.0.0.1:8000/api/comment/edit/${cmid}`, {
+        method: 'POST',
+        body: formData,
+    });
+    alert("Data has been updated");
+}
+const handleDelete = (id) => {
+    axios.delete(`http://127.0.0.1:8000/api/comment/${id}`)
+.then((response)=>{
+  console.log(response.data);
+  alert("Data has been deleted");
+})
+.catch((err) => console.error(err.response.data.errors));
+};
 
-    
-    const menu = (
-        <Menu
-            items={[
-                {
-                    key: '1',
-                    label: (
-                        <div className="delete-Testplace">
-                            <Button> Delete </Button>
-                        </div>
-
-                    ),
-                },
-                {
-                    key: '2',
-                    label: (
-                        <div className="edit-Testplace">
-                            <Button> Edit </Button>
-                        </div>
-
-
-                    ),
-                },
-
-            ]}
-        />
-    );
-    return (
+  return (
 
         <div className="comment">
             {
-                comments.map((comment) =>
-                    <div className="commentLeft">
-                        <img
-                            className="commentProfileImg"
-                            src="/assets/testimg/Ayame2.jpg"
-                            alt="" />
-                        <div className="commentCenter">
-                            <ul className="commentItemList">
-                                <li >
-                                    <span> {comment.content} </span>
-                                </li>
-                                {/* <li >
-                                    <div className="commentLikeIconHover">
-                                        <FontAwesomeIcon icon={faThumbsUp} className="commentLikeIcon" onClick={() => {
-                                            setIsLike(!isLike)
-                                        }} style={{ color: isLike ? "blue" : "black" }} />
-                                    </div>
-                                    <div className="commentLikeHide">
-                                        <span className="commentCounterLike"> 10 like</span>
-                                    </div>
-                                </li> */}
-                               <li>
-                                   <LikeComment id={comment.id}/>
-                               </li>
-                            </ul>
+            comments.map((comment) =>
+          <div className="commentLeft">
+            <img
+              className="commentProfileImg"
+              src="/assets/testimg/Ayame2.jpg"
+              alt="" />
+            <div className="commentCenter">
+                 <ul className="commentItemList">
+                            <li >
+                                <span> {comment.content} </span>
+                                <input type="text" defaultValue={comment.content} onChange={(e) =>setContent(e.target.value)}/>
+                                <button onClick={() => editComment(comment.id)} >submit </button>
+                            </li>
+                            <li >
+                                <div className="commentLikeIconHover">
+                                 <FontAwesomeIcon icon={faThumbsUp} className="commentLikeIcon" onClick={()=>{setIsLike(!isLike)
+                                 }}  style={{color: isLike? "blue": "black"}}  />
+                                </div>
+                                <div className="commentLikeHide">
+                                 <span className="commentCounterLike"> 10 like</span>
+                                </div>
+                            </li>
+                            
+                        </ul>
+               
+            </div>
+            <div className="commentTopRight">
+            <Space direction="vertical">
+                                    <Space wrap>
+                                        <Dropdown overlay={<Menu
+                                                    items={[
+                                                        {
+                                                            key: '1',
+                                                            label: (
+                                                                <div className="edit-Testplace">
+                                                                    <Button> Edit </Button>
+                                                                </div>
 
-                        </div>
-                        <div className="commentTopRight">
-                            <Space direction="vertical">
-                                <Space wrap>
-                                    <Dropdown overlay={menu} placement="bottom">
-                                        <Button><FontAwesomeIcon icon={faEllipsis} className="commentTopRightIcon" /></Button>
-                                    </Dropdown>
+                                                            ),
+                                                        },
+                                                        {
+                                                            key: '2',
+                                                            label: (
+                                                                <div className="delete-Testplace">
+                                                                    <button type="submit" onClick={() => handleDelete(comment.id)}>DELETE</button>
+                                                                </div>
+
+                                                            ),
+                                                        },
+
+                                                    ]}
+                                                />} placement="bottom">
+                                            <Button><FontAwesomeIcon icon={faEllipsis} className="postTopRightIcon" /></Button>
+                                        </Dropdown>
 
                                 </Space>
                             </Space>

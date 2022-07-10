@@ -32,4 +32,20 @@ class CommentController extends Controller
         $comment->save();
         return response()->json(['message'=>'success', 'count'=>count($comment->post->comments)]);
     }
+
+    public function edit(Request $request, Comment $comment)
+    {
+        $request->validate([
+            'content' => 'required',
+        ]);
+        $comment->content = $request->input('content');
+        $comment->save();
+        return response()->json($comment);
+    }
+
+    public function delete(Comment $comment){
+        $comment = Comment::find($comment->id);
+        $comment->delete();
+        return response()->json('Successfully Deleted');
+    }
 }
