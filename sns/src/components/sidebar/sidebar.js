@@ -16,6 +16,14 @@ export default function Sidebar() {
         }
         getAllChannel()
     }, []);
+    const [searchchannel, setData] = useState([])
+    async function SearchChannel(key) {
+        console.warn(key)
+        let result = await fetch("http://localhost:8000/api/SearchChannel/"+key);
+        result= await result.json();
+        setData(result)
+        
+    }  
     const [isModalVisible, setIsModalVisible] = useState(false);
     const showModal = (id) => {
         setIsModalVisible(true);
@@ -67,40 +75,34 @@ export default function Sidebar() {
 
                 <div className="sidebarShowmore">
                     <FontAwesomeIcon icon={faAngleDown} />
-                    <a href="/#" className="showmore">Show more</a>
+                    <a href="/" className="showmore">Show more</a>
                 </div>
                 <hr className="sidebarHr"></hr>
                 <Button type="link" onClick={showModal}>
                     <button className="btn"><i className="fa-solid fa-circle-plus"> Join new channels</i></button>
                 </Button>
                 <Modal title="Join New Channel" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-
+                
                     <ul className="channelList">
+                    
                         <li className="Search">
+                        
                             <div className="topbarCenter">
                                 <FontAwesomeIcon icon={faMagnifyingGlass} className="searchicon" />
-                                <input placeholder="Seacrh channel" className="searchInput" />
+                                <input type="text" onChange = {(e)=>SearchChannel(e.target.value)} placeholder="Seacrh channel" className="searchInput" />
                             </div>
                         </li>
-                        <li className="channelSeekItem">
+                        {searchchannel.map((get)=>  
+                        
+                        <div className="channelSeekItem">
                             <Checkbox onChange={onChange} className="checkBox" ></Checkbox>
                             <img src="assets/testimg/it.png" alt="" className="channelImg"></img>
-                            <span className="channelName">IT</span>
-                        </li>
-                        <li className="channelSeekItem">
-                            <Checkbox onChange={onChange} className="checkBox"></Checkbox>
-
-                            <img src="assets/testimg/sunlogo.jpg" alt="" className="channelImg"></img>
-                            <span className="channelName">Jobfair</span>
-                        </li>
-                        <li className="channelSeekItem">
-                            <Checkbox onChange={onChange} className="checkBox"></Checkbox>
-
-                            <img src="assets/testimg/nihon.png" alt="" className="channelImg"></img>
-                            <span className="channelName">Nihongo</span>
-                        </li>
-
+                            <span className="channelName">{get.name}</span>
+                        </div>
+                        
+                    )} 
                     </ul>
+                    
                     <div className="sidebarShowmore">
                         <FontAwesomeIcon icon={faAngleDown} />
                         <a href="/#" className="showmore">Show more</a>

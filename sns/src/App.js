@@ -6,7 +6,7 @@ import Register from "./Pages/Register/register";
 import Seek from "./Pages/Seek/seek";
 import Edit from "./components/Edit/edit";
 import Channel from "./Pages/Channel/channel";
-import Profile from "./Pages/Profile/Profile";
+import Profile from "./Pages/Profile/profile";
 import Setting from "./Pages/SettingProfile/setting";
 // import { useNavigate } from "react-router-dom";
 function App() {

@@ -7,11 +7,16 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\Like_CommentController;
 use App\Http\Controllers\UserController;
+
+use App\Http\Controllers\SearchChannel;
+
 use App\Models\Channel;
+
 use GuzzleHttp\Middleware;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SearchUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,4 +77,6 @@ Route::get('/post/{post}', [PostController::class, 'show']);
 
 Route::get('/search/{key}', [PostController::class, 'search']);
 
+Route::get('/SearchChannel/{key}', [SearchChannel::class, 'searchchannel']);
 
+Route::get('/SearchUser/{key}', [SearchUser::class, 'searchUser']);
