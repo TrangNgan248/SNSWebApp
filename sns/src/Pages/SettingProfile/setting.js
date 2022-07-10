@@ -2,8 +2,52 @@ import Topbar from '../../components/topbar/Topbar'
 import "./setting.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faImage,faCircleUser,faLock,faGear,faTrash} from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import axios from "axios";
 export default function Setting() {
+    const userLogin = localStorage.getItem("user");
+    console.log("userLogin", userLogin);
+    var userLog = JSON.parse(userLogin);
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        async function getUser() {
+            const users = await axios.get("http://127.0.0.1:8000/api/user")
+            console.log(users.data)
+            console.log(typeof users)
+            setUsers(users.data)
+        }
+        getUser()
+    }, []);
+    const loguser = users.filter(user => user.id === userLog.id);
+    console.log("loguser", loguser);
+    const [name, setName]= useState("");
+    const [dob, setDob] = useState("");
+    const [gender, setGender] = useState(0);
+    const [img, setImg] = useState("");
+    async function editProfile(){
+        let item = {name, dob, gender};
+        console.warn(item)
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('dob', dob);
+        formData.append('gender',gender);
+        await fetch(`http://localhost:8000/api/user/edit/${userLog.id}` , {
+            method: 'POST',
+            body: formData
+        });
+        alert("Data has been updated");
+    };
+    async function changeAvatar(){
+        let item = {img};
+        console.warn(item)
+        const formData = new FormData();
+        formData.append('img', img);
+        await fetch(`http://localhost:8000/api/user/avatar/${userLog.id}` , {
+            method: 'POST',
+            body: formData
+        });
+        alert("Data has been updated");
+    };
     const [tab,useTab]= useState(1);
     const Action=(index)=>{
         useTab(index);
@@ -64,32 +108,33 @@ export default function Setting() {
             <div className='settingGeneralContent'>
             <ul className="settingGeneralList">
                     <li className="settingGeneralItem">
-                        <input type={Text} className="settingInput" placeholder="First Name" />  
+                        {loguser.map(user => 
+                        <input type={Text} className="settingInput" defaultValue={user.name} onChange={(e) =>setName(e.target.value)}/>
+                        )}
                     </li>
                     <li className="settingGeneralItem">
-                        <input type={Text} className="settingInput" placeholder="Last Name" />  
-                    </li>
-                    <li className="settingGeneralItem">
-                        <input type="text" className="settingInput" placeholder="E-mail" />  
+                        <input type="text" className="settingInput" placeholder="E-mail" value={userLog.email} />
                     </li>
                     <li className="settingGeneralItem">
                         <input type={Text} className="settingInput1" placeholder="Introduce" />  
                     </li>
                     <li className="settingGeneralItem">
-                        <select className="settingInput">
+                        <select className="settingInput" onChange={(e) =>setGender(e.target.value)}>
                         <option value="" disabled selected>Sex</option>
-                        <option value="volvo">Male</option>
-                        <option value="volvo">Female</option>
-                        <option value="volvo">Others</option>
+                        <option value="1" >Male</option>
+                        <option value="2" >Female</option>
+                        <option value="3" >Others</option>
                         </select>
                     </li>
                     <li className="settingGeneralItem">
-                        <input type={Text} className="settingInput" placeholder="Phone number" />  
+                        {loguser.map(user =>
+                        <input type="date" className="settingInput" placeholder="date of birth" defaultValue={user.dob} onChange={(e) =>setDob(e.target.value)} />
+                        )}
                     </li>
                     <li className="settingGeneralItem">
                         <input type={Text} className="settingInput" placeholder="Role: User" readOnly  />  
                     </li>
-                    <button type="submit" className="submitButton">Submit</button>
+                    <button type="submit" onClick={editProfile} className="submitButton">Submit</button>
                 </ul>
             </div>
         </div>
@@ -116,12 +161,12 @@ export default function Setting() {
                 <ul className="settingGeneralList">
                     <li className="settingGeneralItem">
                         <label className='settingLabel'>Change Avatar</label>
-                        <input type="file" className="settingInput1" placeholder="Change Avatar" />  
+                        <input type="file" onChange={(e) =>setImg(e.target.files[0])} className="settingInput1" placeholder="Change Avatar" />  
                     </li>
                     <li className="settingGeneralItem">
                         <label className='settingLabel'>Change Background picture</label>
                         <input type="file" className="settingInput1 " placeholder="Change background Piture" />  
-                        <button type="submit" className="submitButton">Submit</button>
+                        <button type="submit" onClick={changeAvatar} className="submitButton">Submit</button>
                     </li>
                    
                 </ul>

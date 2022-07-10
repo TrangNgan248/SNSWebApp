@@ -7,6 +7,7 @@ use App\Models\Post;
 use Dotenv\Util\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use App\Models\User;
 use Exception;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Facades\Log;
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+
+
     public function index(){
         $posts = Post::latest()->get();
         return $posts;
@@ -72,6 +75,10 @@ class PostController extends Controller
         $post->delete();
 
         return response()->json('Successfully Deleted');
+    }
+    public function userPost(User $user){
+        $post = Post::where('author_id', $user->id)->latest()->get();
+        return $post;
     }
 }
 

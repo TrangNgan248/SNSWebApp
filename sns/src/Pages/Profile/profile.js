@@ -1,16 +1,32 @@
-import {useState} from 'react'
-import Sidebar from '../../components/sidebar/sidebar'
-import Post from '../../components/post/Post'
-import Topbar from '../../components/topbar/Topbar'
 import "./profile.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faHome,faLocationDot,faGraduationCap,faHeart} from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import UserPost from "../../components/post/userPost";
+import Sidebar from '../../components/sidebar/sidebar';
+import Topbar from '../../components/topbar/Topbar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faHome,faLocationDot,faGraduationCap,faHeart} from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import axios from "axios";
 import { Button, Modal } from 'antd';
-
-
 export default function Profile() {
-    let [isModalVisible, setIsModalVisible] = useState(false);
+    const userLogin = localStorage.getItem("user");
+    console.log("userLogin", userLogin);
+    var userLog = JSON.parse(userLogin);
+    console.log("userLogin", userLog);
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        async function getUser() {
+            const users = await axios.get("http://127.0.0.1:8000/api/user")
+            console.log(users.data)
+            console.log(typeof users)
+            setUsers(users.data)
+        }
+        getUser()
+    }, []);
+    const loguser = users.filter(user => user.id === userLog.id);
+    console.log("loguser", loguser);
+    console.log(typeof loguser);
+    const [isModalVisible, setIsModalVisible] = useState(false);
     const showModal = (id) => {
         setIsModalVisible(true);
     };
@@ -26,6 +42,7 @@ export default function Profile() {
       <Topbar/>
       <div className="homeContainer">
         <Sidebar/>
+        {loguser.map((user) => 
         <div className="profileContentAll">
         <div className="navProfile">
         <div className='avatarProfileWrap'>
@@ -33,11 +50,11 @@ export default function Profile() {
                 <img className='bgImg' src='assets/testimg/Yasuo_0.jpg'></img>
             </div>
             <div className="avaProfileDiv">
-                <img className='avaProfileImg' src='assets/testimg/ngot logo.jpg'></img>
+                <img className='avaProfileImg' src={`http://localhost:8000/storage/${user.img}`}></img>
             </div>
         </div>
         <div className='UserIntro1'>
-            <p className="nameUser">Hasagi 15GG</p>
+            <p className="nameUser">{user.name}</p> 
             <p className='shortIntroUser'>Death is like the wind, alaways by my side</p>
             <hr/>
         <div class="userFollowNav">
@@ -76,7 +93,7 @@ export default function Profile() {
         </div>
         </div>
         <div className="userProfileStt">
-        <Post/>
+        <UserPost id={user.id}/>
         <div className="profileIntro">
                 <div className="channelIntroWrap">
                     <span className='channelIntroOp'>Profile</span>
@@ -98,15 +115,13 @@ export default function Profile() {
                         <FontAwesomeIcon icon={faHeart}  className="introUserIcon" />
                         <span className="introUserItemtext">Single</span>
                     </li>
-    
-                    
                 </ul>
                 </div>
             </div>
         </div>
          
         </div>
-        
+        )}
       </div>
     </>
   )

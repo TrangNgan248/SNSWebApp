@@ -12,13 +12,14 @@ import { Link } from "react-router-dom"
 import Like from "../like/like";
 
 
-export default function Post() {
+export default function UserPost(props) {
     // console.log(post)
+    let userid = props.id;
     const [posts, setPosts] = useState([]);
     const [commentID, setCommentID] = useState(null);
     useEffect(() => {
         async function getAllPost() {
-            const posts = await axios.get("http://127.0.0.1:8000/api/post")
+            const posts = await axios.get(`http://127.0.0.1:8000/api/post/${userid}`)
             console.log(posts.data)
             setPosts(posts.data)
         }

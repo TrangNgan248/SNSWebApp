@@ -47,7 +47,13 @@ Route::get('/channel/{channel}', [ChannelController::class, 'show']);
 Route::get('/like/{post}', [LikeController::class, 'index']);
 Route::get('/comment/{post}', [CommentController::class, 'index']);
 
+Route::get('/post/{user}', [PostController::class, 'userPost']);
 Route::delete('/post/{post}', [PostController::class, 'delete']);
+
+Route::delete('/comment/{comment}', [CommentController::class, 'delete']);
+
+Route::post('/comment/edit/{comment}', [CommentController::class, 'edit']);
+
 Route::post('/post/edit/{post}', [PostController::class, 'edit']);
 
 Route::post('/post/create', [PostController::class, 'store']);
@@ -57,6 +63,10 @@ Route::get('/post', [PostController::class, 'index']);
 Route::get('/channel', [ChannelController::class, 'index']);
 
 Route::get('/user', [UserController::class, 'index']);
+
+Route::post('/user/edit/{user}', [UserController::class, 'edit']);
+
+Route::post('/user/avatar/{user}', [UserController::class, 'avatar']);
 
 Route::get('/post/{post}', [PostController::class, 'show']);
 
