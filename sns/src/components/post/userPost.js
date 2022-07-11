@@ -79,10 +79,16 @@ export default function UserPost(props) {
                     <div className={`postwrapper ${post.id}`}>
                         <div className="postTop">
                             <div className="postTopLeft">
+                            {users.map((user) => {
+                                            if (user.id === post.author_id)
+                                                return (
                                 <img
                                     className="postProfileImg"
-                                    src="/assets/testimg/Ayame2.jpg"
+                                    src={`http://localhost:8000/storage/${user.img}`}
                                     alt="" />
+                                    )
+                                }
+                                )}
                                 <ul className="postTopLeftList">
                                     <li className="postTopLeftItem1">
                                         {channels.map((channel) => {

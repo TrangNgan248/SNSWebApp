@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Like_comment;
+use Illuminate\Console\Command;
 use Illuminate\Http\Request;
+use App\Models\Comment;
 
 class Like_CommentController extends Controller
 {
@@ -23,5 +25,9 @@ class Like_CommentController extends Controller
         $likeComment->cmt_id = $request->comment_id;
         $likeComment->save();
         }
+    }
+    public function index(Comment $comment){
+        $like = Like_comment::where('cmt_id', $comment->id)->get();
+        return $like;
     }
 }
