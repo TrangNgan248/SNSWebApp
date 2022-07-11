@@ -78,10 +78,16 @@ export default function Post() {
                     <div className={`postwrapper ${post.id}`}>
                         <div className="postTop">
                             <div className="postTopLeft">
+                            {users.map((user) => {
+                                if (user.id === post.author_id)
+                                    return (
                                 <img
                                     className="postProfileImg"
-                                    src="/assets/testimg/Ayame2.jpg"
+                                    src={`http://localhost:8000/storage/${user.img}`}
                                     alt="" />
+                                    )
+                                }
+                                )}
                                 <ul className="postTopLeftList">
                                     <li className="postTopLeftItem1">
                                         {channels.map((channel) => {
@@ -162,8 +168,10 @@ export default function Post() {
                                 </Button>
                                 <Modal title="Comment" id={post.id} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                                     <CommentTest id={commentID} />
-                                    <Comment id={post.id}/> 
+                                    <Comment id={post.id}/>
                                 </Modal>
+                                <CommentTest id={commentID} />
+                                <Comment id={post.id}/>
                             </div>
                             <div className="postBottomRight">
                                 <FontAwesomeIcon icon={faBookmark} className="postBookmarkIcon" />
