@@ -50,6 +50,8 @@ Route::prefix('auth')->group(function () {
 Route::get('/channel/{channel}', [ChannelController::class, 'show']);
 
 Route::get('/like/{post}', [LikeController::class, 'index']);
+Route::get('/likeComment/{comment}', [Like_CommentController::class, 'index']);
+
 Route::get('/comment/{post}', [CommentController::class, 'index']);
 
 Route::get('/post/{user}', [PostController::class, 'userPost']);

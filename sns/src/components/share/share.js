@@ -1,14 +1,28 @@
 import "./share.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage, faUserPlus } from '@fortawesome/free-solid-svg-icons'
-import {useState} from 'react'
+import { useState, useEffect } from "react";
+import axios from "axios";
 function AddPost(){
   const [title, setTitle]= useState("");
   const [display, setDisplay] = useState("");
   const [content, setContent] = useState("");
-
+  const userLogin = localStorage.getItem("user");
+  console.log("userLogin", userLogin);
+  var userLog = JSON.parse(userLogin);
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+      async function getUser() {
+          const users = await axios.get("http://127.0.0.1:8000/api/user")
+          console.log(users.data)
+          console.log(typeof users)
+          setUsers(users.data)
+      }
+      getUser()
+  }, []);
+  const loguser = users.filter(user => user.id === userLog.id);
+  console.log("loguser", loguser);
     async function addPost(){ 
-
     let item = {title,content,display}
     console.warn(item)
     const formData = new FormData();
@@ -27,7 +41,9 @@ function AddPost(){
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <img className="shareProfileImg" src="assets/testimg/Ayame2.jpg" alt="" />
+          {loguser.map((user) => 
+          <img className="shareProfileImg" src={`http://localhost:8000/storage/${user.img}`} alt="" />
+          )}
           <div className="shareBox">
             <input type="text" placeholder="Title" className="shareInput" onChange={(e) =>setTitle(e.target.value)}  />
             <input type="text" placeholder="What's in your mind ?" className="shareInput1" onChange={(e) =>setContent(e.target.value)} />

@@ -47,16 +47,32 @@ const handleDelete = (id) => {
 .catch((err) => console.error(err.response.data.errors));
 };
 
+const [users, setUsers] = useState([]);
+useEffect(() => {
+    async function getUser() {
+        const users = await axios.get("http://127.0.0.1:8000/api/user")
+        console.log(users.data)
+        setUsers(users.data)
+    }
+    getUser()
+}, []);
+
   return (
 
         <div className="comment">
             {
             comments.map((comment) =>
           <div className="commentLeft">
+            {users.map((user) => {
+                if (user.id === comment.user_id)
+                    return (
             <img
               className="commentProfileImg"
-              src="/assets/testimg/Ayame2.jpg"
+              src={`http://localhost:8000/storage/${user.img}`}
               alt="" />
+              )
+            }
+            )}
             <div className="commentCenter">
                  <ul className="commentItemList">
                             <li >
