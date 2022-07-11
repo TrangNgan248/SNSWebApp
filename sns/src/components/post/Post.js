@@ -164,6 +164,9 @@ export default function Post() {
                                     <CommentTest id={commentID} />
                                     <Comment id={post.id}/> 
                                 </Modal>
+                                <CommentTest id={commentID} />
+                                    <Comment id={post.id}/> 
+                                 
                             </div>
                             <div className="postBottomRight">
                                 <FontAwesomeIcon icon={faBookmark} className="postBookmarkIcon" />
