@@ -9,7 +9,10 @@ import {  useState } from 'react';
 import { useParams } from 'react-router-dom'
 export default function Channel(props) {
     const [isActive,setIsActive] = useState(false);
-    const [buttonText,setButtonText]=useState(false)
+    const [buttonText,setButtonText]=useState(false);
+    function click(){
+        setButtonText(current=> !current);
+    }
     const HandleClick=()=>{
         setIsActive(current=> !current);
     }
@@ -48,7 +51,7 @@ export default function Channel(props) {
             </div>
             <div className="navChannel">
                 <span className='channelText'> 「日本語チャンネル」</span>             
-                <button className="btnjoin" onClick={join}> Join</button>
+                <button className="btnjoin" onClick={() => { join(); click()}} style={{ color: buttonText ? "black" : "white" }}> {`${buttonText? "Join":"Joined"}`}</button>
                 <FontAwesomeIcon icon={faBell} className="notiIcon" onClick={HandleClick} style={{ color: isActive ? "blue" : "black" }}/>            
             </div>
             <div className="channelContent">

@@ -52,15 +52,15 @@ export default function Setting() {
     const Action=(index)=>{
         useTab(index);
     };
-    const [isHovering, setIsHovering] = useState(false);
+//     const [isHovering, setIsHovering] = useState(false);
 
-    const handleMouseOver = () => {
-    setIsHovering(true);
-  };
+//     const handleMouseOver = () => {
+//     setIsHovering(true);
+//   };
 
-    const handleMouseOut = () => {
-    setIsHovering(false);
-  };
+//     const handleMouseOut = () => {
+//     setIsHovering(false);
+//   };
   return (
    <>
    <Topbar/>
@@ -116,7 +116,7 @@ export default function Setting() {
                         <input type="text" className="settingInput" placeholder="E-mail" value={userLog.email} />
                     </li>
                     <li className="settingGeneralItem">
-                        <input type={Text} className="settingInput1" placeholder="Introduce" />  
+                        <input type={Text} className="settingInput1" placeholder="Introduction" />  
                     </li>
                     <li className="settingGeneralItem">
                         <select className="settingInput" onChange={(e) =>setGender(e.target.value)}>
@@ -177,16 +177,12 @@ export default function Setting() {
             <div className='settingGeneralContent'>
                 <ul className="settingGeneralList">
                     <li className="settingGeneralItem">
-                        <button onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} type="submit" className="deleteButton">Delete all data</button> 
-                        <div>{isHovering && <span className='cautionDeleteProfile'>This action will delete all data about your profile, picture and status</span>}</div>
+                        <button type="submit" className="deleteButton">Delete all data</button> 
+                        <div><span className='cautionDeleteProfile'>This action will delete all data about your profile, picture and status</span></div>
                     </li>
                     <li className="settingGeneralItem">
-                        <button onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} type="submit" className="deleteButton">Delete Post</button> 
-                        <div>{isHovering && <span className='cautionDeleteProfile'>This action will delete all your post you created in all channels, all profile information will remain</span>}</div>
-                    </li>
-                    <li className="settingGeneralItem">
-                        <button onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} type="submit" className="deleteButton">Delete Account</button>
-                        <div>{isHovering && <span className='cautionDeleteProfile'>This action will delete your account and binding email. you can create account by the same Email later</span>}</div>
+                        <button type="submit" className="deleteButton">Delete Account</button>
+                        <div><span className='cautionDeleteProfile'>This action will delete your account and binding email. you can create account by the same Email later</span></div>
                     </li>
                 </ul>
             </div>
