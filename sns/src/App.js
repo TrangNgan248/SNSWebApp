@@ -8,6 +8,7 @@ import Edit from "./components/Edit/edit";
 import Channel from "./Pages/Channel/channel";
 import Profile from "./Pages/Profile/profile";
 import Setting from "./Pages/SettingProfile/setting";
+import CpnRegister from "./Pages/Register/cpnregister";
 // import { useNavigate } from "react-router-dom";
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home/>}/>   
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
+          <Route path="/cpnregister" element={<CpnRegister/>}/>
           <Route path="/edit" element={<Edit/>}/>
           <Route path="/seek" element={<Seek/>}/>
           <Route path="/channel/:id" element={<Channel/>}/>
