@@ -33,11 +33,11 @@
 }
 
 .loginLogo {
-    font-size: 50px;
+    font-size: 55px;
     color: black;
     text-shadow: 1px 1px;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin: 5px 10px 0px 5px;
 }
 
 .loginDesc {

@@ -7,6 +7,11 @@
     justify-content: center;
 }
 
+.loginBar {
+    display: flex;
+    align-items: center;
+}
+
 .loginWrapper {
     width: 70%;
     height: 70%;
@@ -16,6 +21,13 @@
 .signupText {
     font-size: 30px;
     font-weight: 500;
+    color: #4CD1C8;
+}
+
+.signupText1 {
+    font-size: 30px;
+    font-weight: 500;
+    color: #049187;
 }
 
 .signupBox {

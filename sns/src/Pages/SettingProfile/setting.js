@@ -74,7 +74,7 @@ export default function Setting() {
                 </li>
                 <li onClick={()=>Action(2)} className={`${tab===2? "sidebarItem-active":"sidebarItem"}`}>
                         <FontAwesomeIcon icon={faCircleUser} className="sidebarIcon" />
-                        <div   className="sidebarItemtext">Profile</div>
+                        <div  className="sidebarItemtext">Profile</div>
                 </li>
                 <li onClick={()=>Action(3)} className={`${tab===3? "sidebarItem-active":"sidebarItem"}`}>
                         <FontAwesomeIcon icon={faLock} className="sidebarIcon" />

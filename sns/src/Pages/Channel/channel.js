@@ -43,10 +43,10 @@ export default function Channel(props) {
             <div className="channelContentAll">
             <div className='avatarWrap'>
                 <div className="bgDiv">
-                    <img className='bgImg' src='assets/testimg/Ayame-Xmas(2).png'></img>
+                    <img className='bgImg' alt='' src='assets/testimg/Ayame-Xmas(2).png'></img>
                 </div>
                 <div className="avaDiv">
-                <img className='avaImg' src='assets/testimg/nihon.png'></img>
+                <img className='avaImg' alt='' src='assets/testimg/nihon.png'></img>
                 </div>
             </div>
             <div className="navChannel">
