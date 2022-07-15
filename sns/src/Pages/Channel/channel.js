@@ -55,7 +55,7 @@ export default function Channel(props) {
                 <FontAwesomeIcon icon={faBell} className="notiIcon" onClick={HandleClick} style={{ color: isActive ? "blue" : "black" }}/>            
             </div>
             <div className="channelContent">
-            <Feed />
+            <Feed id={channel_id}/>
             <div className="channelIntro">
                 <div className="channelIntroWrap">
                     <span className='channelIntroOp'>Introduction</span>
