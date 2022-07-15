@@ -2,9 +2,7 @@ import "./seektopbar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass,faUser,faGear,faBell,faAngleDown } from '@fortawesome/free-solid-svg-icons'
 // import { useState } from "react"
-import Post from "../../components/post/Post"
 import Seeksidebar from "../../components/seeksidebar/seeksidebar"
-import "../post/post.css"
 
 // thư viện post 
 
@@ -15,7 +13,7 @@ import "../post/post.css"
  import { faEllipsis, faThumbsUp, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
  import Comment from "../../components/comment/comment"
  import CommentTest from "../comment/commentTest";
- import { Link, browserHistory } from "react-router-dom"
+ import { Link } from "react-router-dom"
  import Like from "../like/like";
  import Edit from "../Edit/edit";
 
@@ -111,9 +109,13 @@ function Topbar(){
             </div>
             
          </div>
-         
          <div className="homeContainer">
          <Seeksidebar />
+         <div className="feed"> 
+            <div className="feedWrapper">
+            
+               
+            
          <div className="post">
                         {posts.map((post)=> 
                         <div className={`postwrapper ${post.id}`}>
@@ -218,12 +220,15 @@ function Topbar(){
                         </div>
            
                     </div>
-                    
-         </div>
+                    </div>
+       
+            </div>
+        </div>
+         
         
          
     )
     
 }
-<Post/>
+
 export default Topbar

@@ -93,7 +93,7 @@ export default function Post() {
                                         {channels.map((channel) => {
                                             if (channel.id === post.channel_id)
                                                 return (
-                                                    <span className="postFromChannel"> {channel.name} </span>
+                                                    <span className="postFromChannel">[ {channel.name} チャンネルから]</span>
                                                 )
                                         }
                                         )}
@@ -108,8 +108,9 @@ export default function Post() {
                                         )}
                                     </li>
                                     <li className="postTopLeftItem3">
-                                        <FontAwesomeIcon icon={faGlobe} className="postDateIcon" />
+                                
                                         <span className="postDate"> 5 mins ago </span>
+                                        <FontAwesomeIcon icon={faGlobe} className="postDateIcon" />
                                     </li>
 
                                 </ul>
@@ -151,7 +152,7 @@ export default function Post() {
                             </div>
                         </div>
                         <div className="postCenter">
-                            <div className="postText">{post.title}</div>
+                            <div className="postText1">{post.title}</div>
                             <div className="postText">{post.content}</div>
                             <img className="postImg" src={`http://localhost:8000/storage/${post.display}`} alt="Khong hien thi" />
                         </div>
