@@ -34,8 +34,9 @@ use App\Http\Controllers\SearchUser;
 // });
 
 Route::prefix('auth')->group(function () {
-    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/companyRegister', [AuthController::class, 'companyRegister']);
 
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api');
     Route::post('/refresh', [AuthController::class, 'refresh'])->middleware('auth:api');
@@ -45,6 +46,7 @@ Route::prefix('auth')->group(function () {
     Route::post('/like', [LikeController::class, 'store'])->middleware('auth:api');
     Route::post('/joinChannel', [ChannelController::class, 'join'])->middleware('auth:api');
     Route::post('/likeComment', [Like_CommentController::class, 'store'])->middleware('auth:api');
+    Route::post('/post/create', [PostController::class, 'store'])->middleware('auth:api');
 });
 
 Route::get('/channel/{channel}', [ChannelController::class, 'show']);
@@ -62,8 +64,6 @@ Route::delete('/comment/{comment}', [CommentController::class, 'delete']);
 Route::post('/comment/edit/{comment}', [CommentController::class, 'edit']);
 
 Route::post('/post/edit/{post}', [PostController::class, 'edit']);
-
-Route::post('/post/create', [PostController::class, 'store']);
 
 Route::get('/post', [PostController::class, 'index']);
 
