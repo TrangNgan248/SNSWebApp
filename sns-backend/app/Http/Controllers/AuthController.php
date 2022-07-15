@@ -17,7 +17,7 @@ class AuthController extends Controller
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'companyRegister']]);
     }
 
     /**
@@ -62,6 +62,29 @@ class AuthController extends Controller
                     $validator->validated(),
                     ['password' => bcrypt($request->password),
                     'role_id' => 1]
+                ));
+
+        return response()->json([
+            'message' => 'User successfully registered',
+            'user' => $user
+        ], 201);
+    }
+
+    public function companyRegister(Request $request) {
+        $validator = FacadesValidator::make($request->all(), [
+            'name' => 'required|string|between:2,100',
+            'email' => 'required|string|email|max:100|unique:users',
+            'password' => 'required|string|confirmed|min:6',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+
+        $user = User::create(array_merge(
+                    $validator->validated(),
+                    ['password' => bcrypt($request->password),
+                    'role_id' => 3]
                 ));
 
         return response()->json([

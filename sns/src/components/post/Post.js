@@ -65,7 +65,7 @@ export default function Post() {
     const handleDelete = (id) => {
         axios.delete(`http://127.0.0.1:8000/api/post/${id}`)
     .then((response)=>{
-      console.log(response.data);
+    //   console.log(response.data);
       alert("Data has been deleted");
    })
     .catch((err) => console.error(err.response.data.errors));
