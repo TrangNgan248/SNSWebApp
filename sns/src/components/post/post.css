@@ -48,22 +48,31 @@
     border-radius: 50%;
     object-fit: cover;
 }
-
+.postFromChannel{
+    font-size: 18px;
+    margin: 0 10px;
+    font-style: italic;
+}
 .postUsername {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
     margin: 0 10px;
 }
 
 .postDate {
     font-size: 12px;
+    margin: 0 10px;
 }
 
 .postCenter {
     margin: 20px 0;
     width: 100%;
 }
-
+.postText1 {
+    margin-left: 25px;
+    font-size: 20px;
+    margin: 0 10px;
+}
 .postText {
     margin-left: 25px;
 }
