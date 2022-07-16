@@ -103,10 +103,6 @@ export default function Sidebar() {
                     )} 
                     </ul>
                     
-                    <div className="sidebarShowmore">
-                        <FontAwesomeIcon icon={faAngleDown} />
-                        <a href="/#" className="showmore">Show more</a>
-                    </div>
                     <button className="btn"> Join</button>
                 </Modal>
 
