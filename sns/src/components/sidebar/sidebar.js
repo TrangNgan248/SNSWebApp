@@ -81,9 +81,8 @@ export default function Sidebar() {
                     <ul className="channelList">
                     
                         <li className="Search">
-                        
+                        <FontAwesomeIcon icon={faMagnifyingGlass} className="searchicon" />
                             <div className="topbarCenter">
-                                <FontAwesomeIcon icon={faMagnifyingGlass} className="searchicon" />
                                 <input type="text" onChange = {(e)=>SearchChannel(e.target.value)} placeholder="Seacrh channel" className="searchInput" />
                             </div>
                         </li>
@@ -98,10 +97,6 @@ export default function Sidebar() {
                     )} 
                     </ul>
                     
-                    <div className="sidebarShowmore">
-                        <FontAwesomeIcon icon={faAngleDown} />
-                        <a href="/#" className="showmore">Show more</a>
-                    </div>
                     <button className="btn"> Join</button>
                 </Modal>
 

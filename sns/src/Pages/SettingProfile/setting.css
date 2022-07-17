@@ -1,5 +1,7 @@
 .sidebarSetting {
     flex: 3;
+    min-height: 100vh;
+    height: 100%;
 }
 
 .settingGeneral {

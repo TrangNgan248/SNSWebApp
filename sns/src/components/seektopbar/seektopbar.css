@@ -33,27 +33,6 @@
     flex: 4;
 }
 
-.Search {
-    border: 1px solid;
-    box-shadow: 1px 1px;
-    display: flex;
-    height: 80%;
-    border-radius: 30px;
-    background-color: #ffffff;
-    align-items: center;
-}
-
-.searchicon {
-    font-size: 10px;
-    margin-left: 10px;
-    margin-right: 5px;
-}
-
-.searchInput {
-    border: none;
-    width: 90%;
-}
-
 .searchInput:focus {
     outline: none;
 }

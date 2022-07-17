@@ -3,6 +3,7 @@
     height: calc(100vh - 50px);
     position: sticky;
     top: 50px;
+    margin-right: 50px;
 }
 
 .sidebarWrapper {
@@ -54,13 +55,15 @@
     align-items: center;
     margin-bottom: 15px;
 }
+
 .channelSeekItem {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
     margin-top: 15px;
 }
-.checkBox{
+
+.checkBox {
     margin-right: 25px;
 }
 
@@ -84,6 +87,7 @@
     font-weight: 500;
     border-radius: 15px;
 }
+
 .btn {
     display: flex;
     align-items: center;
@@ -117,6 +121,7 @@
 .sidebarHr {
     margin: 20px 0;
 }
+
 .channelSeek {
     display: flex;
     align-items: center;

@@ -1,6 +1,7 @@
 import Topbar from "../../components/topbar/Topbar"
 import Sidebar from "../../components/sidebar/sidebar"
 import Post from "../../components/post/Post"
+import Feed from "../../components/feed/feed"
 import Rightbar from "../../components/rightbar/rightbar"
 import { useNavigate } from "react-router-dom"
 import React, {useState, useEffect} from 'react';
@@ -34,7 +35,11 @@ export default function Home() {
 
             <div className="homeContainer">
                 <Sidebar />
-                <Post/>
+                <div className="feed"> 
+                    <div className="feedWrapper">
+                        <Post/>
+                    </div>
+                </div>
                 <Rightbar />
             </div>
         </>
