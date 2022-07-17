@@ -163,23 +163,15 @@ export default function Post() {
                                 <div className="postCommentIconHover">
                                     <FontAwesomeIcon icon={faComment} className="postCommentIcon" />
                                 </div>
-
-                                <Button type="link" onClick={() => showModal(post.id)} data-target={`#${post.id}`}>
-                                    Comment
-                                </Button>
-                                <Modal title="Comment" id={post.id} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-                                    <CommentTest id={commentID} />
-                                    <Comment id={post.id}/>
-                                </Modal>
-                                <CommentTest id={commentID} />
-                                <Comment id={post.id}/>
                             </div>
                             <div className="postBottomRight">
                                 <FontAwesomeIcon icon={faBookmark} className="postBookmarkIcon" />
-                            </div>
-                          
+                            </div> 
+                        </div> 
+                            <CommentTest id={commentID} />
+                            <Comment id={post.id}/>
                             
-                        </div>
+                      
                     </div>
                 )}
         </div>

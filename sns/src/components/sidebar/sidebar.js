@@ -2,7 +2,7 @@ import "./sidebar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { faHome, faCircleUser, faBookBookmark, faUserGroup, faAngleDown, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faCircleUser, faBookBookmark, faUserGroup, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
 import { Button, Modal, Checkbox } from 'antd';
 
@@ -73,33 +73,73 @@ export default function Sidebar() {
                     ) 
                 }
                 <hr className="sidebarHr"></hr>
-                <Button type="link" onClick={showModal}>
-                    <button className="btn"><i className="fa-solid fa-circle-plus"> Join new channels</i></button>
-                </Button>
-                <Modal title="Join New Channel" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                <ul className="sidebarList">
+                    <li className="sidebarSearchItem">
+                            <Button type="link" onClick={showModal}>
+                            <button className="btn"><i className="fa-solid fa-circle-plus"> Join new channels</i></button>
+                        </Button>
+                        <Modal title="Join New Channel" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                        
+                            <ul className="channelList">
+                            
+                                <li className="Search">
+                                <FontAwesomeIcon icon={faMagnifyingGlass} className="searchicon" />
+                                    <div className="topbarCenter">
+                                        <input type="text" onChange = {(e)=>SearchChannel(e.target.value)} placeholder="Seacrh channel" className="searchInput" />
+                                    </div>
+                                </li>
+                                {searchchannel.map((get)=>  
+                                
+                                <div className="channelSeekItem">
+                                    <Checkbox onChange={onChange} className="checkBox" ></Checkbox>
+                                    <img src="assets/testimg/it.png" alt="" className="channelImg"></img>
+                                    <span className="channelName">{get.name}</span>
+                                </div>
+                                
+                            )} 
+                            </ul>
+                            
+                            <button className="btn"> Join</button>
+                        </Modal>
+                    </li>
+                    <li className="sidebarSearchItem">
+                            <Button type="link" onClick={showModal}>
+                            <button className="btn"><i className="fa-solid fa-circle-plus"> Follow users</i></button>
+                        </Button>
+                        <Modal title="Follow users" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                        
+                            <ul className="channelList">
+                            
+                                <li className="Search">
+                                
+                                    <div className="topbarCenter">
+                                        <FontAwesomeIcon icon={faMagnifyingGlass} className="searchicon" />
+                                        <input type="text" placeholder="Seacrh users" className="searchInput" />
+                                    </div>
+                                </li>
+                                
+                                    <ul className="channelList">
+                                <li className="channelSeekItem">  
+                                    <img src="assets/testimg/ayame1.png" alt=""className="channelImg"></img>
+                                    <span className="channelName">Ayame1</span>
+                                    <div className='followButton'><button className="btn1">Unfollow</button></div>
+                                    
+                                </li>
+                                <li className="channelSeekItem">        
+                                    <img src="assets/testimg/ayame2.jpg" alt="" className="channelImg"></img>
+                                    <span className="channelName">Ayame2</span>
+                                    <div className='followButton'><button className="btn">Follow</button></div>
+                                </li>
+                                </ul>
+                                
+                        
+                            </ul>
+                            
+                        </Modal>
+                    </li>
+                </ul>
                 
-                    <ul className="channelList">
-                    
-                        <li className="Search">
-                        <FontAwesomeIcon icon={faMagnifyingGlass} className="searchicon" />
-                            <div className="topbarCenter">
-                                <input type="text" onChange = {(e)=>SearchChannel(e.target.value)} placeholder="Seacrh channel" className="searchInput" />
-                            </div>
-                        </li>
-                        {searchchannel.map((get)=>  
-                        
-                        <div className="channelSeekItem">
-                            <Checkbox onChange={onChange} className="checkBox" ></Checkbox>
-                            <img src="assets/testimg/it.png" alt="" className="channelImg"></img>
-                            <span className="channelName">{get.name}</span>
-                        </div>
-                        
-                    )} 
-                    </ul>
-                    
-                    <button className="btn"> Join</button>
-                </Modal>
-
+                
             </div>
         </div>
     )

@@ -8,7 +8,11 @@ export default function Feed(props){
         <div className="feed"> 
             <div className="feedWrapper">
                 <Share id={channel_id}/>
-                <Post/>
+                <div className="postSa">
+                <Post/> 
+                </div>
+                   
+                
             </div>
         </div>
     )

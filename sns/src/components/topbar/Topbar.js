@@ -32,7 +32,7 @@ export default function Topbar(){
                     <Link to ="/seek">
                         
                     <FontAwesomeIcon icon={faMagnifyingGlass} className="searchicon" />
-                    <span placeholder="Seacrh for something" className="searchInput"></span>
+                    <span  className="searchInput">Seacrh for something</span>
                     </Link>
                 </div>
             </div>

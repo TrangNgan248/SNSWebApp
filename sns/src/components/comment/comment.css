@@ -1,3 +1,6 @@
+.comment{
+    margin-left: 40px;
+}
 .commentLeft{
     margin-left: 25px;
     margin-top: 20px;
@@ -7,6 +10,7 @@
 .commentProfileImg{
     width: 32px;
     height: 32px;
+    margin-right: 20px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -32,3 +36,17 @@
     display: block;
     color: blue;
   }
+
+
+.commentInput{
+    margin-left: 30px;
+    
+}
+.commentTopRight{
+    margin-left:15px;
+}
+.commentTopRightIcon{
+    margin-right: 0px;
+    height: 15px;
+    width: 15px;
+}

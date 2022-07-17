@@ -1,20 +1,20 @@
 import "./rightbar.css"
-import { Button, Modal } from 'antd';
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
+// import { Button, Modal } from 'antd';
+// import React, { useState } from 'react';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 export default function Rightbar(){
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const showModal = (id) => {
-        setIsModalVisible(true);
-    };
-    const handleOk = () => {
-        setIsModalVisible(false);
-    };
+    // const [isModalVisible, setIsModalVisible] = useState(false);
+    // const showModal = (id) => {
+    //     setIsModalVisible(true);
+    // };
+    // const handleOk = () => {
+    //     setIsModalVisible(false);
+    // };
 
-    const handleCancel = () => {
-        setIsModalVisible(false);
-    };
+    // const handleCancel = () => {
+    //     setIsModalVisible(false);
+    // };
     return(
         <div className="rightbar">
              {/* <ul className="rightbarFollowlist">
@@ -82,7 +82,9 @@ export default function Rightbar(){
                     <span className="rightbarFollowName">Ayame-chan</span>
                 </li>
             </ul>
-                <Button type="link" onClick={showModal}>
+               
+             */}
+             {/* <Button type="link" onClick={showModal}>
                     <button className="btn"><i className="fa-solid fa-circle-plus"> Follow users</i></button>
                 </Button>
                 <Modal title="Follow users" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
@@ -114,8 +116,7 @@ export default function Rightbar(){
                  
                     </ul>
                     
-                </Modal>
-             */}
+                </Modal> */}
         </div>
     )
 }
