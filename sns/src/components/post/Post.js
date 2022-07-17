@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Modal, Menu, Space, Dropdown } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsis, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsis, faComment, faBookmark, faGlobe,faGear,faCircleQuestion,faRightFromBracket  } from '@fortawesome/free-solid-svg-icons'
 import Comment from "../../components/comment/comment"
 import CommentTest from "../comment/commentTest";
 import { Link } from "react-router-dom"
@@ -14,6 +14,10 @@ import { dom } from "@fortawesome/fontawesome-svg-core";
 
 export default function Post() {
     // console.log(post)
+    const [isShow,setIsShow] = useState(false);
+    const handleClick = () => {
+        setIsShow(!isShow);
+    }
     const [posts, setPosts] = useState([]);
     const [commentID, setCommentID] = useState(null);
     useEffect(() => {
@@ -162,8 +166,13 @@ export default function Post() {
                             <div className="postBottomLeft">
                                 <Like id={post.id}/>
                                 <div className="postCommentIconHover">
-                                    <FontAwesomeIcon icon={faComment} className="postCommentIcon" />
-                                </div>
+                                    <FontAwesomeIcon icon={faComment} className="postCommentIcon" onClick={handleClick} />
+                                </div>   
+                                    {/* <div className={`${isShow ? "menuactive" : "menuinactive"}`}>
+                                                        <span>Hello</span>
+                                        </div>                           */}
+                                
+                                
                             </div>
                             <div className="postBottomRight">
                                 <FontAwesomeIcon icon={faBookmark} className="postBookmarkIcon" />
