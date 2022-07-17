@@ -7,9 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import Comment from "../../components/comment/comment"
 import CommentTest from "../comment/commentTest";
-
 import { Link } from "react-router-dom"
 import Like from "../like/like";
+import { dom } from "@fortawesome/fontawesome-svg-core";
 
 
 export default function Post() {
@@ -81,10 +81,11 @@ export default function Post() {
                             {users.map((user) => {
                                 if (user.id === post.author_id)
                                     return (
+                                <Link to="/otherprofile">
                                 <img
                                     className="postProfileImg"
                                     src={`http://localhost:8000/storage/${user.img}`}
-                                    alt="" />
+                                    alt="" /></Link>
                                     )
                                 }
                                 )}
@@ -93,7 +94,7 @@ export default function Post() {
                                         {channels.map((channel) => {
                                             if (channel.id === post.channel_id)
                                                 return (
-                                                    <span className="postFromChannel">[ {channel.name} チャンネルから]</span>
+                                                    <span className="postFromChannel">[ From Channel {channel.name}]</span>
                                                 )
                                         }
                                         )}

@@ -60,7 +60,7 @@ export default function Profile() {
         <div class="userFollowNav">
             <Link to="/Profile"><div className='userFollow'>Post</div></Link>
             <Button type="link" onClick={showModal}>
-                    <button className="btn">Follower</button>
+                    <div className='userFollow'>Follower</div>
                 </Button>
                 <Modal title="Follower" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                     
@@ -86,7 +86,7 @@ export default function Profile() {
                     </ul>
                 </Modal>
                 <Button type="link" onClick={showModal}>
-                    <button className="btn">Following</button>
+                    <div className="userFollow">Following</div>
                 </Button>
            
         </div>
