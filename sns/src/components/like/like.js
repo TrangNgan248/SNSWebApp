@@ -64,10 +64,10 @@ export default function Like(props) {
         <div>
             <div class="postLikeIconHover">
                 <FontAwesomeIcon icon={faThumbsUp} className="postLikeIcon" onClick={like} style={{ color: isLike ? "blue" : "black" }}  />
+                {count} like 
             </div>
-            <div class="postLikeHide">
-                <span class="postCounterLike"> {count} like </span>
-            </div>
+            
+                
         </div>
     )
 
