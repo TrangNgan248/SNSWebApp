@@ -1,8 +1,7 @@
 
-import { Link, useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
-import "../post/post.css";
-import 'antd/dist/antd.min.css';
+import React, { useState } from 'react';
+import "../comment/comment.css";
+
 
 export default function CommentTest(props) {
     const [content, setContent] = useState("");

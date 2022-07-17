@@ -77,10 +77,8 @@ useEffect(() => {
                  <ul className="commentItemList">
                             <li >
                                 <span> {comment.content} </span>
-                                <input type="text" defaultValue={comment.content} onChange={(e) =>setContent(e.target.value)}/>
-                                <button onClick={() => editComment(comment.id)} >submit </button>
                             </li>
-                            <li >
+                            {/* <li >
                                 <div className="commentLikeIconHover">
                                  <FontAwesomeIcon icon={faThumbsUp} className="commentLikeIcon" onClick={()=>{setIsLike(!isLike)
                                  }}  style={{color: isLike? "blue": "black"}}  />
@@ -88,7 +86,7 @@ useEffect(() => {
                                 <div className="commentLikeHide">
                                  <span className="commentCounterLike"> 10 like</span>
                                 </div>
-                            </li>
+                            </li> */}
                             
                         </ul>
                
@@ -119,7 +117,7 @@ useEffect(() => {
 
                                                     ]}
                                                 />} placement="bottom">
-                                            <Button><FontAwesomeIcon icon={faEllipsis} className="postTopRightIcon" /></Button>
+                                            <Button><FontAwesomeIcon icon={faEllipsis} className="commentTopRightIcon" /></Button>
                                         </Dropdown>
 
                                 </Space>

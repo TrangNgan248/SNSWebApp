@@ -5,6 +5,7 @@
     box-shadow: 0px 0px 20px -8px rgba(0, 0, 0, 0.68);
     margin: 30px 0;
     background-color: #ffffff;
+    border: 1px solid black;
 }
 
 .postWrapper {
