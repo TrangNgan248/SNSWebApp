@@ -48,7 +48,7 @@ export default function Setting() {
         });
         alert("Data has been updated");
     };
-    const [tab,useTab]= useState(1);
+    const [tab,useTab]= useState(2);
     const Action=(index)=>{
         useTab(index);
     };
@@ -68,10 +68,6 @@ export default function Setting() {
     <div className="sidebarSetting">
         <div className="sidebarWrapper">
             <ul className="sidebarList">
-                <li onClick={()=>Action(1)} className={`${tab===1? "sidebarItem-active":"sidebarItem"}`} >
-                        <FontAwesomeIcon icon={faGear} className="sidebarIcon" />
-                        <div  className="sidebarItemtext">General</div>
-                </li>
                 <li onClick={()=>Action(2)} className={`${tab===2? "sidebarItem-active":"sidebarItem"}`}>
                         <FontAwesomeIcon icon={faCircleUser} className="sidebarIcon" />
                         <div  className="sidebarItemtext">Profile</div>

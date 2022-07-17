@@ -8,10 +8,12 @@
     background-color: #ffffff;
     z-index: 10;
 }
+
 .homeContainer {
     display: flex;
     background-color: #FEF6E4;
 }
+
 .topbarLeft {
     flex: 5;
     margin-left: 20px;
@@ -59,18 +61,6 @@
 .topbarRight {
     font-size: 20px;
     flex: 5;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.iconTopbars {
-    display: flex;
-}
-
-.iconTopbar {
-    margin-right: 15px;
-    position: relative;
 }
 
 .Logoimg {
@@ -78,6 +68,7 @@
     height: 40px;
     float: left;
 }
+
 .post {
     width: 85%;
     border-radius: 10px;

@@ -63,7 +63,7 @@ export default function Profile() {
                     <button className="btn">Follower</button>
                 </Button>
                 <Modal title="Follower" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-                    
+        <div className='followButton'><button className="btn">Follow User</button></div>         
                     <ul className="channelList">
                         <li className="channelSeekItem">  
                             <img src="assets/testimg/ayame1.png" alt=""className="channelImg"></img>

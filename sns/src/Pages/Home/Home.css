@@ -3,3 +3,8 @@
     height: 100vh;
     background-color: #FEF6E4;
 }
+
+.contentPost {
+    flex: 6;
+    margin-top: 10px;
+}

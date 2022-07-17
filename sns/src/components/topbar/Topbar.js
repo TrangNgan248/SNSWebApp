@@ -1,9 +1,14 @@
 
 import "./Topbar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass,faUser,faGear,faBell,faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass,faUser,faGear,faBell,faAngleDown,faCircleQuestion,faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
+import { useState } from "react"
 export default function Topbar(){
+    const [isShow,setIsShow] = useState(false);
+    const handleClick = () => {
+        setIsShow(!isShow);
+    }
     return(
         <div className="topbarContainer">
             <div className="topbarLeft">
@@ -32,23 +37,47 @@ export default function Topbar(){
                 </div>
             </div>
             <div className="topbarRight">
-                <div className="iconTopbars">
-                    <div className="iconTopbar">
+                <ul className="iconTopbars">
+                    <li className="iconTopbar">
                         <Link to ="/profile"><FontAwesomeIcon icon={faUser} /></Link>
-                    </div>
+                    </li>
                     
-                    <div className="iconTopbar">
+                    <li className="iconTopbar">
                         <Link to="/setting"><FontAwesomeIcon icon={faGear} /></Link>
-                    </div>
-                    <div className="iconTopbar">
+                    </li>
+                    <li className="iconTopbar">
                         <FontAwesomeIcon icon={faBell} />
+                    </li>
+                    <li className="iconTopbar">
+                        <FontAwesomeIcon icon={faAngleDown} onClick={handleClick} /> 
+                    <div className={`${isShow ? "menuactive" : "menuinactive"}`}>
+                    <div className="showmoreTopbarWrapper">
+                        <div className="showmoreTopbarAvatar">
+                            <img className="showmoreTopbarPic" src="assets/testimg/ayame1.png" alt=""></img>
+                            <span className="showmoreTopbarUserName">Nguyen Van A</span>
+                        </div>
+                         <div className="showmoreTopbarTabs">
+                            <div className="showmoreTab">
+                                <Link to="/setting"><FontAwesomeIcon className="iconTopbar" icon={faGear} /></Link>
+                                    <span className="showmoreTopbarSj">Setting</span>
+                            </div>
+                                <div className="showmoreTab" >
+                                    <FontAwesomeIcon className="iconTopbar" icon={faCircleQuestion}/>
+                                    <span className="showmoreTopbarSj">Question</span>
+                                </div>
+                                <hr/>
+                                <div className="showmoreTab">
+                                    <FontAwesomeIcon className="iconTopbar" icon={faRightFromBracket} />
+                                    <span className="showmoreTopbarSj">Log out</span>
+                                </div>                
+                            </div>
                     </div>
-                    <div className="iconTopbar">
-                        <FontAwesomeIcon icon={faAngleDown} />
-                    </div>
-                </div>
-
+                    </div>                            
+                    </li>
+                </ul>
             </div>
-         </div>
+
+
+         </div>    
     )
 }

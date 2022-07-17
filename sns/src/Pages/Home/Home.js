@@ -1,6 +1,6 @@
 import Topbar from "../../components/topbar/Topbar"
 import Sidebar from "../../components/sidebar/sidebar"
-import Feed from "../../components/feed/feed"
+import Post from "../../components/post/Post"
 import Rightbar from "../../components/rightbar/rightbar"
 import { useNavigate } from "react-router-dom"
 import React, {useState, useEffect} from 'react';
@@ -26,15 +26,15 @@ export default function Home() {
         <>
             <Topbar />
 
-            {localStorage.getItem('user') ?
+            {/* {localStorage.getItem('user') ?
                 <div className="login-Testplace">
                     <div onClick={logout} className="btn btn-primary btn-sm float-end">Logout</div>
                 </div>
-                : null}
+                : null} */}
 
             <div className="homeContainer">
                 <Sidebar />
-                <Feed />
+                <Post/>
                 <Rightbar />
             </div>
         </>

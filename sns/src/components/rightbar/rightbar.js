@@ -2,7 +2,7 @@ import "./rightbar.css"
 export default function Rightbar(){
     return(
         <div className="rightbar">
-            <ul className="rightbarFollowlist">
+            {/* <ul className="rightbarFollowlist">
                 <li className="rightbarOnline">
                     <span className="onlinetext">Online</span>
                 </li>
@@ -69,7 +69,7 @@ export default function Rightbar(){
             </ul>
             <div className="rightbarFollowButton">
                 <button className="btn2"><i className="fa-solid fa-user-plus"></i> Add Followers</button>
-            </div>
+            </div> */}
             
         </div>
     )

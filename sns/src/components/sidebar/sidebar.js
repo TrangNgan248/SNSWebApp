@@ -72,11 +72,6 @@ export default function Sidebar() {
                     </ul>
                     ) 
                 }
-
-                <div className="sidebarShowmore">
-                    <FontAwesomeIcon icon={faAngleDown} />
-                    <a href="/" className="showmore">Show more</a>
-                </div>
                 <hr className="sidebarHr"></hr>
                 <Button type="link" onClick={showModal}>
                     <button className="btn"><i className="fa-solid fa-circle-plus"> Join new channels</i></button>
