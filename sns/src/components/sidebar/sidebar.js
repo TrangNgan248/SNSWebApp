@@ -5,9 +5,37 @@ import axios from "axios";
 import { faHome, faCircleUser, faBookBookmark, faUserGroup, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
 import { Button, Modal, Checkbox } from 'antd';
+import { useParams } from 'react-router-dom'
+import Follow from "../follow/follow";
 
 export default function Sidebar() {
     const [channels, setChannels] = useState([]);
+    const [isActive,setIsActive] = useState(false);
+    const [buttonText,setButtonText]=useState(false);
+    const {id} = useParams();
+        let channel_id = id;
+        let join = async (e) => {
+            e.preventDefault();
+            try {
+                let res = await fetch("http://127.0.0.1:8000/api/auth/joinChannel", {
+                    method: "POST",
+                    body: JSON.stringify({ channel_id }),
+                    headers: {
+                        "Content-Type": 'application/json',
+                        "Accept": 'application/json',
+                        "Authorization": 'Bearer ' + localStorage.getItem("access_token"),
+                    }
+                });
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    function click(){
+        setButtonText(current=> !current);
+    }
+    const HandleClick=()=>{
+        setIsActive(current=> !current);
+    }
     useEffect(() => {
         async function getAllChannel() {
             const channels = await axios.get("http://127.0.0.1:8000/api/channel")
@@ -16,6 +44,8 @@ export default function Sidebar() {
         }
         getAllChannel()
     }, []);
+    
+  
     const [searchchannel, setData] = useState([])
     async function SearchChannel(key) {
         console.warn(key)
@@ -24,6 +54,14 @@ export default function Sidebar() {
         setData(result)
         
     }  
+    const [searchUser, Data] = useState([])
+    async function SearchUser(key) {
+        console.warn(key)
+        let result = await fetch("http://localhost:8000/api/SearchUser/"+key);
+        result= await result.json();
+        Data(result)
+        
+    } 
     const [isModalVisible, setIsModalVisible] = useState(false);
     const showModal = (id) => {
         setIsModalVisible(true);
@@ -35,9 +73,19 @@ export default function Sidebar() {
     const handleCancel = () => {
         setIsModalVisible(false);
     };
-    const onChange = (e) => {
-        console.log(`checked = ${e.target.checked}`);
+
+    const [isVisible, setIsVisible] = useState(false);
+    const showVisibles = (id) => {
+        setIsVisible(true);
     };
+    const handOk = () => {
+        setIsVisible(false);
+    };
+
+    const handCancel = () => {
+        setIsVisible(false);
+    };
+    
     return (
         <div className="sidebar">
             <div className="sidebarWrapper">
@@ -91,22 +139,22 @@ export default function Sidebar() {
                                 {searchchannel.map((get)=>  
                                 
                                 <div className="channelSeekItem">
-                                    <Checkbox onChange={onChange} className="checkBox" ></Checkbox>
                                     <img src="assets/testimg/it.png" alt="" className="channelImg"></img>
                                     <span className="channelName">{get.name}</span>
+                                    <button className="btnjoin" onClick={() => { join(); click()}} style={{ color: buttonText ? "black" : "white" }}> {`${buttonText? "Join":"Joined"}`}</button>
                                 </div>
                                 
                             )} 
                             </ul>
                             
-                            <button className="btn"> Join</button>
+                            {/* //<button className="btn"> Join</button> */}
                         </Modal>
                     </li>
                     <li className="sidebarSearchItem">
-                            <Button type="link" onClick={showModal}>
+                            <Button type="link" onClick={showVisibles}>
                             <button className="btn"><i className="fa-solid fa-circle-plus"> Follow users</i></button>
                         </Button>
-                        <Modal title="Follow users" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                        <Modal title="Follow users" visible={isVisible} onOk={handOk} onCancel={handCancel}>
                         
                             <ul className="channelList">
                             
@@ -114,24 +162,25 @@ export default function Sidebar() {
                                 
                                     <div className="topbarCenter">
                                         <FontAwesomeIcon icon={faMagnifyingGlass} className="searchicon" />
-                                        <input type="text" placeholder="Seacrh users" className="searchInput" />
+                                        <input type="text" onChange = {(e)=>SearchUser(e.target.value)} placeholder="Seacrh users" className="searchInput" />
                                     </div>
                                 </li>
-                                
+                                {searchUser.map((get)=>  
                                     <ul className="channelList">
                                 <li className="channelSeekItem">  
-                                    <img src="assets/testimg/ayame1.png" alt=""className="channelImg"></img>
-                                    <span className="channelName">Ayame1</span>
-                                    <div className='followButton'><button className="btn1">Unfollow</button></div>
+                                    <img className="channelImg" src={`http://localhost:8000/storage/${get.img}`}></img>
+                                    <span className="channelName">{get.name}</span>
+                                    {/* <div className='followButton'><button className="btn1">Unfollow</button></div> */}
+                                    <Follow id={get.id}/>
                                     
                                 </li>
-                                <li className="channelSeekItem">        
+                                {/* <li className="channelSeekItem">        
                                     <img src="assets/testimg/ayame2.jpg" alt="" className="channelImg"></img>
                                     <span className="channelName">Ayame2</span>
                                     <div className='followButton'><button className="btn">Follow</button></div>
-                                </li>
+                                </li> */}
                                 </ul>
-                                
+                                )} 
                         
                             </ul>
                             

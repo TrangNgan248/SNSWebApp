@@ -131,3 +131,22 @@
 .sidebarSearchItem{
     margin-bottom: 30px;
 }
+.btnjoin {
+    text-align: center;
+    width: 90px;
+    height: 60%;
+    border: none;
+    background-color: #4CD1C8;
+    padding: 12px 16px;
+    font-size: 17px;
+    cursor: pointer;
+    white-space: normal;
+    font-weight: 700;
+    border-radius: 15px;
+    margin-right: 10px;
+    margin-left: 110px;
+}
+
+.btnjoin:hover {
+    background-color: #00A99D;
+}
