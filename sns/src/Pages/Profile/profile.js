@@ -67,19 +67,28 @@ export default function Profile() {
                     <ul className="channelList">
                         <li className="channelSeekItem">  
                             <img src="assets/testimg/ayame1.png" alt=""className="channelImg"></img>
+                            <div className="listFollowUser">
                             <span className="channelName">Ayame1</span>
+                            </div>
+                           
                             <div className='followButton'><button className="btn1">Unfollow</button></div>
                             
                         </li>
                         <li className="channelSeekItem">        
                              <img src="assets/testimg/ayame2.jpg" alt="" className="channelImg"></img>
-                            <span className="channelName">Ayame2</span>
+                             <div className="listFollowUser">
+                             <span className="channelName">Ayame2</span>
+                             </div>
+                            
                             <div className='followButton'><button className="btn">Follow</button></div>
                         </li>
                         <li className="channelSeekItem">
                           
                             <img src="assets/testimg/sunlogo.jpg" alt="" className="channelImg"></img>
+                            <div className="listFollowUser">
                             <span className="channelName">Sun*</span>
+                            </div>
+                            
                             <div className='followButton'><button className="btn1">Unfollow</button></div>
                         </li>                                   
                            

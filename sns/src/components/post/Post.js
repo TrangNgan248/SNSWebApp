@@ -1,3 +1,4 @@
+
 import "./post.css";
 import 'antd/dist/antd.min.css';
 import { useState, useEffect } from "react";
@@ -76,6 +77,7 @@ export default function Post() {
     };
     
     return (
+        
         <div className="post">
             {
                 posts.map((post) =>
@@ -184,6 +186,8 @@ export default function Post() {
                       
                     </div>
                 )}
-        </div>
+                
+        </div> 
+        
     );
 }
