@@ -75,10 +75,16 @@ useEffect(() => {
             )}
             <div className="commentCenter">
                  <ul className="commentItemList">
+                            <li>
+                                <span className="commentUsername">Tuan Anh </span>
+                            </li>
                             <li >
                                 <span> {comment.content} </span>
                             </li>
-                            {/* <li >
+
+                            
+                        </ul>
+                        <div >
                                 <div className="commentLikeIconHover">
                                  <FontAwesomeIcon icon={faThumbsUp} className="commentLikeIcon" onClick={()=>{setIsLike(!isLike)
                                  }}  style={{color: isLike? "blue": "black"}}  />
@@ -86,10 +92,7 @@ useEffect(() => {
                                 <div className="commentLikeHide">
                                  <span className="commentCounterLike"> 10 like</span>
                                 </div>
-                            </li> */}
-                            
-                        </ul>
-               
+                            </div>
             </div>
             <div className="commentTopRight">
             <Space direction="vertical">

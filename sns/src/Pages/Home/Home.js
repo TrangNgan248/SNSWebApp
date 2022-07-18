@@ -27,11 +27,11 @@ export default function Home() {
         <>
             <Topbar />
 
-            {/* {localStorage.getItem('user') ?
+            {localStorage.getItem('user') ?
                 <div className="login-Testplace">
                     <div onClick={logout} className="btn btn-primary btn-sm float-end">Logout</div>
                 </div>
-                : null} */}
+                : null}
 
             <div className="homeContainer">
                 <Sidebar />
