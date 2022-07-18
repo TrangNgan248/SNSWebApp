@@ -11,11 +11,11 @@ import Seeksidebar from "../../components/seeksidebar/seeksidebar"
   import axios from "axios";
  import { Button, Modal, Menu, Space, Dropdown } from 'antd';
  import { faEllipsis, faThumbsUp, faComment, faBookmark, faGlobe } from '@fortawesome/free-solid-svg-icons'
- import Comment from "../../components/comment/comment"
- import CommentTest from "../comment/commentTest";
+//  import Comment from "../../components/comment/comment"
+//  import CommentTest from "../comment/commentTest";
  import { Link } from "react-router-dom"
  import Like from "../like/like";
- import Edit from "../Edit/edit";
+//  import Edit from "../Edit/edit";
 
 
 function Topbar(){
@@ -51,18 +51,18 @@ function Topbar(){
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
-    const showModal = (id) => {
-        setIsModalVisible(true);
-        setCommentID(id);
-    };
+    // const showModal = (id) => {
+    //     setIsModalVisible(true);
+    //     setCommentID(id);
+    // };
 
-    const handleOk = () => {
-        setIsModalVisible(false);
-    };
+    // const handleOk = () => {
+    //     setIsModalVisible(false);
+    // };
 
-    const handleCancel = () => {
-        setIsModalVisible(false);
-    };
+    // const handleCancel = () => {
+    //     setIsModalVisible(false);
+    // };
     const handleDelete = (id) => {
         axios.delete(`http://127.0.0.1:8000/api/post/${id}`)
     .then((response)=>{
@@ -112,7 +112,7 @@ function Topbar(){
          <div className="homeContainer">
          <Seeksidebar />
          <div className="feed"> 
-            <div className="feedWrapper">
+            <div className="seekfeedWrapper">
             
                
             
@@ -126,7 +126,7 @@ function Topbar(){
                                     src="/assets/testimg/Ayame2.jpg"
                                     alt="" />
                                 <ul className="postTopLeftList">
-                                    <li className="postTopLeftItem1">
+                                    {/* <li className="postTopLeftItem1">
                                         {channels.map((channel) => {
                                             if (channel.id === post.channel_id)
                                                 return (
@@ -134,7 +134,7 @@ function Topbar(){
                                                 )
                                         }
                                         )}
-                                    </li>
+                                    </li> */}
                                     <li className="postTopLeftItem2">
                                         {users.map((user) => {
                                             if (user.id === post.author_id)
@@ -145,8 +145,9 @@ function Topbar(){
                                         )}
                                     </li>
                                     <li className="postTopLeftItem3">
-                                        <FontAwesomeIcon icon={faGlobe} className="postDateIcon" />
+                                       
                                         <span className="postDate"> 5 mins ago </span>
+                                        <FontAwesomeIcon icon={faGlobe} className="postDateIcon" />
                                     </li>
 
                                 </ul>
@@ -187,10 +188,19 @@ function Topbar(){
 
                             </div>
                         </div>
-                        <div className="postCenter">
-                            <div className="postText">{post.title}</div>
-                            <div className="postText">{post.content}</div>
-                            <img className="postImg" src={`http://localhost:8000/storage/${post.display}`} alt="Khong hien thi" />
+                        <div className="seekPostCenter">
+                        <div className="listSeekWrapper">
+                            <div className="listSeekItem1">
+                            <img className="seekPostImg" src={`http://localhost:8000/storage/${post.display}`} alt="Khong hien thi" />
+                            </div>
+                            <div className="listSeekItem2">
+                            <div className="seekPostTitle">{post.title}</div>
+                            <div className="seekPostContent">{post.content}</div>
+                            </div>
+                            <div className="clear"></div>
+                        </div>
+                           
+                            
                         </div>
 
                         <div className={`postBottom ${post.id}`}>
@@ -200,13 +210,13 @@ function Topbar(){
                                     <FontAwesomeIcon icon={faComment} className="postCommentIcon" />
                                 </div>
 
-                                <Button type="link" onClick={() => showModal(post.id)}>
+                                {/* <Button type="link" onClick={() => showModal(post.id)}>
                                     Comment
                                 </Button>
                                 <Modal title="Comment" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                                     <CommentTest id={commentID} />
                                     <Comment id={post.id}/>
-                                </Modal>
+                                </Modal> */}
                             </div>
                             <div className="postBottomRight">
                                 <FontAwesomeIcon icon={faBookmark} className="postBookmarkIcon" />

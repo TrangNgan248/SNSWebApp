@@ -48,11 +48,36 @@
     float: left;
 }
 
-.post {
-    width: 85%;
-    border-radius: 10px;
-    -webkit-bos-shadow: 0px 0px 20px -8px rgba(0, 0, 0, 0.68);
-    box-shadow: 0px 0px 20px -8px rgba(0, 0, 0, 0.68);
-    margin: 30px 0;
-    background-color: #ffffff;
+.clear{
+    clear:both;
+}
+.seekPostCenter{
+   
+    width: 100%;
+}
+.listSeekWrapper{
+    width: 600px;
+    
+}
+.listSeekItem1{
+    width:  300px;
+
+    float:left;
+}
+.seekPostImg{
+    width:  300px;
+    padding: 10px;
+    padding-right: 20px;
+}
+.listSeekItem2{
+    width: 300px;
+    
+    float:right;
+}
+.seekPostTitle{
+    text-align: center;
+    font-size: 200%;
+}
+.seekPostContent{
+    word-wrap: break-word;
 }
