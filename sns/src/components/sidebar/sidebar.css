@@ -127,7 +127,9 @@
     align-items: center;
     margin-top: 10px;
 }
-
+.sidebarSearchItem{
+    margin-bottom: 40px;
+}
 .btnjoin {
     text-align: center;
     width: 90px;
