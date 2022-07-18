@@ -103,10 +103,10 @@
             color: #00A99D;
         }
         
-        input[type="file"] {
+        /* input[type="file"] {
             display: none;
         }
-        
+         */
         input[type="text"] {
             align-items: center;
         }

@@ -50,3 +50,8 @@
     height: 15px;
     width: 15px;
 }
+.commentUsername{
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 5px;
+}
