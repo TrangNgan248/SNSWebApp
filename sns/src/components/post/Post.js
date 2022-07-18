@@ -72,6 +72,7 @@ export default function Post() {
     };
     
     return (
+        
         <div className="post">
             {
                 posts.map((post) =>
@@ -174,6 +175,8 @@ export default function Post() {
                       
                     </div>
                 )}
-        </div>
+                
+        </div> 
+        
     );
 }
