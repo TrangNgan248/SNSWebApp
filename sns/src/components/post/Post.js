@@ -23,7 +23,9 @@ export default function Post() {
     const [commentID, setCommentID] = useState(null);
     useEffect(() => {
         async function getAllPost() {
+           
             const posts = await axios.get("http://127.0.0.1:8000/api/post")
+           
             console.log(posts.data)
             setPosts(posts.data)
         }
@@ -97,7 +99,8 @@ export default function Post() {
                                 )}
                                 <ul className="postTopLeftList">
                                     <li className="postTopLeftItem1">
-                                        {channels.map((channel) => {
+                                        {
+                                            channels.map((channel) => {
                                             if (channel.id === post.channel_id)
                                                 return (
                                                     <span className="postFromChannel">[ From Channel {channel.name}]</span>
@@ -106,6 +109,8 @@ export default function Post() {
                                         )}
                                     </li>
                                     <li className="postTopLeftItem2">
+                                        {/*sưa R Thuưia iện mà
+                                          */}
                                         {users.map((user) => {
                                             if (user.id === post.author_id)
                                                 return (

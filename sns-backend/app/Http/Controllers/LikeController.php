@@ -12,7 +12,7 @@ class LikeController extends Controller
         $this->middleware('auth:api', ['except' => ['index']]);
     }
     public function index(Post $post){
-        $like = Like::where('post_id', $post->id)->get();
+        $like = Like::where('post_id', $post->id)->get('user_id');
         return $like;
     }
     public function store(Request $request){

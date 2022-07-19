@@ -102,11 +102,15 @@
         .shareButton:hover {
             color: #00A99D;
         }
-        
         /* input[type="file"] {
             display: none;
         }
          */
+        
         input[type="text"] {
             align-items: center;
+        }
+        
+        input[type="file"] {
+            display: none;
         }

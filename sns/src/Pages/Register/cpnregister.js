@@ -47,7 +47,7 @@ export default function Register() {
             <input type="text" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} className="loginInput"name="email"/>
             <input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} className="loginInput" name="password" />
             <input type="password" placeholder="Password Again" value={password_confirmation} onChange={(e)=>setPasswordConfirmation(e.target.value)} className="loginInput" name="password_confirmation" />
-            <button type="submit" onClick={register} className="loginButton">Sign Up</button>
+            <Link to="/login"><button type="submit" onClick={register} className="loginButton">Sign Up</button></Link>
             <div className="createAcc">
             <Link to ="/login"><button className="loginRegisterButton">Already got account?
             </button></Link>

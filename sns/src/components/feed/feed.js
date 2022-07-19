@@ -11,6 +11,7 @@ export default function Feed(props){
     const [posts, setPosts] = useState([]);
     useEffect(() => {
         async function getAllPost() {
+           
             const posts = await axios.get("http://127.0.0.1:8000/api/post")
             console.log(posts.data)
             setPosts(posts.data)

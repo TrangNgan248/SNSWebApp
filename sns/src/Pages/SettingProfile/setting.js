@@ -157,11 +157,11 @@ export default function Setting() {
                 <ul className="settingGeneralList">
                     <li className="settingGeneralItem">
                         <label className='settingLabel'>Change Avatar</label>
-                        <input type="file" onChange={(e) =>setImg(e.target.files[0])} className="settingInput1" placeholder="Change Avatar" />  
+                        <input type="file" onChange={(e) =>setImg(e.target.files[0])} className="custom-file-input" placeholder="Change Avatar" />  
                     </li>
                     <li className="settingGeneralItem">
                         <label className='settingLabel'>Change Background picture</label>
-                        <input type="file" className="settingInput1 " placeholder="Change background Piture" />  
+                        <input type="file" className="custom-file-input" placeholder="Change background Piture" />  
                         <button type="submit" onClick={changeAvatar} className="submitButton">Submit</button>
                     </li>
                    

@@ -9,6 +9,10 @@ import LikeComment from "./likeComment";
 export default function Comment(props) {
     const [isLike, setIsLike] = useState(false);
     const [comments, setComments] = useState([]);
+
+
+
+    
     useEffect(() => {
         async function getComment() {
             const comments = await axios.get(`http://127.0.0.1:8000/api/comment/${props.id}`)
@@ -47,7 +51,7 @@ const handleDelete = (id) => {
 .catch((err) => console.error(err.response.data.errors));
 };
 
-const [users, setUsers] = useState([]);
+const [users, setUsers] = useState([]);         // Khai báo state nên để hết trên đầu 
 useEffect(() => {
     async function getUser() {
         const users = await axios.get("http://127.0.0.1:8000/api/user")

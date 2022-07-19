@@ -66,7 +66,7 @@ function AddPost(props) {
         <div className="shareBottom">
           <div className="shareOptions">
             <label className="shareOption">
-              <input type="file" placeholder="Picture" className="shareInput" onChange={(e) => setDisplay(e.target.files[0])} />
+              <input type="file" id="mediaShare" placeholder="Picture" className="shareInput" onChange={(e) => setDisplay(e.target.files[0])} />
               <FontAwesomeIcon icon={faImage} className="shareIcon" />
               <button className="shareOptionText">Media</button>
             </label>
