@@ -180,7 +180,7 @@ function Topbar(){
 
             ]}
         />} placement="bottom">
-                                            <Button><FontAwesomeIcon icon={faEllipsis} className="postTopRightIcon" /></Button>
+                                           <FontAwesomeIcon icon={faEllipsis} className="postTopRightIcon" />
                                         </Dropdown>
 
                                     </Space>
