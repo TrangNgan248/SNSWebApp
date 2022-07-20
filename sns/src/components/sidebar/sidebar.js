@@ -140,10 +140,12 @@ export default function Sidebar() {
                                 
                                 <div className="channelSeekItem">
                                     <img src="assets/testimg/it.png" alt="" className="channelImg"></img>
+                                    <div className="listFollowUser">
                                     <span className="channelName">{get.name}</span>
+                                    </div>
                                     <button className="btnjoin" onClick={() => { join(); click()}} style={{ color: buttonText ? "black" : "white" }}> {`${buttonText? "Join":"Joined"}`}</button>
+                                  
                                 </div>
-                                
                             )} 
                             </ul>
                             
@@ -169,9 +171,13 @@ export default function Sidebar() {
                                     <ul className="channelList">
                                 <li className="channelSeekItem">  
                                     <img className="channelImg" src={`http://localhost:8000/storage/${get.img}`}></img>
+                                    <div className="listFollowUser">
                                     <span className="channelName">{get.name}</span>
                                     {/* <div className='followButton'><button className="btn1">Unfollow</button></div> */}
-                                    <Follow id={get.id}/>
+                                    </div>
+                                        <Follow id={get.id}/>
+                                   
+                                  
                                     
                                 </li>
                                 {/* <li className="channelSeekItem">        
