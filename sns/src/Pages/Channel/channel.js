@@ -51,7 +51,8 @@ export default function Channel(props) {
             </div>
             <div className="navChannel">
                 <span className='channelText'> 「日本語チャンネル」</span>             
-                <button className="btnjoin" onClick={() => { join(); click()}} style={{ color: buttonText ? "black" : "white" }}> {`${buttonText? "Join":"Joined"}`}</button>
+                {/* <button className="btnjoin" onClick={() => { join(); click()}} style={{ color: buttonText ? "black" : "white" }}> {`${buttonText? "Join":"Joined"}`}</button> */}
+                <button className="btnjoin" onClick={join}>Join</button>
                 <FontAwesomeIcon icon={faBell} className="notiIcon" onClick={HandleClick} style={{ color: isActive ? "blue" : "black" }}/>            
             </div>
             <div className="channelContent">
