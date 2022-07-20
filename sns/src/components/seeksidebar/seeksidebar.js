@@ -25,8 +25,11 @@ export default function Sidebar(){
                     </li>
                     <div className="sidebarSeekPost">
                     <li className="sidebarItem">
+                      
                         <FontAwesomeIcon icon={faBook} className="sidebarIcon" />
                        <span className="sidebarItemtext">Post</span>
+                      
+                       
                         
                     </li>
                     </div>

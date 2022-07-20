@@ -149,3 +149,6 @@
 .btnjoin:hover {
     background-color: #00A99D;
 }
+.listFollowUser{
+    font-weight: bold;
+}

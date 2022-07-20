@@ -95,5 +95,7 @@
     color: black;
 }
 .sidebarSeekPost{
-    background-color: #4CD1C8;
+    background: linear-gradient(90deg, #4CD1C8 50%, #FEF6E4 50%);
+    font-weight: bold;
+    color: white;
 }

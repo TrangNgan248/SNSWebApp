@@ -70,7 +70,7 @@ export default function Like(props) {
         <div>
             <div class="postLikeIconHover">
                 <FontAwesomeIcon icon={faThumbsUp} className="postLikeIcon" onClick={handleClick} style={{ color: isLike ? "blue" : "black" }}  />
-                {likes} like 
+            <span className="countLike">{likes} like</span>
             </div>
             
                 

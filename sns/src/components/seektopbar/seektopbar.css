@@ -76,8 +76,9 @@
 }
 .seekPostTitle{
     text-align: center;
-    font-size: 200%;
+    font-size: 250%;
 }
 .seekPostContent{
+    font-size: 150%;
     word-wrap: break-word;
 }

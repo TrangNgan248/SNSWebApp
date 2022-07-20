@@ -124,7 +124,7 @@ useEffect(() => {
 
                                                     ]}
                                                 />} placement="bottom">
-                                            <Button><FontAwesomeIcon icon={faEllipsis} className="commentTopRightIcon" /></Button>
+                                            <FontAwesomeIcon icon={faEllipsis} className="commentTopRightIcon" />
                                         </Dropdown>
 
                                 </Space>
