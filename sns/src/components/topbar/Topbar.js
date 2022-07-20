@@ -3,12 +3,26 @@ import "./Topbar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass,faUser,faGear,faBell,faAngleDown,faCircleQuestion,faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import React, {useState, useEffect} from 'react';
 export default function Topbar(){
     const [isShow,setIsShow] = useState(false);
     const handleClick = () => {
         setIsShow(!isShow);
     }
+    const token = localStorage.getItem('access_token');
+    const navigate = useNavigate()
+    // let user = JSON.parse(localStorage.getItem("user-"))
+    function logout() {
+        localStorage.clear();
+        navigate('/login')
+    }
+
+    useEffect(()=>{
+        if (!token) {
+            navigate("/login");
+        }
+    }, [])
     return(
         <div className="topbarContainer">
             <div className="topbarLeft">
@@ -66,10 +80,12 @@ export default function Topbar(){
                                     <span className="showmoreTopbarSj">Question</span>
                                 </div>
                                 <hr/>
+                                {localStorage.getItem('user') ?
                                 <div className="showmoreTab">
                                     <FontAwesomeIcon className="iconTopbar" icon={faRightFromBracket} />
-                                    <span className="showmoreTopbarSj">Log out</span>
-                                </div>                
+                                    <span onClick={logout} className="showmoreTopbarSj">Log out</span>
+                                </div>   
+                                : null}             
                             </div>
                     </div>
                     </div>                            
