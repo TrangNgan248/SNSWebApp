@@ -185,7 +185,7 @@ export default function Post() {
                                 <FontAwesomeIcon icon={faBookmark} className="postBookmarkIcon" />
                             </div> 
                         </div> 
-                            <CommentTest id={commentID} />
+                            <CommentTest id={post.id} />
                             <Comment id={post.id}/>
                             
                       
