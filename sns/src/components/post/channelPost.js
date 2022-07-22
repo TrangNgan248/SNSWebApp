@@ -12,13 +12,14 @@ import { Link } from "react-router-dom"
 import Like from "../like/like";
 
 
-export default function Post() {
+export default function ChannelPost(props) {
     // console.log(post)
+    let channel_id = props.id;
     const [posts, setPosts] = useState([]);
     const [commentID, setCommentID] = useState(null);
     useEffect(() => {
         async function getAllPost() {
-            const posts = await axios.get("http://127.0.0.1:8000/api/post")
+            const posts = await axios.get(`http://127.0.0.1:8000/api/post/channel/${channel_id}`)
             console.log(posts.data)
             setPosts(posts.data)
         }
@@ -65,7 +66,7 @@ export default function Post() {
     const handleDelete = (id) => {
         axios.delete(`http://127.0.0.1:8000/api/post/${id}`)
     .then((response)=>{
-    //   console.log(response.data);
+      console.log(response.data);
       alert("Data has been deleted");
    })
     .catch((err) => console.error(err.response.data.errors));
@@ -79,8 +80,8 @@ export default function Post() {
                         <div className="postTop">
                             <div className="postTopLeft">
                             {users.map((user) => {
-                                if (user.id === post.author_id)
-                                    return (
+                                            if (user.id === post.author_id)
+                                                return (
                                 <img
                                     className="postProfileImg"
                                     src={`http://localhost:8000/storage/${user.img}`}
@@ -109,7 +110,7 @@ export default function Post() {
                                     </li>
                                     <li className="postTopLeftItem3">
                                         <FontAwesomeIcon icon={faGlobe} className="postDateIcon" />
-                                        <span className="postDate"> {post.updated_at - post.created_at} </span>
+                                        <span className="postDate"> {post.updated_at} </span>
                                     </li>
 
                                 </ul>
@@ -168,10 +169,8 @@ export default function Post() {
                                 </Button>
                                 <Modal title="Comment" id={post.id} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                                     <CommentTest id={commentID} />
-                                    <Comment id={post.id}/>
+                                    <Comment id={post.id}/> 
                                 </Modal>
-                                <CommentTest id={commentID} />
-                                <Comment id={post.id}/>
                             </div>
                             <div className="postBottomRight">
                                 <FontAwesomeIcon icon={faBookmark} className="postBookmarkIcon" />

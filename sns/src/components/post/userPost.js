@@ -18,8 +18,8 @@ export default function UserPost(props) {
     const [posts, setPosts] = useState([]);
     const [commentID, setCommentID] = useState(null);
     useEffect(() => {
-        async function getAllPost() {
-            const posts = await axios.get(`http://127.0.0.1:8000/api/post/${userid}`)
+        async function getAllPost() {   
+            const posts = await axios.get(`http://127.0.0.1:8000/api/post/user/${userid}`)
             console.log(posts.data)
             setPosts(posts.data)
         }
@@ -110,7 +110,7 @@ export default function UserPost(props) {
                                     </li>
                                     <li className="postTopLeftItem3">
                                         <FontAwesomeIcon icon={faGlobe} className="postDateIcon" />
-                                        <span className="postDate"> 5 mins ago </span>
+                                        <span className="postDate"> {post.updated_at - post.created_at} </span>
                                     </li>
 
                                 </ul>

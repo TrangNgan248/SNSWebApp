@@ -11,7 +11,17 @@ export default function Like(props) {
     const [isLike, setIsLike] = useState(false);
     let post_id = props.id;
 
-    const userLogin = localStorage.getItem("user")
+    const userLogin = localStorage.getItem("user");
+    var userLog = JSON.parse(userLogin);
+    const [liked, setLiked] = useState(false);
+    useEffect(() => {
+        async function Liked(){
+            const liked = await axios.get(`http://127.0.0.1:8000/api/like/${post_id}/${userLog.id}`)
+            console.log(liked.data)
+            setLiked(liked.data)
+        }
+        Liked()
+    }, []);
     let like = async (e) => {
         e.preventDefault();
         try {
@@ -60,10 +70,12 @@ export default function Like(props) {
 
 
     const count = likes.length;
+    const isliked = liked;
+    console.log("isliked", isliked);
     return (
         <div>
             <div class="postLikeIconHover">
-                <FontAwesomeIcon icon={faThumbsUp} className="postLikeIcon" onClick={like} style={{ color: isLike ? "blue" : "black" }}  />
+                <FontAwesomeIcon icon={faThumbsUp} className="postLikeIcon" onClick={like} style={{ color: isliked || isLike ? "blue" : "black" }}  />
             </div>
             <div class="postLikeHide">
                 <span class="postCounterLike"> {count} like </span>

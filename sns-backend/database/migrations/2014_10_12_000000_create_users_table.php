@@ -20,6 +20,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('img', 50)->nullable();
+            $table->string('bg', 50)->nullable();
+            $table->string('address')->nullable();
+            $table->string('intro')->nullable();
             $table->unsignedBigInteger('role_id')->nullable();
             $table->tinyInteger('gender')->nullable();
             $table->date('dob')->nullable();

@@ -34,6 +34,7 @@ use App\Http\Controllers\SearchUser;
 // });
 
 Route::prefix('auth')->group(function () {
+    
     Route::post('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/companyRegister', [AuthController::class, 'companyRegister']);
@@ -46,17 +47,16 @@ Route::prefix('auth')->group(function () {
     Route::post('/like', [LikeController::class, 'store'])->middleware('auth:api');
     Route::post('/joinChannel', [ChannelController::class, 'join'])->middleware('auth:api');
     Route::post('/likeComment', [Like_CommentController::class, 'store'])->middleware('auth:api');
-    Route::post('/post/create', [PostController::class, 'store'])->middleware('auth:api');
 });
-
+Route::post('/post/create', [PostController::class, 'store']);
 Route::get('/channel/{channel}', [ChannelController::class, 'show']);
-
 Route::get('/like/{post}', [LikeController::class, 'index']);
 Route::get('/likeComment/{comment}', [Like_CommentController::class, 'index']);
 
 Route::get('/comment/{post}', [CommentController::class, 'index']);
 
-Route::get('/post/{user}', [PostController::class, 'userPost']);
+Route::get('/post/user/{user}', [PostController::class, 'userPost']);
+Route::get('/post/channel/{channel}', [PostController::class, 'channelPost']);
 Route::delete('/post/{post}', [PostController::class, 'delete']);
 
 Route::delete('/comment/{comment}', [CommentController::class, 'delete']);
@@ -82,3 +82,8 @@ Route::get('/search/{key}', [PostController::class, 'search']);
 Route::get('/SearchChannel/{key}', [SearchChannel::class, 'searchchannel']);
 
 Route::get('/SearchUser/{key}', [SearchUser::class, 'searchUser']);
+
+Route::get('/channel/user/{user}', [ChannelController::class, 'userChanel']);
+
+Route::get('/like/{post}/{user}', [LikeController::class, 'liked']);
+

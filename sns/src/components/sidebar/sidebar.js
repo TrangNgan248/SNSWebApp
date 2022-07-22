@@ -7,10 +7,14 @@ import { Link } from "react-router-dom"
 import { Button, Modal, Checkbox } from 'antd';
 
 export default function Sidebar() {
+    const userLogin = localStorage.getItem("user");
+    console.log("userLogin", userLogin);
+    var userLog = JSON.parse(userLogin);
+    console.log(userLog.id);
     const [channels, setChannels] = useState([]);
     useEffect(() => {
         async function getAllChannel() {
-            const channels = await axios.get("http://127.0.0.1:8000/api/channel")
+            const channels = await axios.get(`http://127.0.0.1:8000/api/channel/user/${userLog.id}`)
             console.log(channels.data)
             setChannels(channels.data)
         }
@@ -65,8 +69,8 @@ export default function Sidebar() {
                     channels.map((channel) =>
                     <ul className="channelList">
                         <li className="channelItem">
-                            <Link to={`/channel/${channel.id}`}>
-                                <img src="assets/testimg/it.png" alt="" className="channelImg"></img>
+                            <Link to={`/channel/${channel.id}`} state={channel}>
+                                <img src={`http://localhost:8000/storage/${channel.img}`} alt="" className="channelImg"></img>
                                 <span className="channelName">{channel.name}</span></Link>
                         </li>
                     </ul>

@@ -47,7 +47,7 @@ export default function Profile() {
         <div className="navProfile">
         <div className='avatarProfileWrap'>
             <div className="bgDiv">
-                <img className='bgImg' src='assets/testimg/Yasuo_0.jpg'></img>
+                <img className='bgImg' src={`http://localhost:8000/storage/${user.bg}`}></img>
             </div>
             <div className="avaProfileDiv">
                 <img className='avaProfileImg' src={`http://localhost:8000/storage/${user.img}`}></img>
@@ -55,7 +55,7 @@ export default function Profile() {
         </div>
         <div className='UserIntro1'>
             <p className="nameUser">{user.name}</p> 
-            <p className='shortIntroUser'>Death is like the wind, alaways by my side</p>
+            <p className='shortIntroUser'>{user.intro}</p>
             <hr/>
         <div class="userFollowNav">
             <Link to="/Profile"><div className='userFollow'>Post</div></Link>

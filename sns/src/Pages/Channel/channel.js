@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell } from '@fortawesome/free-solid-svg-icons'
 import Topbar from '../../components/topbar/Topbar';
 import {  useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 export default function Channel(props) {
     const [isActive,setIsActive] = useState(false);
     const [buttonText,setButtonText]=useState(false);
@@ -16,8 +16,10 @@ export default function Channel(props) {
     const HandleClick=()=>{
         setIsActive(current=> !current);
     }
-    const {id} = useParams();
-    let channel_id = id;
+    const location = useLocation();
+    const state = location.state;
+    let channel_id = state.id;
+    console.log(channel_id);
     let join = async (e) => {
         e.preventDefault();
         try {
@@ -43,14 +45,14 @@ export default function Channel(props) {
             <div className="channelContentAll">
             <div className='avatarWrap'>
                 <div className="bgDiv">
-                    <img className='bgImg' alt='' src='assets/testimg/Ayame-Xmas(2).png'></img>
+                    <img className='bgImg' alt='' src={`http://localhost:8000/storage/${state.bg}`}></img>
                 </div>
                 <div className="avaDiv">
-                <img className='avaImg' alt='' src='assets/testimg/nihon.png'></img>
+                <img className='avaImg' alt='' src={`http://localhost:8000/storage/${state.img}`}></img>
                 </div>
             </div>
             <div className="navChannel">
-                <span className='channelText'> 「日本語チャンネル」</span>             
+                <span className='channelText'> {state.name}</span>             
                 <button className="btnjoin" onClick={() => { join(); click()}} style={{ color: buttonText ? "black" : "white" }}> {`${buttonText? "Join":"Joined"}`}</button>
                 <FontAwesomeIcon icon={faBell} className="notiIcon" onClick={HandleClick} style={{ color: isActive ? "blue" : "black" }}/>            
             </div>
