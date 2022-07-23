@@ -4,7 +4,8 @@
     -webkit-bos-shadow: 0px 0px 20px -8px rgba(0, 0, 0, 0.68);
     box-shadow: 0px 0px 20px -8px rgba(0, 0, 0, 0.68);
     margin: 30px 0;
-    background-color: #ffffff;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
 }
 
 .postWrapper {
@@ -37,35 +38,47 @@
 }
 
 .postTopRightIcon {
-    margin-right: 0px;
-    height: 30px;
-    width: 30px;
+    margin-right: 30px;
+    height: 40px;
+    width: 40px;
 }
 
 .postProfileImg {
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     object-fit: cover;
 }
-
+.postFromChannel{
+    font-size: 18px;
+    margin: 0 10px;
+    font-style: italic;
+    font-weight: bold;
+}
 .postUsername {
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
     margin: 0 10px;
+    font-weight: bold;
 }
 
 .postDate {
-    font-size: 12px;
+    font-size: 15px;
+    margin: 0 10px;
 }
 
 .postCenter {
     margin: 20px 0;
     width: 100%;
 }
-
+.postText1 {
+    margin-left: 25px;
+    font-size: 25px;
+    margin: 0 10px;
+}
 .postText {
     margin-left: 25px;
+    font-size: 20px;
 }
 
 .postImg {
@@ -91,45 +104,56 @@
 
 .postLikeIcon {
     margin-left: 30px;
-    height: 20px;
-    width: 20px;
+    margin-right: 10px;
+    height: 30px;
+    width: 30px;
     cursor: pointer;
 }
 
 .postLikeIcon:hover {
-    align-items: flex-start;
+    /* align-items: flex-start;
     background: linear-gradient(90deg, #4CD1C8 100%, #FEF6E4 50%);
-    font-weight: bold;
+    font-weight: bold; */
+    width: 30px;
+    height: 30px;
+    background-color: #4CD1C8;
+    /* ve hinh tron */
+    border-radius: 50%;   
+    /* -moz-border-radius:50%;
+    -webkit-border-radius: 50%; */
 }
 
 .postLikeHide {
     display: none;
 }
 .postLikeIconHover:hover+.postLikeHide {
-    display: block;
+     display: block;
     color: blue;
+}
+.countLike{
+    font-size: 20px;
+    outline: none;
+  
 }
 
 .postCommentIcon {
     margin-left: 10px;
-    height: 20px;
-    width: 20px;
+    height: 30px;
+    width: 30px;
 }
 
 .postCommentIcon:hover {
-    align-items: flex-start;
+    /* align-items: flex-start;
     background: linear-gradient(90deg, #4CD1C8 100%, #FEF6E4 0%);
-    font-weight: bold;
+    font-weight: bold; */
+    width: 30px;
+    height: 30px;
+    background-color: #4CD1C8;
+    /* ve hinh tron */
+    border-radius: 50%;   
 }
 
-.postCommentHide {
-    display: none;
-}
 
-.postCommentIconHover:hover+.postCommentHide {
-    display: block;
-    color: blue;
-}
 
 .postBottomRight {
     display: flex;
@@ -139,8 +163,8 @@
 }
 
 .postBookmarkIcon {
-    height: 20px;
-    width: 20px;
+    height: 30px;
+    width: 30px;
 }
 
 .postBookmarkIcon:hover {

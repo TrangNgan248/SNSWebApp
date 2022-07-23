@@ -23,10 +23,16 @@ export default function Sidebar(){
                         <FontAwesomeIcon icon={faBookBookmark} className="sidebarIcon" />
                         <span className="sidebarItemtext">Bookmark</span>
                     </li>
+                    <div className="sidebarSeekPost">
                     <li className="sidebarItem">
+                      
                         <FontAwesomeIcon icon={faBook} className="sidebarIcon" />
-                        <span className="sidebarItemtext">Post</span>
+                       <span className="sidebarItemtext">Post</span>
+                      
+                       
+                        
                     </li>
+                    </div>
                 </ul>
               
                

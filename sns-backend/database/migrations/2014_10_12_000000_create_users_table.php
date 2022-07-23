@@ -30,7 +30,7 @@ return new class extends Migration
             $table->foreign('role_id')->references('id')->on('user_role');
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

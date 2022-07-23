@@ -95,3 +95,10 @@
 .followButton{
     margin-left:60px;
 }
+.listFollowUser{
+    width: 50%;
+}
+.channelName{
+    font-weight: bold;
+    font-size:16px;
+}

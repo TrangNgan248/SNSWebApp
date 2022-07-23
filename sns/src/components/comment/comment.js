@@ -9,6 +9,10 @@ import LikeComment from "./likeComment";
 export default function Comment(props) {
     const [isLike, setIsLike] = useState(false);
     const [comments, setComments] = useState([]);
+
+
+
+    
     useEffect(() => {
         async function getComment() {
             const comments = await axios.get(`http://127.0.0.1:8000/api/comment/${props.id}`)
@@ -47,7 +51,7 @@ const handleDelete = (id) => {
 .catch((err) => console.error(err.response.data.errors));
 };
 
-const [users, setUsers] = useState([]);
+const [users, setUsers] = useState([]);         // Khai báo state nên để hết trên đầu 
 useEffect(() => {
     async function getUser() {
         const users = await axios.get("http://127.0.0.1:8000/api/user")
@@ -75,12 +79,20 @@ useEffect(() => {
             )}
             <div className="commentCenter">
                  <ul className="commentItemList">
-                            <li >
-                                <span> {comment.content} </span>
-                                <input type="text" defaultValue={comment.content} onChange={(e) =>setContent(e.target.value)}/>
-                                <button onClick={() => editComment(comment.id)} >submit </button>
+                            <li>
+                            {users.map((user) => {
+                                if (user.id === comment.user_id)
+                                return (
+                                <span className="commentUsername">{user.name} </span>
+                                )})}
                             </li>
                             <li >
+                                <span> {comment.content} </span>
+                            </li>
+
+                            
+                        </ul>
+                        <div >
                                 <div className="commentLikeIconHover">
                                  <FontAwesomeIcon icon={faThumbsUp} className="commentLikeIcon" onClick={()=>{setIsLike(!isLike)
                                  }}  style={{color: isLike? "blue": "black"}}  />
@@ -88,10 +100,7 @@ useEffect(() => {
                                 <div className="commentLikeHide">
                                  <span className="commentCounterLike"> 10 like</span>
                                 </div>
-                            </li>
-                            
-                        </ul>
-               
+                            </div>
             </div>
             <div className="commentTopRight">
             <Space direction="vertical">
@@ -119,7 +128,7 @@ useEffect(() => {
 
                                                     ]}
                                                 />} placement="bottom">
-                                            <Button><FontAwesomeIcon icon={faEllipsis} className="postTopRightIcon" /></Button>
+                                            <FontAwesomeIcon icon={faEllipsis} className="commentTopRightIcon" />
                                         </Dropdown>
 
                                 </Space>

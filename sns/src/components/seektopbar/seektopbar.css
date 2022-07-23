@@ -8,10 +8,12 @@
     background-color: #ffffff;
     z-index: 10;
 }
+
 .homeContainer {
     display: flex;
     background-color: #FEF6E4;
 }
+
 .topbarLeft {
     flex: 5;
     margin-left: 20px;
@@ -31,27 +33,6 @@
     flex: 4;
 }
 
-.Search {
-    border: 1px solid;
-    box-shadow: 1px 1px;
-    display: flex;
-    height: 80%;
-    border-radius: 30px;
-    background-color: #ffffff;
-    align-items: center;
-}
-
-.searchicon {
-    font-size: 10px;
-    margin-left: 10px;
-    margin-right: 5px;
-}
-
-.searchInput {
-    border: none;
-    width: 90%;
-}
-
 .searchInput:focus {
     outline: none;
 }
@@ -59,18 +40,6 @@
 .topbarRight {
     font-size: 20px;
     flex: 5;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.iconTopbars {
-    display: flex;
-}
-
-.iconTopbar {
-    margin-right: 15px;
-    position: relative;
 }
 
 .Logoimg {
@@ -78,11 +47,38 @@
     height: 40px;
     float: left;
 }
-.post {
-    width: 85%;
-    border-radius: 10px;
-    -webkit-bos-shadow: 0px 0px 20px -8px rgba(0, 0, 0, 0.68);
-    box-shadow: 0px 0px 20px -8px rgba(0, 0, 0, 0.68);
-    margin: 30px 0;
-    background-color: #ffffff;
+
+.clear{
+    clear:both;
+}
+.seekPostCenter{
+   
+    width: 100%;
+}
+.listSeekWrapper{
+    width: 600px;
+    
+}
+.listSeekItem1{
+    width:  300px;
+
+    float:left;
+}
+.seekPostImg{
+    width:  300px;
+    padding: 10px;
+    padding-right: 20px;
+}
+.listSeekItem2{
+    width: 300px;
+    
+    float:right;
+}
+.seekPostTitle{
+    text-align: center;
+    font-size: 250%;
+}
+.seekPostContent{
+    font-size: 150%;
+    word-wrap: break-word;
 }

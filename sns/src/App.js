@@ -7,9 +7,10 @@ import Seek from "./Pages/Seek/seek";
 import Post from "./components/post/Post";
 import Edit from "./components/Edit/edit";
 import Channel from "./Pages/Channel/channel";
-import Profile from "./Pages/Profile/Profile";
+import Profile from "./Pages/Profile/profile";
 import Setting from "./Pages/SettingProfile/setting";
 import CpnRegister from "./Pages/Register/cpnregister";
+import OtherProfile from "./Pages/Profile/otherprofile";
 // import { useNavigate } from "react-router-dom";
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/seek" element={<Seek/>}/>
           <Route path="/channel/:id" element={<Channel/>}/>
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/otherprofile" element={<OtherProfile/>}/>
           <Route path="/setting" element={<Setting/>}/>
           <Route path="/post" element={<Post/>}/>
         </Routes> 

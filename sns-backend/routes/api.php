@@ -7,11 +7,11 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\Like_CommentController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\SearchChannel;
 
 use App\Models\Channel;
-
+use App\Models\Follow;
 use GuzzleHttp\Middleware;
 
 use Illuminate\Http\Request;
@@ -45,6 +45,7 @@ Route::prefix('auth')->group(function () {
     Route::post('/change-pass', [AuthController::class, 'changePassWord'])->middleware('auth:api');
     Route::post('/comment', [CommentController::class, 'store'])->middleware('auth:api');
     Route::post('/like', [LikeController::class, 'store'])->middleware('auth:api');
+    Route::post('/follow', [FollowController::class, 'store'])->middleware('auth:api');
     Route::post('/joinChannel', [ChannelController::class, 'join'])->middleware('auth:api');
     Route::post('/likeComment', [Like_CommentController::class, 'store'])->middleware('auth:api');
 });
@@ -87,3 +88,4 @@ Route::get('/channel/user/{user}', [ChannelController::class, 'userChanel']);
 
 Route::get('/like/{post}/{user}', [LikeController::class, 'liked']);
 
+Route::get('/follow/{user}', [FollowController::class, 'index']);

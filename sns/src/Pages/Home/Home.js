@@ -1,5 +1,6 @@
 import Topbar from "../../components/topbar/Topbar"
 import Sidebar from "../../components/sidebar/sidebar"
+import Post from "../../components/post/Post"
 import Feed from "../../components/feed/feed"
 import Rightbar from "../../components/rightbar/rightbar"
 import { useNavigate } from "react-router-dom"
@@ -26,15 +27,19 @@ export default function Home() {
         <>
             <Topbar />
 
-            {localStorage.getItem('user') ?
+            {/* {localStorage.getItem('user') ?
                 <div className="login-Testplace">
                     <div onClick={logout} className="btn btn-primary btn-sm float-end">Logout</div>
                 </div>
-                : null}
+                : null} */}
 
             <div className="homeContainer">
                 <Sidebar />
-                <Feed />
+                <div className="feed"> 
+                    <div className="feedWrapper">
+                        <Post/>
+                    </div>
+                </div>
                 <Rightbar />
             </div>
         </>

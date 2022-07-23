@@ -53,16 +53,16 @@ function AddPost(props) {
           <div className="shareBox">
             <input type="text" placeholder="Title" className="shareInput" onChange={(e) => setTitle(e.target.value)} />
             <input type="text" placeholder="What's in your mind ?" className="shareInput1" onChange={(e) => setContent(e.target.value)} />
-            <input type="file" placeholder="Picture" className="shareInput2" onChange={(e) => setDisplay(e.target.files[0])} />
           </div>
         </div>
         <hr className="shareHr" />
         <div className="shareBottom">
           <div className="shareOptions">
-            <div className="shareOption">
+            <label className="shareOption">
+              <input type="file" id="mediaShare" placeholder="Picture" className="shareInput" onChange={(e) => setDisplay(e.target.files[0])} />
               <FontAwesomeIcon icon={faImage} className="shareIcon" />
               <button className="shareOptionText">Media</button>
-            </div>
+            </label>
             <div className="shareOption">
               <FontAwesomeIcon icon={faUserPlus} className="shareIcon" />
               <span className="shareOptionText">Tag</span>

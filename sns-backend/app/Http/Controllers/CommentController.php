@@ -20,7 +20,7 @@ class CommentController extends Controller
 
     public function index(Post $post)
     {
-        $comment = Comment::where('post_id', $post->id)->latest()->get();
+        $comment = Comment::where('post_id', $post->id)->get();
         return $comment;
 
     }

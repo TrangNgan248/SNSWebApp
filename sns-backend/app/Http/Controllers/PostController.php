@@ -16,9 +16,13 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    public function index()
-    {
-        $posts = Post::all();
+
+
+
+    public function index(){
+
+        $posts = Post::latest()->with('likes:post_id,user_id')->get();
+
         return $posts;
     }
 
@@ -67,6 +71,7 @@ class PostController extends Controller
     public function userPost(User $user)
     {
         $post = Post::where('author_id', $user->id)->latest()->get();
+        
         return $post;
     }
     public function channelPost(Channel $channel)

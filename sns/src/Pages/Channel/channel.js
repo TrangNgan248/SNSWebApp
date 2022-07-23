@@ -45,15 +45,16 @@ export default function Channel(props) {
             <div className="channelContentAll">
             <div className='avatarWrap'>
                 <div className="bgDiv">
-                    <img className='bgImg' alt='' src={`http://localhost:8000/storage/${state.bg}`}></img>
+                    <img className='bgImg' alt='' src={`http://localhost:8000/storage/${state.img}`}></img>
                 </div>
                 <div className="avaDiv">
-                <img className='avaImg' alt='' src={`http://localhost:8000/storage/${state.img}`}></img>
+                <img className='avaImg' alt='' src={`http://localhost:8000/storage/${state.bg}`}></img>
                 </div>
             </div>
             <div className="navChannel">
                 <span className='channelText'> {state.name}</span>             
-                <button className="btnjoin" onClick={() => { join(); click()}} style={{ color: buttonText ? "black" : "white" }}> {`${buttonText? "Join":"Joined"}`}</button>
+                {/* <button className="btnjoin" onClick={() => { join(); click()}} style={{ color: buttonText ? "black" : "white" }}> {`${buttonText? "Join":"Joined"}`}</button> */}
+                <button className="btnjoin" onClick={join}>Join</button>
                 <FontAwesomeIcon icon={faBell} className="notiIcon" onClick={HandleClick} style={{ color: isActive ? "blue" : "black" }}/>            
             </div>
             <div className="channelContent">

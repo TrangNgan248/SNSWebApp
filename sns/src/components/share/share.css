@@ -1,101 +1,116 @@
-.share {
-    width: 85%;
-    height: 250zpx;
-    border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
-    box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
-}
-
-.shareWrapper {
-    padding: 10px;
-}
-
-.shareTop {
-    display: flex;
-    align-items: center;
-}
-
-.shareProfileImg {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
-}
-
-.shareInput {
-    margin-left: 5px;
-    margin-bottom: 7px;
-    border: none;
-    width: 50%;
-    border-radius: 30px;
-}
-
-.shareInput1 {
-    margin-left: 5px;
-    margin-bottom: 7px;
-    border: none;
-    width: 100%;
-    height: 30px;
-    border-radius: 30px;
-}
-
-.shareInput2 {
-    margin-left: 5px;
-    margin-bottom: 7px;
-    border: 1px;
-    width: 90%;
-    height: 50px;
-}
-
-.shareInput:focus {
-    outline: none;
-}
-
-.shareHr {
-    margin: 10px;
-}
-
-.shareBottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.shareOptions {
-    display: flex;
-    margin-left: 20px;
-}
-
-.shareOption {
-    display: flex;
-    align-items: center;
-    margin-right: 15px;
-    cursor: pointer;
-}
-
-.shareIcon {
-    font-size: 18px;
-    margin-right: 3px;
-}
-
-.shareOptionText {
-    font-size: 14px;
-    font-weight: 500;
-    border: none;
-}
-
-.shareOptionText:hover {
-    cursor: pointer;
-}
-
-.shareButton {
-    border: none;
-    padding: 7px;
-    border-radius: 5px;
-    background-color: green;
-    font-weight: 500;
-    margin-right: 20px;
-    cursor: pointer;
-    color: white;
-}
+        .share {
+            width: 85%;
+            height: 250zpx;
+            border-radius: 10px;
+            -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+            box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+        }
+        
+        .shareWrapper {
+            padding: 10px;
+        }
+        
+        .shareTop {
+            display: flex;
+            align-items: center;
+        }
+        
+        .shareProfileImg {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        
+        .shareInput {
+            margin-left: 5px;
+            margin-bottom: 7px;
+            border: none;
+            width: 50%;
+            border-radius: 20px;
+        }
+        
+        .shareInput1 {
+            margin-left: 5px;
+            margin-bottom: 7px;
+            border: none;
+            width: 100%;
+            height: 30px;
+            border-radius: 20px;
+        }
+        
+        .shareInput2 {
+            margin-left: 5px;
+            margin-bottom: 7px;
+            border: 1px;
+            width: 90%;
+            height: 50px;
+        }
+        
+        .shareInput:focus {
+            outline: none;
+        }
+        
+        .shareHr {
+            margin: 10px;
+        }
+        
+        .shareBottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .shareOptions {
+            display: flex;
+            margin-left: 20px;
+        }
+        
+        .shareOption {
+            display: flex;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        
+        .shareIcon {
+            font-size: 18px;
+            margin-right: 3px;
+        }
+        
+        .shareOptionText {
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+        }
+        
+        .shareOptionText:hover {
+            cursor: pointer;
+        }
+        
+        .shareButton {
+            border: none;
+            padding: 7px;
+            border-radius: 5px;
+            background-color: #4CD1C8;
+            font-weight: 500;
+            margin-right: 20px;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .shareButton:hover {
+            color: #00A99D;
+        }
+        /* input[type="file"] {
+            display: none;
+        }
+         */
+        
+        input[type="text"] {
+            align-items: center;
+        }
+        
+        input[type="file"] {
+            display: none;
+        }

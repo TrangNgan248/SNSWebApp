@@ -8,24 +8,11 @@ import {faHome,faCakeCandles,faGraduationCap,faGenderless} from '@fortawesome/fr
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import { Button, Modal } from 'antd';
-export default function Profile() {
-    const userLogin = localStorage.getItem("user");
-    console.log("userLogin", userLogin);
-    var userLog = JSON.parse(userLogin);
-    console.log("userLogin", userLog);
-    const [users, setUsers] = useState([]);
-    useEffect(() => {
-        async function getUser() {
-            const users = await axios.get("http://127.0.0.1:8000/api/user")
-            console.log(users.data)
-            console.log(typeof users)
-            setUsers(users.data)
-        }
-        getUser()
-    }, []);
-    const loguser = users.filter(user => user.id === userLog.id);
-    console.log("loguser", loguser);
-    console.log(typeof loguser);
+import { useParams, useLocation } from 'react-router-dom';
+export default function Profile(props) {
+    const location = useLocation();
+    const state = location.state;
+    console.log(state);
     const [isModalVisible, setIsModalVisible] = useState(false);
     const showModal = (id) => {
         setIsModalVisible(true);
@@ -42,67 +29,57 @@ export default function Profile() {
       <Topbar/>
       <div className="homeContainer">
         <Sidebar/>
-        {loguser.map((user) => 
         <div className="profileContentAll">
         <div className="navProfile">
         <div className='avatarProfileWrap'>
             <div className="bgDiv">
-                <img className='bgImg' src={`http://localhost:8000/storage/${user.bg}`}></img>
+                <img className='bgImg' src='assets/testimg/Yasuo_0.jpg'></img>
             </div>
             <div className="avaProfileDiv">
-                <img className='avaProfileImg' src={`http://localhost:8000/storage/${user.img}`}></img>
+                <img className='avaProfileImg' src={`http://localhost:8000/storage/${state.img}`}></img>
             </div>
         </div>
         <div className='UserIntro1'>
-            <p className="nameUser">{user.name}</p> 
-            <p className='shortIntroUser'>{user.intro}</p>
+            <p className="nameUser">{state.name}</p> 
+            <p className='shortIntroUser'>{state.intro}</p>
             <hr/>
         <div class="userFollowNav">
             <Link to="/Profile"><div className='userFollow'>Post</div></Link>
             <Button type="link" onClick={showModal}>
-                    <div className='userFollow'>Follower</div>
+                    <button className="btn">Follower</button>
                 </Button>
                 <Modal title="Follower" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-                    
+        <div className='followButton'><button className="btn">Follow User</button></div>         
                     <ul className="channelList">
                         <li className="channelSeekItem">  
                             <img src="assets/testimg/ayame1.png" alt=""className="channelImg"></img>
-                            <div className="listFollowUser">
                             <span className="channelName">Ayame1</span>
-                            </div>
-                           
                             <div className='followButton'><button className="btn1">Unfollow</button></div>
                             
                         </li>
                         <li className="channelSeekItem">        
                              <img src="assets/testimg/ayame2.jpg" alt="" className="channelImg"></img>
-                             <div className="listFollowUser">
-                             <span className="channelName">Ayame2</span>
-                             </div>
-                            
+                            <span className="channelName">Ayame2</span>
                             <div className='followButton'><button className="btn">Follow</button></div>
                         </li>
                         <li className="channelSeekItem">
                           
                             <img src="assets/testimg/sunlogo.jpg" alt="" className="channelImg"></img>
-                            <div className="listFollowUser">
                             <span className="channelName">Sun*</span>
-                            </div>
-                            
                             <div className='followButton'><button className="btn1">Unfollow</button></div>
                         </li>                                   
                            
                     </ul>
                 </Modal>
                 <Button type="link" onClick={showModal}>
-                    <div className="userFollow">Following</div>
+                    <button className="btn">Following</button>
                 </Button>
            
         </div>
         </div>
         </div>
         <div className="userProfileStt">
-        <UserPost id={user.id}/>
+        <UserPost id={state.id}/>
         <div className="profileIntro">
                 <div className="channelIntroWrap">
                     <span className='channelIntroOp'>Profile</span>
@@ -110,39 +87,26 @@ export default function Profile() {
                     <ul className="introUserList">
                     <li className="introUserItem">
                         <FontAwesomeIcon icon={faCakeCandles} className="introUserIcon" />
-                        <span className="introUserItemtext">{user.dob}</span>
+                        <span className="introUserItemtext">{state.dob}</span>
                     </li>
                     <li className="introUserItem">
                         <FontAwesomeIcon icon={faHome} className="introUserIcon" />
-                        <span className="introUserItemtext">{user.address}</span>
+                        <span className="introUserItemtext">{state.address}</span>
                     </li>
-                    {user.role_id === 1 && <li className="introUserItem">
+                    <li className="introUserItem">
                         <FontAwesomeIcon icon={faGraduationCap} className="introUserIcon"/>
                         <span className="introUserItemtext">User</span>
-                    </li>}
-                    {user.role_id === 3 && <li className="introUserItem">
-                        <FontAwesomeIcon icon={faGraduationCap} className="introUserIcon"/>
-                        <span className="introUserItemtext">Company</span>
-                    </li>}
-                    {user.gender === 1 && <li className="introUserItem">
+                    </li>
+                    <li className="introUserItem">
                         <FontAwesomeIcon icon={faGenderless}  className="introUserIcon" />
                         <span className="introUserItemtext">Male</span>
-                    </li>}
-                    {user.gender === 2 && <li className="introUserItem">
-                        <FontAwesomeIcon icon={faGenderless}  className="introUserIcon" />
-                        <span className="introUserItemtext">Female</span>
-                    </li>}
-                    {user.gender === 3 && <li className="introUserItem">
-                        <FontAwesomeIcon icon={faGenderless}  className="introUserIcon" />
-                        <span className="introUserItemtext">Other</span>
-                    </li>}
+                    </li>
                 </ul>
                 </div>
             </div>
         </div>
          
         </div>
-        )}
       </div>
     </>
   )

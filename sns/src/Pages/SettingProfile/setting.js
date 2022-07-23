@@ -55,7 +55,7 @@ export default function Setting() {
         });
         alert("Data has been updated");
     };
-    const [tab,useTab]= useState(1);
+    const [tab,useTab]= useState(2);
     const Action=(index)=>{
         useTab(index);
     };
@@ -75,10 +75,6 @@ export default function Setting() {
     <div className="sidebarSetting">
         <div className="sidebarWrapper">
             <ul className="sidebarList">
-                <li onClick={()=>Action(1)} className={`${tab===1? "sidebarItem-active":"sidebarItem"}`} >
-                        <FontAwesomeIcon icon={faGear} className="sidebarIcon" />
-                        <div  className="sidebarItemtext">General</div>
-                </li>
                 <li onClick={()=>Action(2)} className={`${tab===2? "sidebarItem-active":"sidebarItem"}`}>
                         <FontAwesomeIcon icon={faCircleUser} className="sidebarIcon" />
                         <div  className="sidebarItemtext">Profile</div>
@@ -175,11 +171,11 @@ export default function Setting() {
                 <ul className="settingGeneralList">
                     <li className="settingGeneralItem">
                         <label className='settingLabel'>Change Avatar</label>
-                        <input type="file" onChange={(e) =>setImg(e.target.files[0])} className="settingInput1" placeholder="Change Avatar" />  
+                        <input type="file" onChange={(e) =>setImg(e.target.files[0])} className="custom-file-input" placeholder="Change Avatar" />  
                     </li>
                     <li className="settingGeneralItem">
                         <label className='settingLabel'>Change Background picture</label>
-                        <input type="file" onChange={(e) =>setBg(e.target.files[0])} className="settingInput1 " placeholder="Change background Piture" />  
+                        <input type="file" onChange={(e) =>setBg(e.target.files[0])} className="custom-file-input" placeholder="Change background Piture" />  
                         <button type="submit" onClick={changeAvatar} className="submitButton">Submit</button>
                     </li>
                    

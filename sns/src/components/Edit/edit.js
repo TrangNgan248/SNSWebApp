@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom"
 export default function Edit(props){
     const [posts, setPosts] = useState([]);
     useEffect(() => {
@@ -48,7 +49,8 @@ export default function Edit(props){
                                  <input type="text" placeholder="Title" className="shareInput" name="title" defaultValue={post.title} onChange={(e) =>setTitle(e.target.value)} />
                                  <input type="text" placeholder="What's in your mind ?" className="shareInput1" name="content" defaultValue={post.content} onChange={(e) =>setContent(e.target.value)} />
                                  <input type="file" placeholder="Picture" className="shareInput2" onChange={(e) =>setDisplay(e.target.files[0])}/>
-                                 <button onClick={editPost} className="btn btn-primary">post </button>
+                                 <Link to ="/"><button onClick={editPost} className="btn btn-primary">post </button></Link>
+                                 
                             </div>
                             <img className="postImg" src={`http://localhost:8000/storage/${post.display}`} alt="Khong hien thi" />
                       <hr className="shareHr" />
