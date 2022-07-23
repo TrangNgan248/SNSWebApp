@@ -12,14 +12,14 @@ import { Link } from "react-router-dom"
 import Like from "../like/like";
 
 
-export default function UserPost(props) {
+export default function ChannelPost(props) {
     // console.log(post)
-    let userid = props.id;
+    let channel_id = props.id;
     const [posts, setPosts] = useState([]);
     const [commentID, setCommentID] = useState(null);
     useEffect(() => {
-        async function getAllPost() {   
-            const posts = await axios.get(`http://127.0.0.1:8000/api/post/user/${userid}`)
+        async function getAllPost() {
+            const posts = await axios.get(`http://127.0.0.1:8000/api/post/channel/${channel_id}`)
             console.log(posts.data)
             setPosts(posts.data)
         }
@@ -110,7 +110,7 @@ export default function UserPost(props) {
                                     </li>
                                     <li className="postTopLeftItem3">
                                         <FontAwesomeIcon icon={faGlobe} className="postDateIcon" />
-                                        <span className="postDate"> {post.updated_at - post.created_at} </span>
+                                        <span className="postDate"> {post.updated_at} </span>
                                     </li>
 
                                 </ul>

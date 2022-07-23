@@ -21,31 +21,24 @@ function AddPost(props) {
     getUser()
   }, []);
   const loguser = users.filter(user => user.id === userLog.id);
-  // console.log("loguser", loguser);
-  let channel_id = props.id;
+  const channel_id = props.id;
   async function addPost() {
+    const author_id = userLog.id;
+    const channel_id = props.id;
     let item = { title, content, display }
     console.warn(item)
     const formData = new FormData();
     formData.append('display', display);
     formData.append('content', content);
     formData.append('title', title);
+    formData.append('author_id', author_id);
+    formData.append('channel_id', channel_id);
 
-    await fetch("http://localhost:8000/api/auth/post/create", {
+    await fetch("http://localhost:8000/api/post/create", {
       // method: 'POST',
       // body: formData
       method: "POST",
-      body: JSON.stringify({
-        title: title,
-        content: content,
-        display: display,
-        channel_id: props.id
-      }),
-      headers: {
-        "Content-Type": 'application/json',
-        "Accept": 'application/json',
-        "Authorization": 'Bearer ' + localStorage.getItem("access_token"),
-      }
+      body: formData,
     });
     alert("Data has been saved")
   }

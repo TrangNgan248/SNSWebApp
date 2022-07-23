@@ -8,24 +8,11 @@ import {faHome,faCakeCandles,faGraduationCap,faGenderless} from '@fortawesome/fr
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import { Button, Modal } from 'antd';
-export default function Profile() {
-    const userLogin = localStorage.getItem("user");
-    console.log("userLogin", userLogin);
-    var userLog = JSON.parse(userLogin);
-    console.log("userLogin", userLog);
-    const [users, setUsers] = useState([]);
-    useEffect(() => {
-        async function getUser() {
-            const users = await axios.get("http://127.0.0.1:8000/api/user")
-            console.log(users.data)
-            console.log(typeof users)
-            setUsers(users.data)
-        }
-        getUser()
-    }, []);
-    const loguser = users.filter(user => user.id === userLog.id);
-    console.log("loguser", loguser);
-    console.log(typeof loguser);
+import { useParams, useLocation } from 'react-router-dom';
+export default function Profile(props) {
+    const location = useLocation();
+    const state = location.state;
+    console.log(state);
     const [isModalVisible, setIsModalVisible] = useState(false);
     const showModal = (id) => {
         setIsModalVisible(true);
@@ -42,7 +29,6 @@ export default function Profile() {
       <Topbar/>
       <div className="homeContainer">
         <Sidebar/>
-        {loguser.map((user) => 
         <div className="profileContentAll">
         <div className="navProfile">
         <div className='avatarProfileWrap'>
@@ -50,12 +36,12 @@ export default function Profile() {
                 <img className='bgImg' src='assets/testimg/Yasuo_0.jpg'></img>
             </div>
             <div className="avaProfileDiv">
-                <img className='avaProfileImg' src={`http://localhost:8000/storage/${user.img}`}></img>
+                <img className='avaProfileImg' src={`http://localhost:8000/storage/${state.img}`}></img>
             </div>
         </div>
         <div className='UserIntro1'>
-            <p className="nameUser">{user.name}</p> 
-            <p className='shortIntroUser'>Death is like the wind, alaways by my side</p>
+            <p className="nameUser">{state.name}</p> 
+            <p className='shortIntroUser'>{state.intro}</p>
             <hr/>
         <div class="userFollowNav">
             <Link to="/Profile"><div className='userFollow'>Post</div></Link>
@@ -93,7 +79,7 @@ export default function Profile() {
         </div>
         </div>
         <div className="userProfileStt">
-        <UserPost id={user.id}/>
+        <UserPost id={state.id}/>
         <div className="profileIntro">
                 <div className="channelIntroWrap">
                     <span className='channelIntroOp'>Profile</span>
@@ -101,11 +87,11 @@ export default function Profile() {
                     <ul className="introUserList">
                     <li className="introUserItem">
                         <FontAwesomeIcon icon={faCakeCandles} className="introUserIcon" />
-                        <span className="introUserItemtext">10/12/2002</span>
+                        <span className="introUserItemtext">{state.dob}</span>
                     </li>
                     <li className="introUserItem">
                         <FontAwesomeIcon icon={faHome} className="introUserIcon" />
-                        <span className="introUserItemtext">No where in Ionia</span>
+                        <span className="introUserItemtext">{state.address}</span>
                     </li>
                     <li className="introUserItem">
                         <FontAwesomeIcon icon={faGraduationCap} className="introUserIcon"/>
@@ -121,7 +107,6 @@ export default function Profile() {
         </div>
          
         </div>
-        )}
       </div>
     </>
   )

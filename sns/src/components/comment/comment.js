@@ -80,7 +80,11 @@ useEffect(() => {
             <div className="commentCenter">
                  <ul className="commentItemList">
                             <li>
-                                <span className="commentUsername">Tuan Anh </span>
+                            {users.map((user) => {
+                                if (user.id === comment.user_id)
+                                return (
+                                <span className="commentUsername">{user.name} </span>
+                                )})}
                             </li>
                             <li >
                                 <span> {comment.content} </span>

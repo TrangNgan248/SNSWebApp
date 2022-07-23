@@ -6,6 +6,8 @@ import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import React, {useState, useEffect} from 'react';
 export default function Topbar(){
+    const userLogin = localStorage.getItem("user");
+    var userLog = JSON.parse(userLogin);
     const [isShow,setIsShow] = useState(false);
     const handleClick = () => {
         setIsShow(!isShow);
@@ -68,7 +70,7 @@ export default function Topbar(){
                     <div className="showmoreTopbarWrapper">
                         <div className="showmoreTopbarAvatar">
                             <img className="showmoreTopbarPic" src="assets/testimg/ayame1.png" alt=""></img>
-                            <span className="showmoreTopbarUserName">Nguyen Van A</span>
+                            <span className="showmoreTopbarUserName">{userLog.name}</span>
                         </div>
                          <div className="showmoreTopbarTabs">
                             <div className="showmoreTab">

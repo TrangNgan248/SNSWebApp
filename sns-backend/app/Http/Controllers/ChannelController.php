@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Channel;
+use App\Models\User;
 use App\Models\JoinChannel;
+use PhpParser\Builder\Use_;
 
 class ChannelController extends Controller
 {
@@ -28,5 +30,9 @@ class ChannelController extends Controller
             $joinChannel->channel_id = $request->channel_id;
             $joinChannel->save();
         }
+    }
+    public function userChanel(User $user){
+        $channel = Channel::join('join_channel', 'channel.id', '=', 'join_channel.channel_id')->join('users', 'users.id', '=', 'join_channel.user_id')->select('channel.*')->where('users.id', '=', $user->id)->get();
+        return $channel;
     }
 }

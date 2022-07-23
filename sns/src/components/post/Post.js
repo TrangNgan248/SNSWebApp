@@ -89,7 +89,7 @@ export default function Post() {
                             {users.map((user) => {
                                 if (user.id === post.author_id)
                                     return (
-                                <Link to="/otherprofile">
+                                <Link to="/otherprofile" state ={user}>
                                 <img
                                     className="postProfileImg"
                                     src={`http://localhost:8000/storage/${user.img}`}
@@ -187,8 +187,6 @@ export default function Post() {
                         </div> 
                             <CommentTest id={post.id} />
                             <Comment id={post.id}/>
-                            
-                      
                     </div>
                 )}
                 

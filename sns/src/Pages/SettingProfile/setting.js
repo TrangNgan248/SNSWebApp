@@ -20,17 +20,23 @@ export default function Setting() {
     }, []);
     const loguser = users.filter(user => user.id === userLog.id);
     console.log("loguser", loguser);
-    const [name, setName]= useState("");
-    const [dob, setDob] = useState("");
-    const [gender, setGender] = useState(0);
+    console.log(userLog.name)
+    const [name, setName]= useState(userLog.name);
+    const [dob, setDob] = useState(userLog.dob);
+    const [gender, setGender] = useState(userLog);
+    const [address, setAddress] = useState(userLog.address);
+    const [intro, setIntro] = useState(userLog.intro);
     const [img, setImg] = useState("");
+    const [bg, setBg] = useState("");
     async function editProfile(){
-        let item = {name, dob, gender};
+        let item = {name, dob, gender, address, intro};
         console.warn(item)
         const formData = new FormData();
         formData.append('name', name);
         formData.append('dob', dob);
         formData.append('gender',gender);
+        formData.append('address',address);
+        formData.append('intro',intro);
         await fetch(`http://localhost:8000/api/user/edit/${userLog.id}` , {
             method: 'POST',
             body: formData
@@ -38,10 +44,11 @@ export default function Setting() {
         alert("Data has been updated");
     };
     async function changeAvatar(){
-        let item = {img};
+        let item = {img, bg};
         console.warn(item)
         const formData = new FormData();
         formData.append('img', img);
+        formData.append('bg', bg);
         await fetch(`http://localhost:8000/api/user/avatar/${userLog.id}` , {
             method: 'POST',
             body: formData
@@ -112,7 +119,14 @@ export default function Setting() {
                         <input type="text" className="settingInput" placeholder="E-mail" value={userLog.email} />
                     </li>
                     <li className="settingGeneralItem">
-                        <input type={Text} className="settingInput1" placeholder="Introduction" />  
+                        {loguser.map(user => 
+                        <input type={Text} className="settingInput" placeholder="Address" defaultValue={user.address} onChange={(e) =>setAddress(e.target.value)}/>
+                        )}
+                    </li>
+                    <li className="settingGeneralItem">
+                        {loguser.map(user => 
+                        <input type={Text} className="settingInput1" placeholder="Introduction" defaultValue={user.intro} onChange={(e) =>setIntro(e.target.value)}/>
+                        )}
                     </li>
                     <li className="settingGeneralItem">
                         <select className="settingInput" onChange={(e) =>setGender(e.target.value)}>
@@ -161,7 +175,7 @@ export default function Setting() {
                     </li>
                     <li className="settingGeneralItem">
                         <label className='settingLabel'>Change Background picture</label>
-                        <input type="file" className="custom-file-input" placeholder="Change background Piture" />  
+                        <input type="file" onChange={(e) =>setBg(e.target.files[0])} className="custom-file-input" placeholder="Change background Piture" />  
                         <button type="submit" onClick={changeAvatar} className="submitButton">Submit</button>
                     </li>
                    

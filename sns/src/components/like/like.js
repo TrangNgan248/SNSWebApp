@@ -15,10 +15,19 @@ export default function Like(props) {
     // const apiPath = 'http://127.0.0.1:8000/'
     //  fetch(apiPath+"/api/auth/like",
 
+    const userLogin = localStorage.getItem("user");
+    var userLog = JSON.parse(userLogin);
+    const [liked, setLiked] = useState(false);
+    useEffect(() => {
+        async function Liked(){
+            const liked = await axios.get(`http://127.0.0.1:8000/api/like/${post_id}/${userLog.id}`)
+            setLiked(liked.data)
+        }
+        Liked()
+    }, []);
+    const isliked = liked;
     // Console.log xong thì xoá đi
     // Quy ước tên file component luôn viết hoa chữ cái đầu tiên
-    let userLogin = localStorage.getItem("user")
-    userLogin = JSON.parse(userLogin);
     const callApiLike = () => {
         fetch("http://127.0.0.1:8000/api/auth/like", {
             method: "POST",
@@ -41,6 +50,7 @@ export default function Like(props) {
             } 
             return  ++currentLikes;
         })
+        setLiked(!isliked)
     }
     const [likes, setLikes] = useState(0);
     useEffect(() => {
@@ -60,17 +70,16 @@ export default function Like(props) {
  
         }
         getLike()
-
-
     }, []);
 
-
-
+    const count = likes.length;
     return (
         <div>
             <div class="postLikeIconHover">
-                <FontAwesomeIcon icon={faThumbsUp} className="postLikeIcon" onClick={handleClick} style={{ color: isLike ? "blue" : "black" }}  />
-            <span className="countLike">{likes} like</span>
+                <FontAwesomeIcon icon={faThumbsUp} className="postLikeIcon" onClick={handleClick} style={{ color: isliked || isLike ? "blue" : "black" }}  />
+            </div>
+            <div class="postLikeHide">
+                <span class="postCounterLike"> {count} like </span>
             </div>
             
                 

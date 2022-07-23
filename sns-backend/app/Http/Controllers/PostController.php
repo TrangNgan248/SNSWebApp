@@ -29,12 +29,15 @@ class PostController extends Controller
     public function store(Request $req)
     {
             $post = new Post();
+            $req->validate([
+                'content' => 'required',
+            ]);
             $post->title = $req->input('title');
             $post->content = $req->input('content');
-            $post->author_id = auth()->user()->id;
+            $post->author_id = $req->author_id;
             $post->channel_id = $req->channel_id;
             // $post->display = $req->file('display')->store('img', 'public');
-            $post->display = "khhj";
+            $post->display = $req->file('display')->store('img', 'public');
             $post->num_view = 0;
             $post->save();
     }
@@ -69,6 +72,11 @@ class PostController extends Controller
     {
         $post = Post::where('author_id', $user->id)->latest()->get();
         
+        return $post;
+    }
+    public function channelPost(Channel $channel)
+    {
+        $post = Post::where('channel_id', $channel->id)->latest()->get();
         return $post;
     }
 }

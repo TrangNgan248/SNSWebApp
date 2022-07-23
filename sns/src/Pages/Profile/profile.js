@@ -47,7 +47,7 @@ export default function Profile() {
         <div className="navProfile">
         <div className='avatarProfileWrap'>
             <div className="bgDiv">
-                <img className='bgImg' src='assets/testimg/Yasuo_0.jpg'></img>
+                <img className='bgImg' src={`http://localhost:8000/storage/${user.bg}`}></img>
             </div>
             <div className="avaProfileDiv">
                 <img className='avaProfileImg' src={`http://localhost:8000/storage/${user.img}`}></img>
@@ -55,7 +55,7 @@ export default function Profile() {
         </div>
         <div className='UserIntro1'>
             <p className="nameUser">{user.name}</p> 
-            <p className='shortIntroUser'>Death is like the wind, alaways by my side</p>
+            <p className='shortIntroUser'>{user.intro}</p>
             <hr/>
         <div class="userFollowNav">
             <Link to="/Profile"><div className='userFollow'>Post</div></Link>
@@ -110,20 +110,32 @@ export default function Profile() {
                     <ul className="introUserList">
                     <li className="introUserItem">
                         <FontAwesomeIcon icon={faCakeCandles} className="introUserIcon" />
-                        <span className="introUserItemtext">10/12/2002</span>
+                        <span className="introUserItemtext">{user.dob}</span>
                     </li>
                     <li className="introUserItem">
                         <FontAwesomeIcon icon={faHome} className="introUserIcon" />
-                        <span className="introUserItemtext">No where in Ionia</span>
+                        <span className="introUserItemtext">{user.address}</span>
                     </li>
-                    <li className="introUserItem">
+                    {user.role_id === 1 && <li className="introUserItem">
                         <FontAwesomeIcon icon={faGraduationCap} className="introUserIcon"/>
                         <span className="introUserItemtext">User</span>
-                    </li>
-                    <li className="introUserItem">
+                    </li>}
+                    {user.role_id === 3 && <li className="introUserItem">
+                        <FontAwesomeIcon icon={faGraduationCap} className="introUserIcon"/>
+                        <span className="introUserItemtext">Company</span>
+                    </li>}
+                    {user.gender === 1 && <li className="introUserItem">
                         <FontAwesomeIcon icon={faGenderless}  className="introUserIcon" />
                         <span className="introUserItemtext">Male</span>
-                    </li>
+                    </li>}
+                    {user.gender === 2 && <li className="introUserItem">
+                        <FontAwesomeIcon icon={faGenderless}  className="introUserIcon" />
+                        <span className="introUserItemtext">Female</span>
+                    </li>}
+                    {user.gender === 3 && <li className="introUserItem">
+                        <FontAwesomeIcon icon={faGenderless}  className="introUserIcon" />
+                        <span className="introUserItemtext">Other</span>
+                    </li>}
                 </ul>
                 </div>
             </div>
