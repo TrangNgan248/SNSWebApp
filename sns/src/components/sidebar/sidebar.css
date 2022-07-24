@@ -127,9 +127,11 @@
     align-items: center;
     margin-top: 10px;
 }
-.sidebarSearchItem{
+
+.sidebarSearchItem {
     margin-bottom: 40px;
 }
+
 .btnjoin {
     text-align: center;
     width: 90px;
@@ -149,6 +151,11 @@
 .btnjoin:hover {
     background-color: #00A99D;
 }
-.listFollowUser{
+
+.listFollowUser {
     font-weight: bold;
+}
+
+.Link {
+    text-decoration: none;
 }

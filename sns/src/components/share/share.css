@@ -27,7 +27,7 @@
             margin-left: 5px;
             margin-bottom: 7px;
             border: none;
-            width: 50%;
+            width: 80%;
             border-radius: 20px;
         }
         
@@ -35,8 +35,8 @@
             margin-left: 5px;
             margin-bottom: 7px;
             border: none;
-            width: 100%;
-            height: 30px;
+            width: 200%;
+            height: 70px;
             border-radius: 20px;
         }
         
@@ -71,6 +71,7 @@
             display: flex;
             margin-right: 15px;
             cursor: pointer;
+            align-items: center;
         }
         
         .shareIcon {
@@ -102,15 +103,9 @@
         .shareButton:hover {
             color: #00A99D;
         }
+        /* textarea {
+            text-align: left;
+        } */
         /* input[type="file"] {
             display: none;
-        }
-         */
-        
-        input[type="text"] {
-            align-items: center;
-        }
-        
-        input[type="file"] {
-            display: none;
-        }
+        } */

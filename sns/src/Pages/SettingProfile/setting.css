@@ -106,16 +106,21 @@ input[readonly]::placeholder {
     font-size: 20px;
 }
 
+.custom-file-input {
+    color: transparent;
+}
+
 .custom-file-input::-webkit-file-upload-button {
     visibility: hidden;
 }
 
 .custom-file-input::before {
-    content: 'Select some files';
+    content: 'Media Files';
+    color: black;
     display: inline-block;
-    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
     border: 1px solid #999;
-    border-radius: 3px;
+    border-radius: 2px;
     padding: 5px 8px;
     outline: none;
     white-space: nowrap;
@@ -128,6 +133,10 @@ input[readonly]::placeholder {
 
 .custom-file-input:hover::before {
     border-color: black;
+}
+
+.custom-file-input:active {
+    outline: 0;
 }
 
 .custom-file-input:active::before {

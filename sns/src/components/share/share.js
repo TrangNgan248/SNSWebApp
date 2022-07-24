@@ -51,22 +51,17 @@ function AddPost(props) {
             <img className="shareProfileImg" src={`http://localhost:8000/storage/${user.img}`} alt="" />
           )}
           <div className="shareBox">
-            <input type="text" placeholder="Title" className="shareInput" onChange={(e) => setTitle(e.target.value)} />
-            <input type="text" placeholder="What's in your mind ?" className="shareInput1" onChange={(e) => setContent(e.target.value)} />
+            <input type="text" placeholder="  Title" className="shareInput" onChange={(e) => setTitle(e.target.value)} />
+            <textarea cols="4" placeholder="  What's in your mind ?" className="shareInput1" onChange={(e) => setContent(e.target.value)} />
           </div>
         </div>
         <hr className="shareHr" />
         <div className="shareBottom">
           <div className="shareOptions">
             <label className="shareOption">
-              <input type="file" id="mediaShare" placeholder="Picture" className="shareInput" onChange={(e) => setDisplay(e.target.files[0])} />
               <FontAwesomeIcon icon={faImage} className="shareIcon" />
-              <button className="shareOptionText">Media</button>
+              <input type="file" id="mediaShare" placeholder="Picture" className="custom-file-input" onChange={(e) => setDisplay(e.target.files[0])}  />
             </label>
-            <div className="shareOption">
-              <FontAwesomeIcon icon={faUserPlus} className="shareIcon" />
-              <span className="shareOptionText">Tag</span>
-            </div>
           </div>
 
           <button onClick={addPost} className="shareButton">Share</button>
