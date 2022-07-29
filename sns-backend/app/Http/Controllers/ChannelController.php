@@ -35,4 +35,8 @@ class ChannelController extends Controller
         $channel = Channel::join('join_channel', 'channel.id', '=', 'join_channel.channel_id')->join('users', 'users.id', '=', 'join_channel.user_id')->select('channel.*')->where('users.id', '=', $user->id)->get();
         return $channel;
     }
+    public function countUsers(Channel $channel){
+        $count = Channel::join('join_channel', 'channel.id', '=', 'join_channel.channel_id')->select('join_channel.user_id')->where('channel.id', '=', $channel->id)->count();
+        return $count;
+    }
 }

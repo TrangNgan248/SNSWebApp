@@ -69,7 +69,7 @@ export default function Topbar(){
                     <div className={`${isShow ? "menuactive" : "menuinactive"}`}>
                     <div className="showmoreTopbarWrapper">
                         <div className="showmoreTopbarAvatar">
-                            <img className="showmoreTopbarPic" src="assets/testimg/ayame1.png" alt=""></img>
+                            <img className="showmoreTopbarPic" src={`http://localhost:8000/storage/${userLog.img}`} alt=""></img>
                             <span className="showmoreTopbarUserName">{userLog.name}</span>
                         </div>
                          <div className="showmoreTopbarTabs">

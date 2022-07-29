@@ -19,6 +19,8 @@ export default function Post() {
     const handleClick = () => {
         setIsShow(!isShow);
     }
+    const userLogin = localStorage.getItem("user");
+    var userLog = JSON.parse(userLogin);
     const [posts, setPosts] = useState([]);
     const [commentID, setCommentID] = useState(null);
     useEffect(() => {
@@ -121,7 +123,7 @@ export default function Post() {
                                     </li>
                                     <li className="postTopLeftItem3">
                                 
-                                        <span className="postDate"> 5 mins ago </span>
+                                        <span className="postDate"> {post.created_at} </span>
                                         <FontAwesomeIcon icon={faGlobe} className="postDateIcon" />
                                     </li>
 
@@ -130,7 +132,7 @@ export default function Post() {
 
 
                             <div className="postTopRight">
-                                <Space direction="vertical">
+                                {post.author_id === userLog.id && <Space direction="vertical">
                                     <Space wrap>
                                         <Dropdown overlay={<Menu
                                                     items={[
@@ -159,7 +161,7 @@ export default function Post() {
                                         </Dropdown>
 
                                     </Space>
-                                </Space>
+                                </Space>}
 
                             </div>
                         </div>

@@ -89,3 +89,5 @@ Route::get('/channel/user/{user}', [ChannelController::class, 'userChanel']);
 Route::get('/like/{post}/{user}', [LikeController::class, 'liked']);
 
 Route::get('/follow/{user}', [FollowController::class, 'index']);
+
+Route::get('/channel/count/{channel}', [ChannelController::class, 'countUsers']);
