@@ -98,7 +98,7 @@ useEffect(() => {
                                  }}  style={{color: isLike? "blue": "black"}}  />
                                 </div>
                                 <div className="commentLikeHide">
-                                 <span className="commentCounterLike"> 10 like</span>
+                                 <span className="commentCounterLike"> </span>
                                 </div>
                             </div>
             </div>

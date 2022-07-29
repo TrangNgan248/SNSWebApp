@@ -149,7 +149,7 @@ export default function Sidebar() {
                                     <div className="listFollowUser">
                                     <span className="channelName">{get.name}</span>
                                     </div>
-                                    <button className="btnjoin" onClick={() => { join(); click()}} style={{ color: buttonText ? "black" : "white" }}> {`${buttonText? "Join":"Joined"}`}</button>
+                                    <button className="btnjoin" onClick={() => { join(); click()}} style={{ color: buttonText ? "black" : "white" }}> {`${buttonText? "Joined":"Join"}`}</button>
                                   
                                 </div>
                             )} 

@@ -5,8 +5,9 @@ import "./channel.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell } from '@fortawesome/free-solid-svg-icons'
 import Topbar from '../../components/topbar/Topbar';
-import {  useState } from 'react';
+import {  useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom'
+import axios from "axios";
 export default function Channel(props) {
     const [isActive,setIsActive] = useState(false);
     const [buttonText,setButtonText]=useState(false);
@@ -37,6 +38,16 @@ export default function Channel(props) {
         }
     };
 
+    const [count, setCounts] = useState(0);
+    useEffect(() => {
+        async function getCount(){
+            const count = await axios.get(`http://127.0.0.1:8000/api/channel/count/${state.id}`)
+            console.log(count.data);
+            setCounts(count.data)
+        }
+        getCount()
+    },[]);
+
   return (
     <>
     <Topbar/>
@@ -45,10 +56,10 @@ export default function Channel(props) {
             <div className="channelContentAll">
             <div className='avatarWrap'>
                 <div className="bgDiv">
-                    <img className='bgImg' alt='' src={`http://localhost:8000/storage/${state.img}`}></img>
+                    <img className='bgImg' alt='' src={`http://localhost:8000/storage/${state.bg}`}></img>
                 </div>
                 <div className="avaDiv">
-                <img className='avaImg' alt='' src={`http://localhost:8000/storage/${state.bg}`}></img>
+                <img className='avaImg' alt='' src={`http://localhost:8000/storage/${state.img}`}></img>
                 </div>
             </div>
             <div className="navChannel">
@@ -63,9 +74,9 @@ export default function Channel(props) {
                 <div className="channelIntroWrap">
                     <span className='channelIntroOp'>Introduction</span>
                     <br></br>
-                    <span className='channelDesc'>This is the Introduction.I gonna write someting here just to make sure it long enough for testing. Dont mind me<br></br></span>
-                    <p className='channelJoinNum'><hr></hr>5101 Members<br></br>
-                    Created day: 1/7/2022</p>
+                    <span className='channelDesc'>{state.intro}<br></br></span>
+                    <p className='channelJoinNum'><hr></hr>{count} Members<br></br>
+                    Created day: {state.created_day}</p>
                 </div>
             </div>
             </div>

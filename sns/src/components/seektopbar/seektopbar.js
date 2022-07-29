@@ -146,7 +146,7 @@ function Topbar(){
                                     </li>
                                     <li className="postTopLeftItem3">
                                        
-                                        <span className="postDate"> 5 mins ago </span>
+                                        <span className="postDate"> {post.created_at} </span>
                                         <FontAwesomeIcon icon={faGlobe} className="postDateIcon" />
                                     </li>
 

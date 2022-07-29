@@ -50,7 +50,6 @@ export default function Like(props) {
             } 
             return  ++currentLikes;
         })
-        setLiked(!isliked)
     }
     const [likes, setLikes] = useState(0);
     useEffect(() => {
@@ -60,7 +59,7 @@ export default function Like(props) {
                 let listUserLike = likeDatabase.data;
                 for(let likeUser of listUserLike) {
                     if(likeUser.user_id == userLogin.id) {
-                       
+                        setLiked(true)
                         setIsLike(true);
                         break;
                     }
@@ -72,18 +71,11 @@ export default function Like(props) {
         getLike()
     }, []);
 
-    const count = likes.length;
     return (
-        <div>
             <div class="postLikeIconHover">
                 <FontAwesomeIcon icon={faThumbsUp} className="postLikeIcon" onClick={handleClick} style={{ color: isliked || isLike ? "blue" : "black" }}  />
+                <span className="countLike">{likes} like</span>
             </div>
-            <div class="postLikeHide">
-                <span class="postCounterLike"> {count} like </span>
-            </div>
-            
-                
-        </div>
     )
 
 }

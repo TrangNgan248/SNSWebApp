@@ -14,6 +14,10 @@ import Like from "../like/like";
 
 export default function ChannelPost(props) {
     // console.log(post)
+    const [isShow,setIsShow] = useState(false);
+    const handleClick = () => {
+        setIsShow(!isShow);
+    }
     let channel_id = props.id;
     const [posts, setPosts] = useState([]);
     const [commentID, setCommentID] = useState(null);
@@ -66,13 +70,14 @@ export default function ChannelPost(props) {
     const handleDelete = (id) => {
         axios.delete(`http://127.0.0.1:8000/api/post/${id}`)
     .then((response)=>{
-      console.log(response.data);
+    //   console.log(response.data);
       alert("Data has been deleted");
    })
     .catch((err) => console.error(err.response.data.errors));
     };
     
     return (
+        
         <div className="post">
             {
                 posts.map((post) =>
@@ -80,26 +85,30 @@ export default function ChannelPost(props) {
                         <div className="postTop">
                             <div className="postTopLeft">
                             {users.map((user) => {
-                                            if (user.id === post.author_id)
-                                                return (
+                                if (user.id === post.author_id)
+                                    return (
+                                <Link to="/otherprofile" state ={user}>
                                 <img
                                     className="postProfileImg"
                                     src={`http://localhost:8000/storage/${user.img}`}
-                                    alt="" />
+                                    alt="" /></Link>
                                     )
                                 }
                                 )}
                                 <ul className="postTopLeftList">
                                     <li className="postTopLeftItem1">
-                                        {channels.map((channel) => {
+                                        {
+                                            channels.map((channel) => {
                                             if (channel.id === post.channel_id)
                                                 return (
-                                                    <span className="postFromChannel"> {channel.name} </span>
+                                                    <span className="postFromChannel">[ From Channel {channel.name}]</span>
                                                 )
                                         }
                                         )}
                                     </li>
                                     <li className="postTopLeftItem2">
+                                        {/*sưa R Thuưia iện mà
+                                          */}
                                         {users.map((user) => {
                                             if (user.id === post.author_id)
                                                 return (
@@ -109,8 +118,9 @@ export default function ChannelPost(props) {
                                         )}
                                     </li>
                                     <li className="postTopLeftItem3">
+                                
+                                        <span className="postDate"> {post.created_at} </span>
                                         <FontAwesomeIcon icon={faGlobe} className="postDateIcon" />
-                                        <span className="postDate"> {post.updated_at} </span>
                                     </li>
 
                                 </ul>
@@ -143,7 +153,7 @@ export default function ChannelPost(props) {
 
                                                     ]}
                                                 />} placement="bottom">
-                                            <Button><FontAwesomeIcon icon={faEllipsis} className="postTopRightIcon" /></Button>
+                                            <FontAwesomeIcon icon={faEllipsis} className="postTopRightIcon" />
                                         </Dropdown>
 
                                     </Space>
@@ -152,7 +162,7 @@ export default function ChannelPost(props) {
                             </div>
                         </div>
                         <div className="postCenter">
-                            <div className="postText">{post.title}</div>
+                            <div className="postText1">{post.title}</div>
                             <div className="postText">{post.content}</div>
                             <img className="postImg" src={`http://localhost:8000/storage/${post.display}`} alt="Khong hien thi" />
                         </div>
@@ -161,25 +171,24 @@ export default function ChannelPost(props) {
                             <div className="postBottomLeft">
                                 <Like id={post.id}/>
                                 <div className="postCommentIconHover">
-                                    <FontAwesomeIcon icon={faComment} className="postCommentIcon" />
-                                </div>
-
-                                <Button type="link" onClick={() => showModal(post.id)} data-target={`#${post.id}`}>
-                                    Comment
-                                </Button>
-                                <Modal title="Comment" id={post.id} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-                                    <CommentTest id={commentID} />
-                                    <Comment id={post.id}/> 
-                                </Modal>
+                                    <FontAwesomeIcon icon={faComment} className="postCommentIcon" onClick={handleClick} />
+                                </div>   
+                                    {/* <div className={`${isShow ? "menuactive" : "menuinactive"}`}>
+                                                        <span>Hello</span>
+                                        </div>                           */}
+                                
+                                
                             </div>
                             <div className="postBottomRight">
                                 <FontAwesomeIcon icon={faBookmark} className="postBookmarkIcon" />
-                            </div>
-                          
-                            
-                        </div>
+                            </div> 
+                        </div> 
+                            <CommentTest id={post.id} />
+                            <Comment id={post.id}/>
                     </div>
                 )}
-        </div>
+                
+        </div> 
+        
     );
 }

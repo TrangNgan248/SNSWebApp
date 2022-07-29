@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('img', 50)->nullable();
             $table->string('bg', 50)->nullable();
             $table->string('intro')->nullable();
+            $table->date('created_day')->nullable();
         });
     }
 

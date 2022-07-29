@@ -36,7 +36,7 @@ export default function CommentTest(props) {
   
     return (
         <div className="commentInput">
-            <img className="commentProfileImg" src="assets/testimg/Ayame2.jpg" alt="" />
+            <img className="commentProfileImg" src="../assets/testimg/Ayame2.jpg" alt="" />
             <input name="content" type="text" placeholder="Enter your comment?" value={content} onChange={(e) => setContent(e.target.value)} className="shareInput" />
             <button type="submit" onClick={handleSubmit}>Submit</button>
             <div className="message">{message ? <p>{message}</p> : null}</div>

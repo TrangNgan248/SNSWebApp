@@ -142,7 +142,8 @@ export default function Setting() {
                         )}
                     </li>
                     <li className="settingGeneralItem">
-                        <input type={Text} className="settingInput" placeholder="Role: User" readOnly  />  
+                        {userLog.role_id === 1 && <input type={Text} className="settingInput" placeholder="Role: User" readOnly  />}
+                        {userLog.role_id === 3 && <input type={Text} className="settingInput" placeholder="Role: Company" readOnly  />}  
                     </li>
                     <button type="submit" onClick={editProfile} className="submitButton">Submit</button>
                 </ul>
