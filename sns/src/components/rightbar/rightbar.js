@@ -17,41 +17,41 @@ export default function Rightbar(){
     // };
     return(
         <div className="rightbar">
-             {/* <ul className="rightbarFollowlist">
+             <ul className="rightbarFollowlist">
                 <li className="rightbarOnline">
                     <span className="onlinetext">Online</span>
                 </li>
                 <li className="rightbarFollow">
                     <img className="rightbarFollowImg" src="/assets/testimg/ayame1.png" alt=""></img>
-                    <span className="rightbarFollowName">Ayame-chan</span>
+                    <span className="rightbarFollowName">Ayame</span>
                 </li>
                 <li className="rightbarFollow">
-                    <img className="rightbarFollowImg" src="/assets/testimg/ayame1.png" alt=""></img>
-                    <span className="rightbarFollowName">Ayame-chan</span>
+                    <img className="rightbarFollowImg" src="/assets/testimg/ayame2.jpg" alt=""></img>
+                    <span className="rightbarFollowName">Akami</span>
                 </li>
                 <li className="rightbarFollow">
-                    <img className="rightbarFollowImg" src="/assets/testimg/ayame1.png" alt=""></img>
-                    <span className="rightbarFollowName">Ayame-chan</span>
+                    <img className="rightbarFollowImg" src="/assets/testimg/it.png" alt=""></img>
+                    <span className="rightbarFollowName">TechSS</span>
                 </li>
                 <li className="rightbarFollow">
-                    <img className="rightbarFollowImg" src="/assets/testimg/ayame1.png" alt=""></img>
-                    <span className="rightbarFollowName">Ayame-chan</span>
+                    <img className="rightbarFollowImg" src="/assets/testimg/nihon.png" alt=""></img>
+                    <span className="rightbarFollowName">Love Japan</span>
                 </li>
                 <li className="rightbarFollow">
-                    <img className="rightbarFollowImg" src="/assets/testimg/ayame1.png" alt=""></img>
-                    <span className="rightbarFollowName">Ayame-chan</span>
+                    <img className="rightbarFollowImg" src="/assets/testimg/sunlogo.jpg" alt=""></img>
+                    <span className="rightbarFollowName">Sun*</span>
                 </li>
                 <li className="rightbarFollow">
-                    <img className="rightbarFollowImg" src="/assets/testimg/ayame1.png" alt=""></img>
-                    <span className="rightbarFollowName">Ayame-chan</span>
+                    <img className="rightbarFollowImg" src="/assets/testimg/Yasuo_0.jpg" alt=""></img>
+                    <span className="rightbarFollowName">Yasuoo</span>
                 </li>
                 <li className="rightbarFollow">
-                    <img className="rightbarFollowImg" src="/assets/testimg/ayame1.png" alt=""></img>
-                    <span className="rightbarFollowName">Ayame-chan</span>
+                    <img className="rightbarFollowImg" src="/assets/testimg/Yoku mv.jpg" alt=""></img>
+                    <span className="rightbarFollowName">Yokun</span>
                 </li>
                 <li className="rightbarFollow">
-                    <img className="rightbarFollowImg" src="/assets/testimg/ayame1.png" alt=""></img>
-                    <span className="rightbarFollowName">Ayame-chan</span>
+                    <img className="rightbarFollowImg" src="/assets/testimg/celeste.png" alt=""></img>
+                    <span className="rightbarFollowName">Celescute</span>
                 </li>
                 <li className="rightbarFollow">
                     <img className="rightbarFollowImg" src="/assets/testimg/ayame1.png" alt=""></img>
@@ -83,7 +83,7 @@ export default function Rightbar(){
                 </li>
             </ul>
                
-             */}
+            
              {/* <Button type="link" onClick={showModal}>
                     <button className="btn"><i className="fa-solid fa-circle-plus"> Follow users</i></button>
                 </Button>
