@@ -110,11 +110,11 @@ export default function Profile() {
                     <ul className="introUserList">
                     <li className="introUserItem">
                         <FontAwesomeIcon icon={faCakeCandles} className="introUserIcon" />
-                        <span className="introUserItemtext">{user.dob}</span>
+                        <span className="introUserItemtext">{user.dob}  22 5 2002</span>
                     </li>
                     <li className="introUserItem">
                         <FontAwesomeIcon icon={faHome} className="introUserIcon" />
-                        <span className="introUserItemtext">{user.address}</span>
+                        <span className="introUserItemtext">{user.address} Ha Noi</span>
                     </li>
                     {user.role_id === 1 && <li className="introUserItem">
                         <FontAwesomeIcon icon={faGraduationCap} className="introUserIcon"/>

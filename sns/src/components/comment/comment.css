@@ -56,3 +56,17 @@
     margin: 0 5px;
     font-weight: bold;
 }
+.btncomment{
+    display: flex;
+    align-items: center;
+    width: 100px;
+    border: none;
+    background-color: #4CD1C8;
+    padding: 8px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    white-space: normal;
+    font-weight: 200;
+    border-radius: 10px;
+    margin-left: 40px;
+}
